@@ -22,8 +22,8 @@ parameter frozen.
 
 ## What is in this repository
 
-* [`report/main.pdf`](report/main.pdf): the 8-page report (CVPR 2026 template), built from `report/main.tex`
-* [`presentation/talk.pdf`](presentation/talk.pdf): the slides; `video/narration.md` is the script read over them
+* [`report/main.pdf`](report/main.pdf): the 8-page report (CVPR 2026 template)
+* [`presentation/talk.pdf`](presentation/talk.pdf): the slides
 * `pathfaith/`: all the code; `results/`: every recorded run, one JSON line per query
 * `colab/pathfaith_colab.ipynb`: the whole project on Google Colab, CPU runtime
 
@@ -115,10 +115,6 @@ enough. The notebook then:
 
 Setup takes about three minutes and each demo run one to two.
 
-`video/record_demo.py` records a real run under a pseudo-terminal and renders
-it to video, with the true elapsed time in every frame; it refuses to render a
-run that failed.
-
 ## What is measured
 
 | | What changes in the graph | The question it answers |
@@ -182,21 +178,16 @@ NELL23k baselines were run on Colab with the same code.
 Datasets download on first use into `kg-datasets/` (PyTorch Geometric for
 WN18RR and FB15k-237, ULTRA's loaders for CoDEx-S and NELL23k).
 
-## Rebuilding every deliverable
+## Rebuilding the figures
 
 ```bash
-./finalize.sh             # numbers, figures, worked example, report, deck, script, video, audit, zip
-./finalize.sh --record    # the same, recording a fresh demo run first
+python -m pathfaith.reliability   # convergence and split-half analysis -> results/reliability.json
+python -m pathfaith.figures       # every figure, from whatever is in results/
 ```
 
-No number in the report, the slides or the narration is typed by hand.
-`make_numbers.py` writes `report/numbers.tex`; the report and the deck use its
-macros, and `make_narration.py` fills the spoken script from the same file.
-Any macro the data does not yet define renders as **??**, and
-`check_report.py` fails the build if one survives, if an em dash appears, if a
-citation or figure is missing, if the body passes eight pages, if a quoted
-query count disagrees with its results file, or if the recorded demo did not
-complete every query.
+Report-size figures go to `report/figs/`, slide-size ones to `video/figs/`. A
+graph whose results file is missing is drawn as "pending" rather than failing,
+so the figures can be rebuilt while runs are still going.
 
 ## Layout
 
@@ -216,17 +207,13 @@ pathfaith/
   reliability.py     convergence curves and split-half agreement
   figures.py         the benchmark figures in the report and on the slides
   figures_extra.py   the bug, released vs corrected, integrated gradients, channels
-  case_study.py      the worked example, re-run and checked against its record
-  make_numbers.py    every quoted number as a LaTeX macro
-  make_narration.py  the narration script, numbers filled from the same macros
   demo.py            the live demo
   warmup.py          load a graph and compile ULTRA's kernel before the demo
   compare_runs.py    check a fresh run against the recorded benchmark
-  check_report.py    the pre-submission audit
 colab/               pathfaith_colab.ipynb and the torch_scatter stand-in
-report/              main.tex refs.bib numbers.tex case.tex figs/
-presentation/        talk.tex, the slides for the live presentation
-video/               narration_template.md, build_video.sh, record_demo.py
+report/              main.pdf, the report, and figs/, its figures
+presentation/        talk.pdf, the slides
+video/figs/          slide-size versions of the figures
 kg-labels/           CoDEx-S entity and relation labels, WN18RR synset names
 results/             baselines (*.json) and one JSON line per query (*.jsonl)
 ```

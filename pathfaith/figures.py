@@ -371,3 +371,26 @@ def fig_dose_response(out: str, results_dir: str = 'results', figsize=(6.9, 1.8)
     fig.tight_layout(pad=0.4, rect=(0, 0.1 if not big else 0.07, 1, 1))
     fig.savefig(out)
     plt.close(fig)
+
+
+# ------------------------------------------------------------------ all of them
+def main() -> None:
+    """Every figure, report and slide versions, from what is in results/."""
+    from pathfaith.figures_extra import make_extra
+    have = {name: f'results/paths_{tag}_seed0.jsonl' for name, tag in NM_SETS}
+    have = {k: v for k, v in have.items() if os.path.exists(v)}
+    made = make_all(have)
+    made += make_slide_figs({k: v for k, v in have.items() if k in ('WN18RR', 'FB15k-237')})
+    os.makedirs('video/figs', exist_ok=True)
+    fig_convergence('video/figs/convergence_big.pdf', figsize=(11.07, 6.32), big=True)
+    fig_dose_response('report/figs/dose_response.pdf')
+    fig_dose_response('video/figs/dose_response_big.pdf', figsize=(11.07, 6.0), big=True)
+    made += ['video/figs/convergence_big.pdf', 'report/figs/dose_response.pdf',
+             'video/figs/dose_response_big.pdf']
+    made += make_extra()
+    for m in made:
+        print(m)
+
+
+if __name__ == '__main__':
+    main()
