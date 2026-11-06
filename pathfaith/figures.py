@@ -43,7 +43,7 @@ def fig_rank_vs_drop(paths: dict, out: str, row: bool = None) -> None:
     row = (n > 2) if row is None else row
     # one row of panels across the page once there are more than two graphs
     if row:
-        fig, axes = plt.subplots(1, n, figsize=(6.9, 1.85), squeeze=False, sharey=True)
+        fig, axes = plt.subplots(1, n, figsize=(6.9, 1.75), squeeze=False, sharey=True)
         panel_axes = axes[0, :]
     else:
         fig, axes = plt.subplots(n, 1, figsize=(3.3, 1.9 * n), squeeze=False, sharex=True)
@@ -173,7 +173,7 @@ def make_all(paths: dict, outdir: str = 'report/figs') -> list:
         made.append(path)
     path = os.path.join(outdir, 'convergence.pdf')
     # one row across the page: the report is held to eight pages
-    fig_convergence(path, figsize=(6.9, 2.15), rows=1)
+    fig_convergence(path, figsize=(6.9, 2.0), rows=1)
     made.append(path)
     return made
 
@@ -371,26 +371,3 @@ def fig_dose_response(out: str, results_dir: str = 'results', figsize=(6.9, 1.8)
     fig.tight_layout(pad=0.4, rect=(0, 0.1 if not big else 0.07, 1, 1))
     fig.savefig(out)
     plt.close(fig)
-
-
-# ------------------------------------------------------------------ all of them
-def main() -> None:
-    """Every figure, report and slide versions, from what is in results/."""
-    from pathfaith.figures_extra import make_extra
-    have = {name: f'results/paths_{tag}_seed0.jsonl' for name, tag in NM_SETS}
-    have = {k: v for k, v in have.items() if os.path.exists(v)}
-    made = make_all(have)
-    made += make_slide_figs({k: v for k, v in have.items() if k in ('WN18RR', 'FB15k-237')})
-    os.makedirs('video/figs', exist_ok=True)
-    fig_convergence('video/figs/convergence_big.pdf', figsize=(11.07, 6.32), big=True)
-    fig_dose_response('report/figs/dose_response.pdf')
-    fig_dose_response('video/figs/dose_response_big.pdf', figsize=(11.07, 6.0), big=True)
-    made += ['video/figs/convergence_big.pdf', 'report/figs/dose_response.pdf',
-             'video/figs/dose_response_big.pdf']
-    made += make_extra()
-    for m in made:
-        print(m)
-
-
-if __name__ == '__main__':
-    main()
