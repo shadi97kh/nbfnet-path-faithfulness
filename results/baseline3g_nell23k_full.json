@@ -1,0 +1,1 @@
+{"dataset": "NELL23k", "ckpt": "ultra_3g.pth", "source": "Colab run of baseline_jobs.py", "n_triples": 4952, "mrr": 0.24134838581085205, "hits@1": 0.16185379028320312, "hits@3": 0.2640347480773926, "hits@10": 0.4057956337928772, "mrr_tail_only": 0.2988278269767761, "hits@10_tail_only": 0.5113085508346558, "seconds": 4104.8}

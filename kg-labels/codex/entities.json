@@ -1,0 +1,6104 @@
+{
+"Q100": {
+"label": "Boston"
+},
+"Q1000": {
+"label": "Gabon"
+},
+"Q1001": {
+"label": "Mohandas Karamchand Gandhi"
+},
+"Q1005": {
+"label": "Gambia"
+},
+"Q1006": {
+"label": "Guinea"
+},
+"Q1007": {
+"label": "Guinea-Bissau"
+},
+"Q1008": {
+"label": "Ivory Coast"
+},
+"Q1009": {
+"label": "Cameroon"
+},
+"Q100937": {
+"label": "Fred Astaire"
+},
+"Q1010602": {
+"label": "Giorgio Gaber"
+},
+"Q1011": {
+"label": "Cape Verde"
+},
+"Q1013": {
+"label": "Lesotho"
+},
+"Q1014": {
+"label": "Liberia"
+},
+"Q1016": {
+"label": "Libya"
+},
+"Q101638": {
+"label": "Mary Wollstonecraft"
+},
+"Q101740": {
+"label": "Benoit Mandelbrot"
+},
+"Q1019": {
+"label": "Madagascar"
+},
+"Q1020": {
+"label": "Malawi"
+},
+"Q102289": {
+"label": "Buckminster Fuller"
+},
+"Q1025": {
+"label": "Mauritania"
+},
+"Q1027": {
+"label": "Mauritius"
+},
+"Q102711": {
+"label": "Dennis Hopper"
+},
+"Q1028": {
+"label": "Morocco"
+},
+"Q102813": {
+"label": "Yul Brynner"
+},
+"Q1028181": {
+"label": "painter"
+},
+"Q102822": {
+"label": "Jacobus Henricus van 't Hoff"
+},
+"Q1029": {
+"label": "Mozambique"
+},
+"Q1030": {
+"label": "Namibia"
+},
+"Q103114": {
+"label": "Michel Houellebecq"
+},
+"Q1031340": {
+"label": "Mark Linkous"
+},
+"Q1032": {
+"label": "Niger"
+},
+"Q1033": {
+"label": "Nigeria"
+},
+"Q1036": {
+"label": "Uganda"
+},
+"Q1037": {
+"label": "Rwanda"
+},
+"Q103835": {
+"label": "Peter Debye"
+},
+"Q1039": {
+"label": "São Tomé and Príncipe"
+},
+"Q104000": {
+"label": "Lauren Bacall"
+},
+"Q104049": {
+"label": "Sidney Poitier"
+},
+"Q104081": {
+"label": "Mickey Rooney"
+},
+"Q1041": {
+"label": "Senegal"
+},
+"Q104109": {
+"label": "Mary Pickford"
+},
+"Q104127": {
+"label": "Douglas Fairbanks"
+},
+"Q104154": {
+"label": "Urbain Le Verrier"
+},
+"Q1042": {
+"label": "Seychelles"
+},
+"Q104266": {
+"label": "Mel Brooks"
+},
+"Q104340": {
+"label": "Harold Lloyd"
+},
+"Q1043527": {
+"label": "Multilateral Investment Guarantee Agency"
+},
+"Q104358": {
+"label": "Billie Holiday"
+},
+"Q1044": {
+"label": "Sierra Leone"
+},
+"Q1045": {
+"label": "Somalia"
+},
+"Q1046038": {
+"label": "Enzo Jannacci"
+},
+"Q1046616": {
+"label": "Tim Rice-Oxley"
+},
+"Q104668": {
+"label": "Vitaly Ginzburg"
+},
+"Q1047474": {
+"label": "Brendon Urie"
+},
+"Q104791": {
+"label": "Ed Harris"
+},
+"Q1049": {
+"label": "Sudan"
+},
+"Q1050": {
+"label": "Eswatini"
+},
+"Q105118": {
+"label": "Sidney Sheldon"
+},
+"Q1053574": {
+"label": "executive producer"
+},
+"Q105460": {
+"label": "John Denver"
+},
+"Q1055": {
+"label": "Hamburg"
+},
+"Q105756": {
+"label": "John Updike"
+},
+"Q105875": {
+"label": "Herbie Hancock"
+},
+"Q1060636": {
+"label": "Daniel Handler"
+},
+"Q106225": {
+"label": "Jean Yanne"
+},
+"Q1065": {
+"label": "United Nations"
+},
+"Q1065956": {
+"label": "Charles Rosen"
+},
+"Q106662": {
+"label": "John Lydon"
+},
+"Q1067": {
+"label": "Dante Alighieri"
+},
+"Q1067043": {
+"label": "Charlie Wilson"
+},
+"Q106706": {
+"label": "Jeff Goldblum"
+},
+"Q106740": {
+"label": "Dorothy L. Sayers"
+},
+"Q106762": {
+"label": "George Porter, Baron Porter of Luddenham"
+},
+"Q106775": {
+"label": "Richard Harris"
+},
+"Q10681": {
+"label": "Alan Stivell"
+},
+"Q107002": {
+"label": "Evelyn Waugh"
+},
+"Q107008": {
+"label": "Count Basie"
+},
+"Q1072120": {
+"label": "Missile Technology Control Regime"
+},
+"Q107405": {
+"label": "Lars Onsager"
+},
+"Q107420": {
+"label": "Sheldon Lee Glashow"
+},
+"Q107424": {
+"label": "Akiko Yano"
+},
+"Q107432": {
+"label": "Charles Mingus Jr."
+},
+"Q1075651": {
+"label": "keyboardist"
+},
+"Q107730": {
+"label": "Vince Vaughn"
+},
+"Q107933": {
+"label": "Jim Belushi"
+},
+"Q10798782": {
+"label": "television actor"
+},
+"Q10800557": {
+"label": "film actor"
+},
+"Q108283": {
+"label": "Alan Arkin"
+},
+"Q1085": {
+"label": "Prague"
+},
+"Q108560": {
+"label": "A. R. Rahman"
+},
+"Q108941": {
+"label": "Carrie Fisher"
+},
+"Q1093318": {
+"label": "Celeste Buckingham"
+},
+"Q1095432": {
+"label": "Clarence \"Gatemouth\" Brown"
+},
+"Q110462": {
+"label": "Julie Delpy"
+},
+"Q11063": {
+"label": "astronomer"
+},
+"Q1112005": {
+"label": "Queen Latifah"
+},
+"Q111436": {
+"label": "Elmer Bernstein"
+},
+"Q112307": {
+"label": "Lena Horne"
+},
+"Q11299": {
+"label": "Manhattan"
+},
+"Q1132636": {
+"label": "Serbian Academy of Sciences and Arts"
+},
+"Q1133657": {
+"label": "traditional heavy metal"
+},
+"Q11366": {
+"label": "alternative rock"
+},
+"Q1137381": {
+"label": "Arab Fund for Economic and Social Development"
+},
+"Q11399": {
+"label": "rock music"
+},
+"Q114": {
+"label": "Kenya"
+},
+"Q11401": {
+"label": "hip hop music"
+},
+"Q115": {
+"label": "Ethiopia"
+},
+"Q1151": {
+"label": "Hector Berlioz"
+},
+"Q1151944": {
+"label": "Mary-Kate Olsen"
+},
+"Q115483": {
+"label": "Max Frisch"
+},
+"Q11617": {
+"label": "Aaliyah"
+},
+"Q116309": {
+"label": "Nicholas Marr"
+},
+"Q11637": {
+"label": "Judy Garland"
+},
+"Q117": {
+"label": "Ghana"
+},
+"Q117012": {
+"label": "Yoko Ono"
+},
+"Q117021": {
+"label": "Oswald Heer"
+},
+"Q117139": {
+"label": "Wiz Khalifa"
+},
+"Q117249": {
+"label": "Robbie Robertson"
+},
+"Q117467": {
+"label": "Royal Society of Edinburgh"
+},
+"Q1175266": {
+"label": "David Lindley"
+},
+"Q1176607": {
+"label": "Ross Bagdasarian Sr."
+},
+"Q11774202": {
+"label": "essayist"
+},
+"Q11812": {
+"label": "Thomas Jefferson"
+},
+"Q118233": {
+"label": "Sergey Kuryokhin"
+},
+"Q11826": {
+"label": "Al-Biruni"
+},
+"Q11900058": {
+"label": "explorer"
+},
+"Q11907": {
+"label": "Mark Oliver Everett"
+},
+"Q11930": {
+"label": "Kevin Costner"
+},
+"Q1195390": {
+"label": "Andrew Ridgeley"
+},
+"Q119546": {
+"label": "Howard Zinn"
+},
+"Q1196752": {
+"label": "traditional pop music"
+},
+"Q11975": {
+"label": "Britney Spears"
+},
+"Q11998": {
+"label": "Kylie Minogue"
+},
+"Q12003": {
+"label": "Cher"
+},
+"Q1203": {
+"label": "John Lennon"
+},
+"Q12078": {
+"label": "cancer"
+},
+"Q1209498": {
+"label": "poet lawyer"
+},
+"Q12144794": {
+"label": "prosaist"
+},
+"Q121507": {
+"label": "Alicia Keys"
+},
+"Q12152": {
+"label": "myocardial infarction"
+},
+"Q121594": {
+"label": "professor"
+},
+"Q121842": {
+"label": "French people"
+},
+"Q12192": {
+"label": "pneumonia"
+},
+"Q121926": {
+"label": "Henry Louis Le Châtelier"
+},
+"Q122003": {
+"label": "Julio Iglesias"
+},
+"Q12202": {
+"label": "stroke"
+},
+"Q122020": {
+"label": "Hilary Duff"
+},
+"Q12204": {
+"label": "tuberculosis"
+},
+"Q1225": {
+"label": "Bruce Springsteen"
+},
+"Q122701": {
+"label": "William Thomson, 1st Baron Kelvin"
+},
+"Q122968": {
+"label": "Alexander Emanuel Agassiz"
+},
+"Q123174": {
+"label": "Vanessa Hudgens"
+},
+"Q1231865": {
+"label": "pedagogue"
+},
+"Q123225": {
+"label": "Albrecht von Haller"
+},
+"Q1234713": {
+"label": "theologian"
+},
+"Q12362622": {
+"label": "philanthropist"
+},
+"Q123759": {
+"label": "Organization of American States"
+},
+"Q1238570": {
+"label": "political scientist"
+},
+"Q123885": {
+"label": "Royal Society"
+},
+"Q1239933": {
+"label": "Donald Glover"
+},
+"Q1242553": {
+"label": "Lonnie Liston Smith"
+},
+"Q12439": {
+"label": "Detroit"
+},
+"Q1246": {
+"label": "Kosovo"
+},
+"Q125057": {
+"label": "Richard Francis Burton"
+},
+"Q12548": {
+"label": "Holy Roman Empire"
+},
+"Q125666": {
+"label": "Nyusha"
+},
+"Q12585": {
+"label": "Latin America"
+},
+"Q126399": {
+"label": "Warner Bros."
+},
+"Q126462": {
+"label": "Thomas Paine"
+},
+"Q12658": {
+"label": "Wilhelm Ostwald"
+},
+"Q1268": {
+"label": "Frédéric Chopin"
+},
+"Q12706": {
+"label": "Maxim Gorki"
+},
+"Q127330": {
+"label": "Frank Zappa"
+},
+"Q1276": {
+"label": "Leonard Cohen"
+},
+"Q127856": {
+"label": "Beverly Hills"
+},
+"Q12799318": {
+"label": "powest"
+},
+"Q12807": {
+"label": "Umberto Eco"
+},
+"Q128121": {
+"label": "Mick Jagger"
+},
+"Q128126": {
+"label": "Claude Lévi-Strauss"
+},
+"Q1281738": {
+"label": "Kinky Friedman"
+},
+"Q1282910": {
+"label": "Eddie Money"
+},
+"Q128297": {
+"label": "Maria Callas"
+},
+"Q128309": {
+"label": "drum kit"
+},
+"Q128532": {
+"label": "Al Jolson"
+},
+"Q128560": {
+"label": "Graham Greene"
+},
+"Q128746": {
+"label": "Irving Berlin"
+},
+"Q128758": {
+"label": "satire"
+},
+"Q128759": {
+"label": "Stanislao Cannizzaro"
+},
+"Q128799": {
+"label": "Ricky Martin"
+},
+"Q12881": {
+"label": "Paulo Coelho"
+},
+"Q1290": {
+"label": "Blaise Pascal"
+},
+"Q12908": {
+"label": "George Soros"
+},
+"Q129119": {
+"label": "Ruslana"
+},
+"Q1297": {
+"label": "Chicago"
+},
+"Q1298934": {
+"label": "synth-pop"
+},
+"Q130631": {
+"label": "Jacques Derrida"
+},
+"Q130742": {
+"label": "Alanis Morissette"
+},
+"Q130799": {
+"label": "James Blunt"
+},
+"Q130857": {
+"label": "disc jockey"
+},
+"Q131112": {
+"label": "Paul Krugman"
+},
+"Q131149": {
+"label": "Henry David Thoreau"
+},
+"Q131252": {
+"label": "University of Chicago"
+},
+"Q131259": {
+"label": "Alexander Rybak"
+},
+"Q131272": {
+"label": "soul music"
+},
+"Q131324": {
+"label": "Janet Jackson"
+},
+"Q131333": {
+"label": "George Eliot"
+},
+"Q131433": {
+"label": "Shania Twain"
+},
+"Q131524": {
+"label": "entrepreneur"
+},
+"Q131725": {
+"label": "Joan Baez"
+},
+"Q131755": {
+"label": "bipolar disorder"
+},
+"Q131814": {
+"label": "Tina Turner"
+},
+"Q131964": {
+"label": "Austrian Empire"
+},
+"Q1321": {
+"label": "Spanish"
+},
+"Q13235160": {
+"label": "producer"
+},
+"Q132524": {
+"label": "Ayn Rand"
+},
+"Q132537": {
+"label": "J. Robert Oppenheimer"
+},
+"Q1327329": {
+"label": "multi-instrumentalist"
+},
+"Q132952": {
+"label": "Adam Sandler"
+},
+"Q132964": {
+"label": "Vladimir Mayakovsky"
+},
+"Q133163": {
+"label": "percussion instrument"
+},
+"Q1334617": {
+"label": "Raymond Scott"
+},
+"Q13371": {
+"label": "Harvard University"
+},
+"Q134102": {
+"label": "Organisation internationale de la Francophonie"
+},
+"Q134180": {
+"label": "Truman Capote"
+},
+"Q1344": {
+"label": "opera"
+},
+"Q134456": {
+"label": "Yukio Mishima"
+},
+"Q1345514": {
+"label": "Michael Penn"
+},
+"Q134798": {
+"label": "Haruki Murakami"
+},
+"Q1348831": {
+"label": "Lowell George"
+},
+"Q1350157": {
+"label": "music critic"
+},
+"Q1350303": {
+"label": "Holly Johnson"
+},
+"Q1351177": {
+"label": "Tim Rose"
+},
+"Q135139": {
+"label": "Paul Jozef Crutzen"
+},
+"Q1353559": {
+"label": "Mort Shuman"
+},
+"Q135481": {
+"label": "Lev Gumilyov"
+},
+"Q13590141": {
+"label": "presenter"
+},
+"Q137042": {
+"label": "Nat King Cole"
+},
+"Q1373347": {
+"label": "Martie Maguire"
+},
+"Q1377134": {
+"label": "Graham Parker"
+},
+"Q1377612": {
+"label": "European Payments Union"
+},
+"Q13909": {
+"label": "Angelina Jolie"
+},
+"Q1391164": {
+"label": "Tamer Hosny"
+},
+"Q1394": {
+"label": "Vladimir Lenin"
+},
+"Q13955": {
+"label": "Arabic"
+},
+"Q14045": {
+"label": "Moby"
+},
+"Q140694": {
+"label": "Alexis de Tocqueville"
+},
+"Q1415090": {
+"label": "film score composer"
+},
+"Q142": {
+"label": "France"
+},
+"Q1425328": {
+"label": "USSR Union of Writers"
+},
+"Q14277": {
+"label": "William Herschel"
+},
+"Q14278": {
+"label": "John Frederick William Herschel"
+},
+"Q14281": {
+"label": "Giovanni Schiaparelli"
+},
+"Q1444": {
+"label": "organ"
+},
+"Q14441": {
+"label": "Liza Minnelli"
+},
+"Q144622": {
+"label": "Phil Collins"
+},
+"Q14467526": {
+"label": "linguist"
+},
+"Q1449438": {
+"label": "Mick Wingert"
+},
+"Q145": {
+"label": "United Kingdom"
+},
+"Q1468277": {
+"label": "Royal Society of Literature"
+},
+"Q1476215": {
+"label": "human rights activist"
+},
+"Q148": {
+"label": "People's Republic of China"
+},
+"Q1480793": {
+"label": "Nuclear Suppliers Group"
+},
+"Q14915627": {
+"label": "musicologist"
+},
+"Q15": {
+"label": "Africa"
+},
+"Q150": {
+"label": "French"
+},
+"Q150445": {
+"label": "Camille Saint-Saëns"
+},
+"Q150471": {
+"label": "E. T. A. Hoffmann"
+},
+"Q150526": {
+"label": "Santiago Ramón y Cajal"
+},
+"Q150630": {
+"label": "Camillo Golgi"
+},
+"Q150651": {
+"label": "George Carlin"
+},
+"Q150767": {
+"label": "Benjamin Britten"
+},
+"Q150916": {
+"label": "Jon Bon Jovi"
+},
+"Q150989": {
+"label": "Frédéric Joliot-Curie"
+},
+"Q1511": {
+"label": "Richard Wagner"
+},
+"Q151118": {
+"label": "Katerina Graham"
+},
+"Q151164": {
+"label": "André Malraux"
+},
+"Q1512": {
+"label": "Robert Louis Stevenson"
+},
+"Q1514": {
+"label": "Janis Joplin"
+},
+"Q151403": {
+"label": "Thomas Carlyle"
+},
+"Q151510": {
+"label": "Heidelberg University"
+},
+"Q151523": {
+"label": "György Lukács"
+},
+"Q151593": {
+"label": "Olivier Messiaen"
+},
+"Q15180": {
+"label": "Soviet Union"
+},
+"Q151814": {
+"label": "Sarah Brightman"
+},
+"Q151830": {
+"label": "Melanie C"
+},
+"Q151872": {
+"label": "Amos Oz"
+},
+"Q151892": {
+"label": "Ariana Grande"
+},
+"Q151972": {
+"label": "Josephine Baker"
+},
+"Q151991": {
+"label": "European Southern Observatory"
+},
+"Q152087": {
+"label": "Humboldt University of Berlin"
+},
+"Q152171": {
+"label": "University of Bonn"
+},
+"Q152293": {
+"label": "Aram Khachaturian"
+},
+"Q152301": {
+"label": "George Tabori"
+},
+"Q152388": {
+"label": "Theodor W. Adorno"
+},
+"Q152453": {
+"label": "Keri Hilson"
+},
+"Q152513": {
+"label": "Henry Wadsworth Longfellow"
+},
+"Q152824": {
+"label": "Susan Sontag"
+},
+"Q152838": {
+"label": "University of Göttingen"
+},
+"Q152929": {
+"label": "Meat Loaf"
+},
+"Q153185": {
+"label": "Joseph Louis Gay-Lussac"
+},
+"Q153232": {
+"label": "Jean Le Rond d'Alembert"
+},
+"Q153238": {
+"label": "Leó Szilárd"
+},
+"Q153243": {
+"label": "Josiah Willard Gibbs"
+},
+"Q153248": {
+"label": "Marguerite Duras"
+},
+"Q153694": {
+"label": "Michael Bublé"
+},
+"Q153776": {
+"label": "Dmitri Kabalevsky"
+},
+"Q153996": {
+"label": "Nena"
+},
+"Q154145": {
+"label": "Gabriel Marcel"
+},
+"Q154203": {
+"label": "Albert Lortzing"
+},
+"Q154216": {
+"label": "Cat Stevens"
+},
+"Q154331": {
+"label": "György Ligeti"
+},
+"Q154353": {
+"label": "François Arago"
+},
+"Q1545": {
+"label": "Cyndi Lauper"
+},
+"Q154556": {
+"label": "Karlheinz Stockhausen"
+},
+"Q154561": {
+"label": "University of Jena"
+},
+"Q154691": {
+"label": "Carlos Fuentes"
+},
+"Q154756": {
+"label": "Italo Calvino"
+},
+"Q154759": {
+"label": "Sven Hedin"
+},
+"Q154770": {
+"label": "Arnold Schoenberg"
+},
+"Q154804": {
+"label": "Leipzig University"
+},
+"Q154959": {
+"label": "Hugo Grotius"
+},
+"Q155": {
+"label": "Brazil"
+},
+"Q155079": {
+"label": "Missy Elliott"
+},
+"Q155152": {
+"label": "Polydor Records"
+},
+"Q155375": {
+"label": "Archibald Hill"
+},
+"Q155412": {
+"label": "Toni Braxton"
+},
+"Q155700": {
+"label": "Chris Brown"
+},
+"Q155786": {
+"label": "Dennis Gabor"
+},
+"Q155855": {
+"label": "Karel Čapek"
+},
+"Q155860": {
+"label": "Andrey Vyshinsky"
+},
+"Q155907": {
+"label": "Sir George Stokes, 1st Baronet"
+},
+"Q156193": {
+"label": "Pierre Boulez"
+},
+"Q156201": {
+"label": "Roman Jakobson"
+},
+"Q15646111": {
+"label": "Academy of Arts of the GDR"
+},
+"Q156749": {
+"label": "Adolf Erik Nordenskiöld"
+},
+"Q156774": {
+"label": "Pedro II of Brazil"
+},
+"Q156814": {
+"label": "Yehudi Menuhin"
+},
+"Q156941": {
+"label": "Eduard Suess"
+},
+"Q156942": {
+"label": "Charles Wheatstone"
+},
+"Q157155": {
+"label": "Ernest Renan"
+},
+"Q157242": {
+"label": "Alexander R. Todd, Baron Todd"
+},
+"Q157271": {
+"label": "Friedrich Schlegel"
+},
+"Q157318": {
+"label": "Leszek Kołakowski"
+},
+"Q157322": {
+"label": "Romain Gary"
+},
+"Q157324": {
+"label": "François Guizot"
+},
+"Q157400": {
+"label": "Idina Menzel"
+},
+"Q158060": {
+"label": "W.E.B. Du Bois"
+},
+"Q158078": {
+"label": "Alfred Schnittke"
+},
+"Q158175": {
+"label": "Kid Rock"
+},
+"Q158354": {
+"label": "Pavel Jozef Šafárik"
+},
+"Q1586454": {
+"label": "Harry Chapin"
+},
+"Q15873": {
+"label": "Brian May"
+},
+"Q158852": {
+"label": "conductor"
+},
+"Q159": {
+"label": "Russia"
+},
+"Q15935": {
+"label": "Kanye West"
+},
+"Q15949613": {
+"label": "short story writer"
+},
+"Q159542": {
+"label": "Jan Evangelista Purkyně"
+},
+"Q159551": {
+"label": "Ignaz Moscheles"
+},
+"Q159583": {
+"label": "Holy See"
+},
+"Q159636": {
+"label": "Joseph Priestley"
+},
+"Q159642": {
+"label": "František Palacký"
+},
+"Q15975": {
+"label": "Montesquieu"
+},
+"Q15980158": {
+"label": "non-fiction writer"
+},
+"Q15981151": {
+"label": "jazz musician"
+},
+"Q16": {
+"label": "Canada"
+},
+"Q16031530": {
+"label": "music theorist"
+},
+"Q160333": {
+"label": "Prosper Mérimée"
+},
+"Q160433": {
+"label": "Gilbert Bécaud"
+},
+"Q16053": {
+"label": "Melchior de Vogüé"
+},
+"Q160640": {
+"label": "Raymond Aron"
+},
+"Q161363": {
+"label": "Zbigniew Herbert"
+},
+"Q16145150": {
+"label": "music pedagogue"
+},
+"Q161806": {
+"label": "Académie Française"
+},
+"Q161877": {
+"label": "Ashanti"
+},
+"Q161885": {
+"label": "Great Britain"
+},
+"Q162005": {
+"label": "Paul G. Allen"
+},
+"Q162202": {
+"label": "Nicki Minaj"
+},
+"Q1622272": {
+"label": "university teacher"
+},
+"Q1624891": {
+"label": "Holly Near"
+},
+"Q162667": {
+"label": "Glen Campbell"
+},
+"Q16287483": {
+"label": "opinion journalist"
+},
+"Q16297": {
+"label": "William Shatner"
+},
+"Q16323111": {
+"label": "peace activist"
+},
+"Q163366": {
+"label": "Ezra Pound"
+},
+"Q16345": {
+"label": "Leonard Nimoy"
+},
+"Q163829": {
+"label": "synthesizer"
+},
+"Q16409": {
+"label": "Tristan Tzara"
+},
+"Q164119": {
+"label": "Mark Wahlberg"
+},
+"Q1641839": {
+"label": "experimental rock"
+},
+"Q1643790": {
+"label": "J. Rodolfo Wilcock"
+},
+"Q164384": {
+"label": "Theodore von Kármán"
+},
+"Q164396": {
+"label": "Victor Ambartsumian"
+},
+"Q164401": {
+"label": "Simon Newcomb"
+},
+"Q164444": {
+"label": "funk"
+},
+"Q164487": {
+"label": "Ava Gardner"
+},
+"Q16473": {
+"label": "Steve Martin"
+},
+"Q164784": {
+"label": "Jean Gaston Darboux"
+},
+"Q164824": {
+"label": "Jean-Baptiste Dumas"
+},
+"Q165219": {
+"label": "Robert Downey, Jr."
+},
+"Q165706": {
+"label": "Rodion Shchedrin"
+},
+"Q165745": {
+"label": "Mercury Records"
+},
+"Q165911": {
+"label": "Usher"
+},
+"Q165980": {
+"label": "University of Vienna"
+},
+"Q1666": {
+"label": "Jacques Brel"
+},
+"Q166796": {
+"label": "GoonRock"
+},
+"Q167475": {
+"label": "Jacques Rivette"
+},
+"Q167546": {
+"label": "Lucio Dalla"
+},
+"Q167635": {
+"label": "Tyler, the Creator"
+},
+"Q167696": {
+"label": "Nicole Scherzinger"
+},
+"Q167821": {
+"label": "Gore Vidal"
+},
+"Q167997": {
+"label": "Otto Schmidt"
+},
+"Q168362": {
+"label": "John Desmond Bernal"
+},
+"Q168419": {
+"label": "Jérôme Lalande"
+},
+"Q168452": {
+"label": "Jean-Victor Poncelet"
+},
+"Q168468": {
+"label": "David Brewster"
+},
+"Q16867": {
+"label": "Edgar Allan Poe"
+},
+"Q168728": {
+"label": "Robert Frost"
+},
+"Q168756": {
+"label": "\"University of California, Berkeley\""
+},
+"Q168992": {
+"label": "Jessica Simpson"
+},
+"Q169038": {
+"label": "Zdeněk Nejedlý"
+},
+"Q169452": {
+"label": "Shaquille O'Neal"
+},
+"Q169470": {
+"label": "physicist"
+},
+"Q169566": {
+"label": "H. P. Lovecraft"
+},
+"Q16957": {
+"label": "German Democratic Republic"
+},
+"Q1698": {
+"label": "Serge Gainsbourg"
+},
+"Q17": {
+"label": "Japan"
+},
+"Q170042": {
+"label": "Bill Monroe"
+},
+"Q170481": {
+"label": "Asia-Pacific Economic Cooperation"
+},
+"Q170509": {
+"label": "Henry James"
+},
+"Q170515": {
+"label": "Omar Sharif"
+},
+"Q170576": {
+"label": "Milla Jovovich"
+},
+"Q170790": {
+"label": "mathematician"
+},
+"Q170842": {
+"label": "Sergei Korolev"
+},
+"Q171363": {
+"label": "Viggo Mortensen"
+},
+"Q1716": {
+"label": "Renaud"
+},
+"Q17172850": {
+"label": "voice"
+},
+"Q171905": {
+"label": "Jamie Foxx"
+},
+"Q171969": {
+"label": "Georges Cuvier"
+},
+"Q172": {
+"label": "Toronto"
+},
+"Q172579": {
+"label": "Kingdom of Italy"
+},
+"Q1726": {
+"label": "Munich"
+},
+"Q172632": {
+"label": "Amy Lee"
+},
+"Q173061": {
+"label": "Syd Barrett"
+},
+"Q173637": {
+"label": "Ice Cube"
+},
+"Q1741": {
+"label": "Vienna"
+},
+"Q174193": {
+"label": "United Kingdom of Great Britain and Ireland"
+},
+"Q174210": {
+"label": "Julio Cortázar"
+},
+"Q1744": {
+"label": "Madonna"
+},
+"Q17455": {
+"label": "John von Neumann"
+},
+"Q17457": {
+"label": "Donald Knuth"
+},
+"Q174710": {
+"label": "\"University of California, Los Angeles\""
+},
+"Q174843": {
+"label": "Jeff Bridges"
+},
+"Q17495": {
+"label": "Universal Postal Union"
+},
+"Q175104": {
+"label": "Jennifer Love Hewitt"
+},
+"Q176909": {
+"label": "Walker Percy"
+},
+"Q17714": {
+"label": "Stephen Hawking"
+},
+"Q177220": {
+"label": "singer"
+},
+"Q1779": {
+"label": "Louis Armstrong"
+},
+"Q1781": {
+"label": "Budapest"
+},
+"Q1785": {
+"label": "Charles Aznavour"
+},
+"Q178698": {
+"label": "W. H. Auden"
+},
+"Q179126": {
+"label": "John Ruskin"
+},
+"Q179150": {
+"label": "Sonny Bono"
+},
+"Q179257": {
+"label": "Timbaland"
+},
+"Q179282": {
+"label": "Steven Weinberg"
+},
+"Q180004": {
+"label": "Fergie"
+},
+"Q180224": {
+"label": "Lenny Kravitz"
+},
+"Q180268": {
+"label": "gospel music"
+},
+"Q180338": {
+"label": "Christopher Lee"
+},
+"Q180453": {
+"label": "Dolly Parton"
+},
+"Q180468": {
+"label": "Albert Szent-Györgyi"
+},
+"Q180619": {
+"label": "Stephen Jay Gould"
+},
+"Q180727": {
+"label": "John Cage"
+},
+"Q180861": {
+"label": "Roger Waters"
+},
+"Q180962": {
+"label": "Norman Mailer"
+},
+"Q181573": {
+"label": "Fazil Iskander"
+},
+"Q181659": {
+"label": "Ursula K. Le Guin"
+},
+"Q181683": {
+"label": "Carly Simon"
+},
+"Q181754": {
+"label": "heart failure"
+},
+"Q182046": {
+"label": "Leon Battista Alberti"
+},
+"Q182436": {
+"label": "librarian"
+},
+"Q182589": {
+"label": "William Morris"
+},
+"Q182665": {
+"label": "Iggy Pop"
+},
+"Q182725": {
+"label": "Etta James"
+},
+"Q183": {
+"label": "Germany"
+},
+"Q183167": {
+"label": "G. K. Chesterton"
+},
+"Q183266": {
+"label": "Samuel Johnson"
+},
+"Q183279": {
+"label": "Zhores Alfyorov"
+},
+"Q183337": {
+"label": "David Attenborough"
+},
+"Q183387": {
+"label": "Columbia Records"
+},
+"Q183397": {
+"label": "Fred Hoyle"
+},
+"Q183412": {
+"label": "EMI"
+},
+"Q183492": {
+"label": "Margaret Atwood"
+},
+"Q183535": {
+"label": "Veniamin Smekhov"
+},
+"Q18391": {
+"label": "Elie Wiesel"
+},
+"Q183945": {
+"label": "record producer"
+},
+"Q184": {
+"label": "Belarus"
+},
+"Q1841": {
+"label": "Catholicism"
+},
+"Q18419": {
+"label": "Brooklyn"
+},
+"Q184226": {
+"label": "Gilles Deleuze"
+},
+"Q184249": {
+"label": "Kelly Rowland"
+},
+"Q18425": {
+"label": "Marcellin Berthelot"
+},
+"Q18430": {
+"label": "Joseph E. Stiglitz"
+},
+"Q184366": {
+"label": "Thomas Henry Huxley"
+},
+"Q184440": {
+"label": "Jorge Amado"
+},
+"Q184485": {
+"label": "performing arts"
+},
+"Q184535": {
+"label": "Sofia Kovalevskaya"
+},
+"Q184572": {
+"label": "Martin Sheen"
+},
+"Q184697": {
+"label": "Gloria Estefan"
+},
+"Q184750": {
+"label": "Slavoj Žižek"
+},
+"Q185002": {
+"label": "Mylène Farmer"
+},
+"Q185007": {
+"label": "Rita Levi-Montalcini"
+},
+"Q185085": {
+"label": "Miguel de Unamuno"
+},
+"Q185351": {
+"label": "jurist"
+},
+"Q185465": {
+"label": "Paula Abdul"
+},
+"Q185610": {
+"label": "will.i.am"
+},
+"Q185724": {
+"label": "Mike Myers"
+},
+"Q185832": {
+"label": "Emmanuel Swedenborg"
+},
+"Q1860": {
+"label": "English"
+},
+"Q186042": {
+"label": "John Kenneth Galbraith"
+},
+"Q186264": {
+"label": "Darius Milhaud"
+},
+"Q186327": {
+"label": "Marilyn Manson"
+},
+"Q186329": {
+"label": "Mika"
+},
+"Q186472": {
+"label": "folk rock"
+},
+"Q186485": {
+"label": "Billy Crystal"
+},
+"Q187019": {
+"label": "Philip Roth"
+},
+"Q187165": {
+"label": "Dave Mustaine"
+},
+"Q187166": {
+"label": "Antonin Artaud"
+},
+"Q187199": {
+"label": "Carlo Rubbia"
+},
+"Q187760": {
+"label": "new wave"
+},
+"Q187814": {
+"label": "Tracy Chapman"
+},
+"Q187832": {
+"label": "Mandy Moore"
+},
+"Q187884": {
+"label": "Jan Rubes"
+},
+"Q188": {
+"label": "German"
+},
+"Q18805": {
+"label": "naturalist"
+},
+"Q18809": {
+"label": "Anatoly Lunacharsky"
+},
+"Q188094": {
+"label": "economist"
+},
+"Q188111": {
+"label": "Ayumi Hamasaki"
+},
+"Q188137": {
+"label": "J. J. Abrams"
+},
+"Q18814623": {
+"label": "autobiographer"
+},
+"Q188176": {
+"label": "William S. Burroughs"
+},
+"Q188375": {
+"label": "Lucy Liu"
+},
+"Q188426": {
+"label": "Roy Orbison"
+},
+"Q18844224": {
+"label": "science fiction writer"
+},
+"Q188459": {
+"label": "Goldie Hawn"
+},
+"Q188461": {
+"label": "Dannii Minogue"
+},
+"Q188482": {
+"label": "Robin Gibb"
+},
+"Q188492": {
+"label": "Seth MacFarlane"
+},
+"Q188648": {
+"label": "Raven-Symoné"
+},
+"Q1886750": {
+"label": "Van McCoy"
+},
+"Q188771": {
+"label": "French Academy of Sciences"
+},
+"Q188822": {
+"label": "Asian Development Bank"
+},
+"Q189": {
+"label": "Iceland"
+},
+"Q189080": {
+"label": "Lou Reed"
+},
+"Q189081": {
+"label": "Howard Hughes"
+},
+"Q189172": {
+"label": "Andrey Korotayev"
+},
+"Q18939491": {
+"label": "diarist"
+},
+"Q189599": {
+"label": "Keith Richards"
+},
+"Q189665": {
+"label": "Ivan Goncharov"
+},
+"Q189729": {
+"label": "Philip Glass"
+},
+"Q189758": {
+"label": "Marvin Gaye"
+},
+"Q189950": {
+"label": "Osip Mandelstam"
+},
+"Q190076": {
+"label": "Joe Cocker"
+},
+"Q190220": {
+"label": "Philip Pullman"
+},
+"Q190231": {
+"label": "Adam Lambert"
+},
+"Q190251": {
+"label": "Richard Wright"
+},
+"Q190379": {
+"label": "Ian McEwan"
+},
+"Q190585": {
+"label": "Island Records"
+},
+"Q190631": {
+"label": "Bette Midler"
+},
+"Q19074": {
+"label": "Samuel P. Huntington"
+},
+"Q190770": {
+"label": "Philip Warren Anderson"
+},
+"Q190772": {
+"label": "Siméon Denis Poisson"
+},
+"Q191": {
+"label": "Estonia"
+},
+"Q191020": {
+"label": "Gary Becker"
+},
+"Q191064": {
+"label": "Liv Ullmann"
+},
+"Q191088": {
+"label": "Joe Jonas"
+},
+"Q191384": {
+"label": "International Bank for Reconstruction and Development"
+},
+"Q191480": {
+"label": "Ivan Andreyevich Krylov"
+},
+"Q191583": {
+"label": "Royal Swedish Academy of Sciences"
+},
+"Q191719": {
+"label": "Zooey Deschanel"
+},
+"Q191819": {
+"label": "George Martin"
+},
+"Q19199": {
+"label": "Brad Delson"
+},
+"Q191999": {
+"label": "Robert McNamara"
+},
+"Q19201": {
+"label": "Mike Shinoda"
+},
+"Q192165": {
+"label": "Danny Glover"
+},
+"Q192185": {
+"label": "Aaron Copland"
+},
+"Q192279": {
+"label": "Aleksey Nikolayevich Tolstoy"
+},
+"Q192348": {
+"label": "Benedetto Croce"
+},
+"Q192410": {
+"label": "Jennifer Hudson"
+},
+"Q192515": {
+"label": "Jason Mraz"
+},
+"Q192655": {
+"label": "Lara Fabian"
+},
+"Q192668": {
+"label": "Nick Cave"
+},
+"Q1928989": {
+"label": "Treaty on Open Skies"
+},
+"Q192912": {
+"label": "Stephen Fry"
+},
+"Q1930187": {
+"label": "journalist"
+},
+"Q193023": {
+"label": "Capitol Records"
+},
+"Q193196": {
+"label": "University College London"
+},
+"Q193355": {
+"label": "blues rock"
+},
+"Q193391": {
+"label": "diplomat"
+},
+"Q19350898": {
+"label": "theoretical physicist"
+},
+"Q193509": {
+"label": "Taylor Momsen"
+},
+"Q193676": {
+"label": "Ludacris"
+},
+"Q193710": {
+"label": "Ne-Yo"
+},
+"Q193744": {
+"label": "Tori Amos"
+},
+"Q1938003": {
+"label": "Phi Beta Kappa Society"
+},
+"Q193803": {
+"label": "Roger Penrose"
+},
+"Q194045": {
+"label": "Steven Tyler"
+},
+"Q194220": {
+"label": "Nas"
+},
+"Q194287": {
+"label": "Joe Satriani"
+},
+"Q194333": {
+"label": "Billy Joel"
+},
+"Q19504": {
+"label": "Fritz Lang"
+},
+"Q19526": {
+"label": "Maya Angelou"
+},
+"Q196287": {
+"label": "Mihajlo Pupin"
+},
+"Q1965416": {
+"label": "Diana Arbenina"
+},
+"Q1967070": {
+"label": "Svetlana Surganova"
+},
+"Q1969730": {
+"label": "Schengen Area"
+},
+"Q19723482": {
+"label": "mandolinist"
+},
+"Q1976514": {
+"label": "Anatoly Krupnov"
+},
+"Q19771": {
+"label": "G20"
+},
+"Q19810": {
+"label": "Victoria Beckham"
+},
+"Q1988375": {
+"label": "Oleg Skripka"
+},
+"Q198962": {
+"label": "Sandy"
+},
+"Q199943": {
+"label": "Adriano Celentano"
+},
+"Q20": {
+"label": "Norway"
+},
+"Q200464": {
+"label": "Portuguese Empire"
+},
+"Q200586": {
+"label": "Sheryl Crow"
+},
+"Q200639": {
+"label": "Paul Valéry"
+},
+"Q201221": {
+"label": "Alexander Ivanovich Herzen"
+},
+"Q201477": {
+"label": "Jean-Antoine-Nicolas de Caritat de Condorcet"
+},
+"Q201500": {
+"label": "Gerald Wilson"
+},
+"Q201538": {
+"label": "Edward Said"
+},
+"Q201562": {
+"label": "Hayley Williams"
+},
+"Q201656": {
+"label": "Nick Jonas"
+},
+"Q201732": {
+"label": "Robert Graves"
+},
+"Q201788": {
+"label": "historian"
+},
+"Q201927": {
+"label": "David Hasselhoff"
+},
+"Q202319": {
+"label": "Bill Haley"
+},
+"Q202440": {
+"label": "Atlantic Records"
+},
+"Q202449": {
+"label": "David Ogden Stiers"
+},
+"Q202550": {
+"label": "Dido"
+},
+"Q202585": {
+"label": "RCA Records"
+},
+"Q202660": {
+"label": "Collège de France"
+},
+"Q202729": {
+"label": "Jerry Lee Lewis"
+},
+"Q202735": {
+"label": "Billy Bob Thornton"
+},
+"Q202801": {
+"label": "Vanessa Williams"
+},
+"Q202878": {
+"label": "Mae West"
+},
+"Q2029901": {
+"label": "OHADA"
+},
+"Q203059": {
+"label": "Virgin Records"
+},
+"Q203223": {
+"label": "Ciara"
+},
+"Q204005": {
+"label": "Debby Ryan"
+},
+"Q204019": {
+"label": "M.I.A."
+},
+"Q204751": {
+"label": "Anthony Kiedis"
+},
+"Q204804": {
+"label": "Beth Hart"
+},
+"Q204868": {
+"label": "Yevgeny Zamyatin"
+},
+"Q205375": {
+"label": "inventor"
+},
+"Q205456": {
+"label": "Theo van Gogh"
+},
+"Q205721": {
+"label": "Joni Mitchell"
+},
+"Q2059704": {
+"label": "television director"
+},
+"Q206112": {
+"label": "Willie Nelson"
+},
+"Q206159": {
+"label": "psychedelic rock"
+},
+"Q206439": {
+"label": "Isaac Hayes"
+},
+"Q206832": {
+"label": "Gaspard Monge"
+},
+"Q207036": {
+"label": "A. A. Milne"
+},
+"Q2071": {
+"label": "David Lynch"
+},
+"Q207197": {
+"label": "Gene Simmons"
+},
+"Q207544": {
+"label": "L. Frank Baum"
+},
+"Q207628": {
+"label": "musical composition"
+},
+"Q207898": {
+"label": "Manu Chao"
+},
+"Q2079": {
+"label": "Leipzig"
+},
+"Q207947": {
+"label": "Ralph Vaughan Williams"
+},
+"Q208101": {
+"label": "Joseph Heller"
+},
+"Q208116": {
+"label": "Sergey Mikhalkov"
+},
+"Q208117": {
+"label": "Bella Thorne"
+},
+"Q208175": {
+"label": "Novodevichy Cemetery"
+},
+"Q2086086": {
+"label": "Valery Meladze"
+},
+"Q208681": {
+"label": "Kris Kristofferson"
+},
+"Q208871": {
+"label": "Ike Turner"
+},
+"Q208909": {
+"label": "Parlophone"
+},
+"Q209471": {
+"label": "Telly Savalas"
+},
+"Q209842": {
+"label": "University of Paris (1896-1968)"
+},
+"Q21": {
+"label": "England"
+},
+"Q210059": {
+"label": "Neil Gaiman"
+},
+"Q210172": {
+"label": "Kevin Jonas"
+},
+"Q210741": {
+"label": "Eric Idle"
+},
+"Q21077": {
+"label": "Warner Music Group"
+},
+"Q211": {
+"label": "Latvia"
+},
+"Q211756": {
+"label": "dance-pop"
+},
+"Q212": {
+"label": "Ukraine"
+},
+"Q212015": {
+"label": "Johnny Hallyday"
+},
+"Q212699": {
+"label": "Geffen Records"
+},
+"Q213": {
+"label": "Czech Republic"
+},
+"Q213512": {
+"label": "Bill Cosby"
+},
+"Q213579": {
+"label": "Ernst Chladni"
+},
+"Q213662": {
+"label": "Karl Lachmann"
+},
+"Q213684": {
+"label": "Tamara Bunke"
+},
+"Q213736": {
+"label": "Bridgit Mendler"
+},
+"Q214": {
+"label": "Slovakia"
+},
+"Q214191": {
+"label": "Michael Mann"
+},
+"Q214226": {
+"label": "Lauryn Hill"
+},
+"Q214227": {
+"label": "T.I."
+},
+"Q214548": {
+"label": "Andy Williams"
+},
+"Q214549": {
+"label": "Joseph Liouville"
+},
+"Q214574": {
+"label": "Jan Josef Liefers"
+},
+"Q214642": {
+"label": "Paul Auster"
+},
+"Q214665": {
+"label": "Nino Rota"
+},
+"Q214677": {
+"label": "Nora Ephron"
+},
+"Q214917": {
+"label": "playwright"
+},
+"Q215": {
+"label": "Slovenia"
+},
+"Q215026": {
+"label": "Debbie Harry"
+},
+"Q215215": {
+"label": "John Mayer"
+},
+"Q215300": {
+"label": "Jordin Sparks"
+},
+"Q215359": {
+"label": "Dean Martin"
+},
+"Q215546": {
+"label": "Carrie Underwood"
+},
+"Q21578": {
+"label": "Princeton University"
+},
+"Q215868": {
+"label": "Alice Walker"
+},
+"Q21590660": {
+"label": "Western"
+},
+"Q215927": {
+"label": "Yeshayahu Leibowitz"
+},
+"Q216179": {
+"label": "Bryan Ferry"
+},
+"Q216195": {
+"label": "Tom Wolfe"
+},
+"Q216221": {
+"label": "Steve Carell"
+},
+"Q216288": {
+"label": "Garth Brooks"
+},
+"Q216341": {
+"label": "Connie Francis"
+},
+"Q216364": {
+"label": "Epic"
+},
+"Q216563": {
+"label": "Paul Anka"
+},
+"Q216692": {
+"label": "Ludvig Holberg"
+},
+"Q216913": {
+"label": "Deryck Whibley"
+},
+"Q216936": {
+"label": "Sean Combs"
+},
+"Q217": {
+"label": "Moldova"
+},
+"Q217160": {
+"label": "Kenny Rogers"
+},
+"Q217191": {
+"label": "soft rock"
+},
+"Q217280": {
+"label": "Joss Stone"
+},
+"Q217427": {
+"label": "La Toya Jackson"
+},
+"Q217467": {
+"label": "art rock"
+},
+"Q217557": {
+"label": "Joyce Carol Oates"
+},
+"Q217619": {
+"label": "Anthony Burgess"
+},
+"Q217750": {
+"label": "Violetta Villas"
+},
+"Q217787": {
+"label": "Carole King"
+},
+"Q218": {
+"label": "Romania"
+},
+"Q218992": {
+"label": "Nelly"
+},
+"Q219": {
+"label": "Bulgaria"
+},
+"Q219060": {
+"label": "State of Palestine"
+},
+"Q219631": {
+"label": "Adam Levine"
+},
+"Q219878": {
+"label": "Emma Bunton"
+},
+"Q220": {
+"label": "Rome"
+},
+"Q220078": {
+"label": "Kingsley Amis"
+},
+"Q220192": {
+"label": "Zoolander"
+},
+"Q220308": {
+"label": "Seth Rogen"
+},
+"Q220480": {
+"label": "Zora Neale Hurston"
+},
+"Q220550": {
+"label": "Ján Kollár"
+},
+"Q22072": {
+"label": "John Farnham"
+},
+"Q221": {
+"label": "North Macedonia"
+},
+"Q221074": {
+"label": "Bud Spencer"
+},
+"Q221364": {
+"label": "Jaden Smith"
+},
+"Q221450": {
+"label": "Luciano Berio"
+},
+"Q221546": {
+"label": "Jason Newsted"
+},
+"Q222": {
+"label": "Albania"
+},
+"Q222071": {
+"label": "Courtney Love"
+},
+"Q223741": {
+"label": "Brian Molko"
+},
+"Q223875": {
+"label": "Erykah Badu"
+},
+"Q224": {
+"label": "Croatia"
+},
+"Q224159": {
+"label": "William H. Macy"
+},
+"Q224650": {
+"label": "Sarah McLachlan"
+},
+"Q225": {
+"label": "Bosnia and Herzegovina"
+},
+"Q2252262": {
+"label": "rapper"
+},
+"Q2259451": {
+"label": "stage actor"
+},
+"Q2263": {
+"label": "Tom Hanks"
+},
+"Q22670": {
+"label": "Friedrich Schiller"
+},
+"Q22686": {
+"label": "Donald Trump"
+},
+"Q227": {
+"label": "Azerbaijan"
+},
+"Q227129": {
+"label": "Zoë Kravitz"
+},
+"Q228": {
+"label": "Andorra"
+},
+"Q228546": {
+"label": "Alphonse Daudet"
+},
+"Q228733": {
+"label": "Lea Michele"
+},
+"Q228787": {
+"label": "Jada Pinkett Smith"
+},
+"Q228792": {
+"label": "Dianna Agron"
+},
+"Q228832": {
+"label": "Julia Volkova"
+},
+"Q228860": {
+"label": "Colbie Caillat"
+},
+"Q228909": {
+"label": "Mary J. Blige"
+},
+"Q228968": {
+"label": "Fiona Apple"
+},
+"Q229": {
+"label": "Republic of Cyprus"
+},
+"Q229013": {
+"label": "Sarah Silverman"
+},
+"Q229018": {
+"label": "Jewel"
+},
+"Q229139": {
+"label": "Peggy Lee"
+},
+"Q229153": {
+"label": "Michelle Williams"
+},
+"Q229264": {
+"label": "Georges-Louis Leclerc, Comte de Buffon"
+},
+"Q229274": {
+"label": "Regina Spektor"
+},
+"Q229282": {
+"label": "Katharine McPhee"
+},
+"Q229375": {
+"label": "Linda Ronstadt"
+},
+"Q229379": {
+"label": "Lil' Kim"
+},
+"Q230": {
+"label": "Georgia"
+},
+"Q230068": {
+"label": "Ève Curie"
+},
+"Q230395": {
+"label": "Meaghan Jette Martin"
+},
+"Q230445": {
+"label": "Sara Bareilles"
+},
+"Q230454": {
+"label": "k.d. lang"
+},
+"Q230501": {
+"label": "Christina Milian"
+},
+"Q2305208": {
+"label": "Russian Soviet Federative Socialist Republic"
+},
+"Q2306091": {
+"label": "sociologist"
+},
+"Q230836": {
+"label": "Emilie Autumn"
+},
+"Q230916": {
+"label": "Galina Vishnevskaya"
+},
+"Q230943": {
+"label": "China Anne McClain"
+},
+"Q231106": {
+"label": "Joan Jett"
+},
+"Q231207": {
+"label": "Charlotte Church"
+},
+"Q231228": {
+"label": "Solange Knowles"
+},
+"Q231270": {
+"label": "Khloé Kardashian"
+},
+"Q231276": {
+"label": "Angélique Kidjo"
+},
+"Q231487": {
+"label": "Monica"
+},
+"Q231690": {
+"label": "Bhimrao Ramji Ambedkar"
+},
+"Q231694": {
+"label": "Interscope Records"
+},
+"Q231942": {
+"label": "Natalie Cole"
+},
+"Q23197": {
+"label": "Nashville"
+},
+"Q232": {
+"label": "Kazakhstan"
+},
+"Q232052": {
+"label": "Asia Argento"
+},
+"Q232085": {
+"label": "Lil Mama"
+},
+"Q232113": {
+"label": "Anna Karina"
+},
+"Q232214": {
+"label": "Julieta Venegas"
+},
+"Q232456": {
+"label": "Macy Gray"
+},
+"Q232462": {
+"label": "Ani DiFranco"
+},
+"Q232592": {
+"label": "Jill Scott"
+},
+"Q2329": {
+"label": "chemistry"
+},
+"Q233": {
+"label": "Malta"
+},
+"Q233081": {
+"label": "Vanessa Carlton"
+},
+"Q233253": {
+"label": "June Carter Cash"
+},
+"Q233295": {
+"label": "Tila Tequila"
+},
+"Q233377": {
+"label": "Amerie"
+},
+"Q233529": {
+"label": "Dee Dee Bridgewater"
+},
+"Q233541": {
+"label": "Lisa Lopes"
+},
+"Q233611": {
+"label": "International Hydrographic Organization"
+},
+"Q233736": {
+"label": "Mýa"
+},
+"Q233817": {
+"label": "Debbie Gibson"
+},
+"Q2338889": {
+"label": "MCA Records"
+},
+"Q233946": {
+"label": "Kate Voegele"
+},
+"Q233957": {
+"label": "Severo Ochoa"
+},
+"Q234169": {
+"label": "Irene Cara"
+},
+"Q23434": {
+"label": "Ernest Hemingway"
+},
+"Q234356": {
+"label": "Janelle Monáe"
+},
+"Q234388": {
+"label": "Rebbie Jackson"
+},
+"Q234750": {
+"label": "Suzi Quatro"
+},
+"Q234773": {
+"label": "Priscilla Presley"
+},
+"Q234891": {
+"label": "Yo-Yo Ma"
+},
+"Q235": {
+"label": "Monaco"
+},
+"Q235066": {
+"label": "Laurie Anderson"
+},
+"Q23517": {
+"label": "Ricky Gervais"
+},
+"Q23530": {
+"label": "Dmitry Medvedev"
+},
+"Q23543": {
+"label": "Selena"
+},
+"Q235515": {
+"label": "Janis Ian"
+},
+"Q23556": {
+"label": "Atlanta"
+},
+"Q235931": {
+"label": "Teena Marie"
+},
+"Q235946": {
+"label": "Elizabeth Bishop"
+},
+"Q235952": {
+"label": "Gladys Knight"
+},
+"Q236": {
+"label": "Montenegro"
+},
+"Q236005": {
+"label": "Melanie Brown"
+},
+"Q236066": {
+"label": "AJ Michalka"
+},
+"Q236075": {
+"label": "Alyson Michalka"
+},
+"Q236212": {
+"label": "Petula Clark"
+},
+"Q236318": {
+"label": "Faith Evans"
+},
+"Q236351": {
+"label": "Stacie Orrico"
+},
+"Q237": {
+"label": "Vatican City"
+},
+"Q2370801": {
+"label": "Academy of Sciences of the USSR"
+},
+"Q237081": {
+"label": "Ani Lorak"
+},
+"Q23728": {
+"label": "Larry David"
+},
+"Q237324": {
+"label": "Lisa Marie Presley"
+},
+"Q2374149": {
+"label": "botanist"
+},
+"Q237654": {
+"label": "Lisa Loeb"
+},
+"Q237659": {
+"label": "Penny Marshall"
+},
+"Q237833": {
+"label": "George Santayana"
+},
+"Q238": {
+"label": "San Marino"
+},
+"Q238795": {
+"label": "St. Vincent"
+},
+"Q238819": {
+"label": "Jay Chou"
+},
+"Q239195": {
+"label": "Hayley Kiyoko"
+},
+"Q239587": {
+"label": "Aimee Mann"
+},
+"Q239652": {
+"label": "Bulat Okudzhava"
+},
+"Q239786": {
+"label": "Alexz Johnson"
+},
+"Q239917": {
+"label": "Tina Arena"
+},
+"Q240377": {
+"label": "Amanda Palmer"
+},
+"Q240523": {
+"label": "Swizz Beatz"
+},
+"Q2405480": {
+"label": "voice actor"
+},
+"Q240808": {
+"label": "Maureen Tucker"
+},
+"Q240933": {
+"label": "Joan Rivers"
+},
+"Q241": {
+"label": "Cuba"
+},
+"Q241583": {
+"label": "Bret Easton Ellis"
+},
+"Q2416148": {
+"label": "Vladimir Turchinsky"
+},
+"Q241660": {
+"label": "Angie Stone"
+},
+"Q241835": {
+"label": "Milva"
+},
+"Q242": {
+"label": "Belize"
+},
+"Q242095": {
+"label": "Dino Buzzati"
+},
+"Q242110": {
+"label": "Ayọ"
+},
+"Q242418": {
+"label": "Janel Parrish"
+},
+"Q242454": {
+"label": "Zemfira"
+},
+"Q242792": {
+"label": "Laura Marano"
+},
+"Q242873": {
+"label": "Ingrid Michaelson"
+},
+"Q243639": {
+"label": "Jason Derulo"
+},
+"Q244": {
+"label": "Barbados"
+},
+"Q244234": {
+"label": "John Turturro"
+},
+"Q245068": {
+"label": "comedian"
+},
+"Q245257": {
+"label": "William Styron"
+},
+"Q246497": {
+"label": "Mstislav Keldysh"
+},
+"Q246731": {
+"label": "Theodosius Dobzhansky"
+},
+"Q2490358": {
+"label": "choreographer"
+},
+"Q24925": {
+"label": "science fiction"
+},
+"Q25014": {
+"label": "John Cleese"
+},
+"Q25080": {
+"label": "Ilya Oleynikov"
+},
+"Q25089": {
+"label": "Woody Allen"
+},
+"Q251068": {
+"label": "Wang Leehom"
+},
+"Q25120": {
+"label": "Pier Paolo Pasolini"
+},
+"Q251287": {
+"label": "Waylon Jennings"
+},
+"Q25144": {
+"label": "Kevin Spacey"
+},
+"Q25147": {
+"label": "Franco Battiato"
+},
+"Q252": {
+"label": "Indonesia"
+},
+"Q2526255": {
+"label": "film director"
+},
+"Q25320": {
+"label": "Paul Langevin"
+},
+"Q253439": {
+"label": "Royal Netherlands Academy of Arts and Sciences"
+},
+"Q25351": {
+"label": "Theodor Mommsen"
+},
+"Q25379": {
+"label": "play"
+},
+"Q254": {
+"label": "Wolfgang Amadeus Mozart"
+},
+"Q254510": {
+"label": "Melissa Auf der Maur"
+},
+"Q256708": {
+"label": "Sabrina Bryan"
+},
+"Q257302": {
+"label": "LeToya Luckett"
+},
+"Q258": {
+"label": "South Africa"
+},
+"Q25820": {
+"label": "Thomas Young"
+},
+"Q258846": {
+"label": "Rickie Lee Jones"
+},
+"Q258896": {
+"label": "banjo"
+},
+"Q2599": {
+"label": "Paul McCartney"
+},
+"Q26058": {
+"label": "James Maslow"
+},
+"Q261812": {
+"label": "Drake Bell"
+},
+"Q262": {
+"label": "Algeria"
+},
+"Q2622688": {
+"label": "Mikhail Zadornov"
+},
+"Q262294": {
+"label": "Keren Ann"
+},
+"Q262314": {
+"label": "Chris Rea"
+},
+"Q262354": {
+"label": "Taraneh Javanbakht"
+},
+"Q262838": {
+"label": "Cree Summer"
+},
+"Q2632": {
+"label": "Ringo Starr"
+},
+"Q263696": {
+"label": "Debbie Reynolds"
+},
+"Q263730": {
+"label": "Alejandro Jodorowsky"
+},
+"Q2643": {
+"label": "George Harrison"
+},
+"Q2643890": {
+"label": "vocalist"
+},
+"Q265": {
+"label": "Uzbekistan"
+},
+"Q265058": {
+"label": "Hungarian Academy of Sciences"
+},
+"Q265179": {
+"label": "Rita Lee"
+},
+"Q265252": {
+"label": "Buckethead"
+},
+"Q2656667": {
+"label": "Ulf Ekberg"
+},
+"Q26695": {
+"label": "Lionel Richie"
+},
+"Q267406": {
+"label": "Vitamin C"
+},
+"Q2680": {
+"label": "Bruce Willis"
+},
+"Q2685": {
+"label": "Arnold Schwarzenegger"
+},
+"Q26876": {
+"label": "Taylor Swift"
+},
+"Q269890": {
+"label": "Don Rickles"
+},
+"Q269927": {
+"label": "David Mamet"
+},
+"Q27": {
+"label": "Ireland"
+},
+"Q270085": {
+"label": "Shen Kuo"
+},
+"Q270123": {
+"label": "Kiely Williams"
+},
+"Q270794": {
+"label": "National Academy of Sciences"
+},
+"Q270935": {
+"label": "Chris Cornell"
+},
+"Q270951": {
+"label": "Alsou"
+},
+"Q27184": {
+"label": "Jive"
+},
+"Q272031": {
+"label": "Jack White"
+},
+"Q272069": {
+"label": "Damon Albarn"
+},
+"Q272203": {
+"label": "Van Morrison"
+},
+"Q272208": {
+"label": "Montparnasse Cemetery"
+},
+"Q2722764": {
+"label": "radio personality"
+},
+"Q272943": {
+"label": "Joe Dassin"
+},
+"Q273055": {
+"label": "R. Kelly"
+},
+"Q27306": {
+"label": "Kingdom of Prussia"
+},
+"Q273626": {
+"label": "École Polytechnique"
+},
+"Q273981": {
+"label": "Tionne Watkins"
+},
+"Q27407": {
+"label": "East Africa"
+},
+"Q274342": {
+"label": "Tatyana Tolstaya"
+},
+"Q274404": {
+"label": "Claudio Magris"
+},
+"Q274429": {
+"label": "Édouard René de Laboulaye"
+},
+"Q275247": {
+"label": "Herbert Grönemeyer"
+},
+"Q275641": {
+"label": "Julie Driscoll"
+},
+"Q275875": {
+"label": "Andriy Danylko"
+},
+"Q276005": {
+"label": "Charlotte Gainsbourg"
+},
+"Q27621": {
+"label": "Saint Petersburg State University"
+},
+"Q27645": {
+"label": "Mikhail Bakunin"
+},
+"Q277356": {
+"label": "Sergei Gerasimov"
+},
+"Q277626": {
+"label": "A&M Records"
+},
+"Q278625": {
+"label": "Vladimir Solovyov"
+},
+"Q28": {
+"label": "Hungary"
+},
+"Q281034": {
+"label": "Harry Nilsson"
+},
+"Q2822396": {
+"label": "Academy of Sciences of Turin"
+},
+"Q282722": {
+"label": "Trent Reznor"
+},
+"Q2831": {
+"label": "Michael Jackson"
+},
+"Q283408": {
+"label": "Dmitry Glukhovsky"
+},
+"Q283859": {
+"label": "Edvard Radzinsky"
+},
+"Q28389": {
+"label": "screenwriter"
+},
+"Q28480": {
+"label": "Max Brod"
+},
+"Q28513": {
+"label": "Austria-Hungary"
+},
+"Q286022": {
+"label": "Common"
+},
+"Q286339": {
+"label": "Yvonne De Carlo"
+},
+"Q2865819": {
+"label": "opera singer"
+},
+"Q287177": {
+"label": "ABC Records"
+},
+"Q287607": {
+"label": "Rob Reiner"
+},
+"Q288928": {
+"label": "agnosticism"
+},
+"Q289003": {
+"label": "Myles Kennedy"
+},
+"Q289064": {
+"label": "Felipe Colombo"
+},
+"Q29": {
+"label": "Spain"
+},
+"Q290197": {
+"label": "Joumana Haddad"
+},
+"Q29055": {
+"label": "Sacha Baron Cohen"
+},
+"Q291405": {
+"label": "Sky Ferreira"
+},
+"Q2914170": {
+"label": "street artist"
+},
+"Q292373": {
+"label": "Barbara Mandrell"
+},
+"Q294144": {
+"label": "Lea Salonga"
+},
+"Q294278": {
+"label": "\"African, Caribbean and Pacific Group of States\""
+},
+"Q294531": {
+"label": "Neil Diamond"
+},
+"Q29468": {
+"label": "Republican Party"
+},
+"Q294927": {
+"label": "Jerry Lewis"
+},
+"Q295431": {
+"label": "Julian Barnes"
+},
+"Q295502": {
+"label": "Darren Criss"
+},
+"Q29552": {
+"label": "Democratic Party"
+},
+"Q295537": {
+"label": "Eduard Limonov"
+},
+"Q295919": {
+"label": "Sam Cooke"
+},
+"Q295923": {
+"label": "MC Hammer"
+},
+"Q296609": {
+"label": "Russell Brand"
+},
+"Q296872": {
+"label": "Barry Gibb"
+},
+"Q297598": {
+"label": "Beatriz Luengo"
+},
+"Q297736": {
+"label": "Yevgeny Yevtushenko"
+},
+"Q297794": {
+"label": "Yasmina Reza"
+},
+"Q297816": {
+"label": "Sammy Davis Jr."
+},
+"Q298": {
+"label": "Chile"
+},
+"Q298025": {
+"label": "Joss Whedon"
+},
+"Q298209": {
+"label": "Willow Smith"
+},
+"Q298255": {
+"label": "Rob Zombie"
+},
+"Q298388": {
+"label": "Noël Coward"
+},
+"Q298694": {
+"label": "Method Man"
+},
+"Q298761": {
+"label": "Clive Barker"
+},
+"Q298838": {
+"label": "Billy Connolly"
+},
+"Q299015": {
+"label": "Austrian Academy of Sciences"
+},
+"Q299138": {
+"label": "Kid Cudi"
+},
+"Q299965": {
+"label": "Ralph Ellison"
+},
+"Q29999": {
+"label": "Kingdom of the Netherlands"
+},
+"Q30": {
+"label": "United States of America"
+},
+"Q302497": {
+"label": "mandolin"
+},
+"Q302762": {
+"label": "Barry Manilow"
+},
+"Q303": {
+"label": "Elvis Presley"
+},
+"Q303207": {
+"label": "Ricky Nelson"
+},
+"Q3033": {
+"label": "Göttingen"
+},
+"Q30449": {
+"label": "Avril Lavigne"
+},
+"Q3057567": {
+"label": "Erwin Raisz"
+},
+"Q306122": {
+"label": "Hyde"
+},
+"Q306403": {
+"label": "James Franco"
+},
+"Q307": {
+"label": "Galileo Galilei"
+},
+"Q308711": {
+"label": "Vladislav Krapivin"
+},
+"Q30875": {
+"label": "Oscar Wilde"
+},
+"Q3088816": {
+"label": "Jim Messina"
+},
+"Q309555": {
+"label": "Michael Cera"
+},
+"Q309926": {
+"label": "Lemmy Kilmister"
+},
+"Q31": {
+"label": "Belgium"
+},
+"Q310048": {
+"label": "Don DeLillo"
+},
+"Q310060": {
+"label": "Crispin Glover"
+},
+"Q310170": {
+"label": "Curtis Mayfield"
+},
+"Q310217": {
+"label": "David Hemmings"
+},
+"Q310300": {
+"label": "James Taylor"
+},
+"Q310343": {
+"label": "Dudley Moore"
+},
+"Q310755": {
+"label": "Camille Jordan"
+},
+"Q311": {
+"label": "Père Lachaise Cemetery"
+},
+"Q311068": {
+"label": "Wallace Shawn"
+},
+"Q311115": {
+"label": "Henri Victor Regnault"
+},
+"Q311145": {
+"label": "Joaquim Maria Machado de Assis"
+},
+"Q311193": {
+"label": "Yoshiki"
+},
+"Q311223": {
+"label": "Edward Sabine"
+},
+"Q311232": {
+"label": "Tyrese Gibson"
+},
+"Q311238": {
+"label": "Sean Lennon"
+},
+"Q311241": {
+"label": "Bobby Brown"
+},
+"Q311256": {
+"label": "Richard Marx"
+},
+"Q311267": {
+"label": "Bobby Darin"
+},
+"Q311450": {
+"label": "Billy Preston"
+},
+"Q311476": {
+"label": "Per Olov Enquist"
+},
+"Q31164": {
+"label": "Ellie Goulding"
+},
+"Q311672": {
+"label": "Roger Daltrey"
+},
+"Q311802": {
+"label": "Giuseppe Ungaretti"
+},
+"Q312053": {
+"label": "Rick Wakeman"
+},
+"Q312252": {
+"label": "Andy Griffith"
+},
+"Q312288": {
+"label": "George Ellery Hale"
+},
+"Q312407": {
+"label": "John Dos Passos"
+},
+"Q312720": {
+"label": "Robert Penn Warren"
+},
+"Q312870": {
+"label": "Jerry Garcia"
+},
+"Q313013": {
+"label": "Brian Wilson"
+},
+"Q313080": {
+"label": "Soulja Boy"
+},
+"Q313138": {
+"label": "Redman"
+},
+"Q313185": {
+"label": "Fritz Leiber Junior"
+},
+"Q313281": {
+"label": "Michel Legrand"
+},
+"Q313509": {
+"label": "Bernard-Henri Lévy"
+},
+"Q313525": {
+"label": "Lionel Hampton"
+},
+"Q313581": {
+"label": "Nicolae Iorga"
+},
+"Q313755": {
+"label": "Harry Connick Jr."
+},
+"Q313849": {
+"label": "Ben Moody"
+},
+"Q314424": {
+"label": "Mark Salling"
+},
+"Q315181": {
+"label": "Alexey Vorobyov"
+},
+"Q315222": {
+"label": "Ľudovít Štúr"
+},
+"Q316872": {
+"label": "Afrika Bambaataa"
+},
+"Q316930": {
+"label": "dance music"
+},
+"Q317397": {
+"label": "Uzeyir Hajibeyov"
+},
+"Q317427": {
+"label": "Donovan"
+},
+"Q318004": {
+"label": "Antoine César Becquerel"
+},
+"Q318475": {
+"label": "Randy Newman"
+},
+"Q318509": {
+"label": "Henry Rollins"
+},
+"Q319084": {
+"label": "Al Franken"
+},
+"Q319374": {
+"label": "Leon Russell"
+},
+"Q319392": {
+"label": "Marlon Jackson"
+},
+"Q32": {
+"label": "Luxembourg"
+},
+"Q320146": {
+"label": "Léo Ferré"
+},
+"Q320895": {
+"label": "Geddy Lee"
+},
+"Q32257": {
+"label": "Christoph Wilhelm Hufeland"
+},
+"Q325389": {
+"label": "David A. Stewart"
+},
+"Q325396": {
+"label": "Judd Apatow"
+},
+"Q3282637": {
+"label": "film producer"
+},
+"Q32849": {
+"label": "Akon"
+},
+"Q3291340": {
+"label": "Société Philomathique de Paris"
+},
+"Q32927": {
+"label": "Valery Leontiev"
+},
+"Q329464": {
+"label": "Royal Prussian Academy of Sciences"
+},
+"Q33": {
+"label": "Finland"
+},
+"Q330629": {
+"label": "Sony Music"
+},
+"Q332032": {
+"label": "Alice Cooper"
+},
+"Q33231": {
+"label": "photographer"
+},
+"Q33240": {
+"label": "Drake"
+},
+"Q332462": {
+"label": "Ivan Franko"
+},
+"Q332525": {
+"label": "Shannon Leto"
+},
+"Q333": {
+"label": "astronomy"
+},
+"Q333265": {
+"label": "Léon Theremin"
+},
+"Q3335": {
+"label": "George Orwell"
+},
+"Q333634": {
+"label": "translator"
+},
+"Q333873": {
+"label": "Valentin Kataev"
+},
+"Q33391": {
+"label": "Leon Trotsky"
+},
+"Q334": {
+"label": "Singapore"
+},
+"Q334180": {
+"label": "Xavier Cugat"
+},
+"Q334670": {
+"label": "Ted Nugent"
+},
+"Q3348506": {
+"label": "AFRISTAT"
+},
+"Q335142": {
+"label": "Alexander Bogdanov"
+},
+"Q335680": {
+"label": "Jimmy Fallon"
+},
+"Q336018": {
+"label": "Julian Fellowes"
+},
+"Q336222": {
+"label": "Tito Jackson"
+},
+"Q336278": {
+"label": "Neil Tennant"
+},
+"Q336640": {
+"label": "David Byrne"
+},
+"Q3369762": {
+"label": "Agency for the Prohibition of Nuclear Weapons in Latin America and the Caribbean"
+},
+"Q337234": {
+"label": "Academia Europaea"
+},
+"Q33760": {
+"label": "Bertrand Russell"
+},
+"Q338432": {
+"label": "Lincean Academy"
+},
+"Q33866": {
+"label": "Theodore Roosevelt"
+},
+"Q3387717": {
+"label": "theater director"
+},
+"Q33946": {
+"label": "Czechoslovakia"
+},
+"Q33977": {
+"label": "Jules Verne"
+},
+"Q33999": {
+"label": "actor"
+},
+"Q34": {
+"label": "Sweden"
+},
+"Q340016": {
+"label": "Denis Johnson"
+},
+"Q340195": {
+"label": "African Development Bank"
+},
+"Q34069": {
+"label": "Ashkenazi Jews"
+},
+"Q34086": {
+"label": "Justin Bieber"
+},
+"Q34166": {
+"label": "Slash"
+},
+"Q34266": {
+"label": "Russian Empire"
+},
+"Q342723": {
+"label": "Gene Autry"
+},
+"Q342778": {
+"label": "Pat Boone"
+},
+"Q34296": {
+"label": "Woodrow Wilson"
+},
+"Q34389": {
+"label": "Whitney Houston"
+},
+"Q34424": {
+"label": "Shakira"
+},
+"Q34433": {
+"label": "University of Oxford"
+},
+"Q34474": {
+"label": "Aleksandr Solzhenitsyn"
+},
+"Q344983": {
+"label": "Babyface"
+},
+"Q345325": {
+"label": "Harry Shearer"
+},
+"Q3455803": {
+"label": "director"
+},
+"Q345612": {
+"label": "Harold Bloom"
+},
+"Q34584": {
+"label": "Anastacia"
+},
+"Q34628": {
+"label": "Gotthold Ephraim Lessing"
+},
+"Q34660": {
+"label": "J. K. Rowling"
+},
+"Q34670": {
+"label": "Albert Camus"
+},
+"Q346801": {
+"label": "Peter Buck"
+},
+"Q347": {
+"label": "Liechtenstein"
+},
+"Q347362": {
+"label": "Fredric Jameson"
+},
+"Q34743": {
+"label": "Rudyard Kipling"
+},
+"Q347528": {
+"label": "Liberace"
+},
+"Q347685": {
+"label": "Korney Chukovsky"
+},
+"Q34787": {
+"label": "Friedrich Engels"
+},
+"Q348497": {
+"label": "Ilya Ehrenburg"
+},
+"Q348533": {
+"label": "Nick Cannon"
+},
+"Q348658": {
+"label": "Adam Ant"
+},
+"Q349217": {
+"label": "Norman Wisdom"
+},
+"Q349461": {
+"label": "Randy Jackson"
+},
+"Q34969": {
+"label": "Benjamin Franklin"
+},
+"Q34970": {
+"label": "D. H. Lawrence"
+},
+"Q34981": {
+"label": "Isaac Asimov"
+},
+"Q35": {
+"label": "Denmark"
+},
+"Q350": {
+"label": "Cambridge"
+},
+"Q3501317": {
+"label": "fashion designer"
+},
+"Q35032": {
+"label": "Eastern Orthodox Church"
+},
+"Q350362": {
+"label": "James Blake"
+},
+"Q350979": {
+"label": "zoologist"
+},
+"Q351061": {
+"label": "Ryan Tedder"
+},
+"Q352914": {
+"label": "Karel Jaromír Erben"
+},
+"Q35332": {
+"label": "Brad Pitt"
+},
+"Q353442": {
+"label": "Gabriel Lamé"
+},
+"Q35385": {
+"label": "Glukoza"
+},
+"Q354033": {
+"label": "Joe Walsh"
+},
+"Q354181": {
+"label": "Steven Van Zandt"
+},
+"Q354508": {
+"label": "Sun Ra"
+},
+"Q354783": {
+"label": "Amiri Baraka"
+},
+"Q355009": {
+"label": "Jackson Browne"
+},
+"Q355288": {
+"label": "Berry Gordy"
+},
+"Q35610": {
+"label": "Arthur Conan Doyle"
+},
+"Q356986": {
+"label": "Levon Helm"
+},
+"Q357455": {
+"label": "Ray Davies"
+},
+"Q35760": {
+"label": "essay"
+},
+"Q35794": {
+"label": "University of Cambridge"
+},
+"Q357974": {
+"label": "Julian Lennon"
+},
+"Q358345": {
+"label": "Billy Dee Williams"
+},
+"Q358538": {
+"label": "T-Bone Walker"
+},
+"Q359552": {
+"label": "Gordon Lightfoot"
+},
+"Q359568": {
+"label": "Vladimir Obruchev"
+},
+"Q359665": {
+"label": "David Walliams"
+},
+"Q36": {
+"label": "Poland"
+},
+"Q3603946": {
+"label": "Accademia Nazionale delle Scienze detta dei XL"
+},
+"Q361257": {
+"label": "Shel Silverstein"
+},
+"Q361297": {
+"label": "Joe Jackson"
+},
+"Q361677": {
+"label": "Mick Ronson"
+},
+"Q36180": {
+"label": "writer"
+},
+"Q3621491": {
+"label": "archaeologist"
+},
+"Q362258": {
+"label": "Vitas"
+},
+"Q36233": {
+"label": "Václav Havel"
+},
+"Q362332": {
+"label": "David Cross"
+},
+"Q362353": {
+"label": "Vincent Gallo"
+},
+"Q362422": {
+"label": "Vince Neil"
+},
+"Q36268": {
+"label": "Brigitte Bardot"
+},
+"Q36290": {
+"label": "Diana Ross"
+},
+"Q363371": {
+"label": "Yegor Letov"
+},
+"Q364131": {
+"label": "Bob Seger"
+},
+"Q364875": {
+"label": "Todd Rundgren"
+},
+"Q36488": {
+"label": "Guglielmo Marconi"
+},
+"Q365042": {
+"label": "Bret Michaels"
+},
+"Q365682": {
+"label": "Gordon Parks"
+},
+"Q36591": {
+"label": "Vladimir Nabokov"
+},
+"Q366012": {
+"label": "Avery Brooks"
+},
+"Q366057": {
+"label": "Patrice Chéreau"
+},
+"Q366671": {
+"label": "Jan Hammer"
+},
+"Q367634": {
+"label": "Big Sean"
+},
+"Q36834": {
+"label": "composer"
+},
+"Q36844": {
+"label": "Rihanna"
+},
+"Q36949": {
+"label": "Robert De Niro"
+},
+"Q37": {
+"label": "Lithuania"
+},
+"Q37030": {
+"label": "Thomas Mann"
+},
+"Q370560": {
+"label": "David Crosby"
+},
+"Q37068": {
+"label": "Romanticism"
+},
+"Q37073": {
+"label": "pop music"
+},
+"Q371202": {
+"label": "Big Boi"
+},
+"Q371403": {
+"label": "Kyle Gass"
+},
+"Q37150": {
+"label": "Lana Del Rey"
+},
+"Q37160": {
+"label": "David Hume"
+},
+"Q37226": {
+"label": "teacher"
+},
+"Q37327": {
+"label": "Samuel Beckett"
+},
+"Q374362": {
+"label": "Nikolay Ogarev"
+},
+"Q376150": {
+"label": "International Telecommunication Union"
+},
+"Q37621": {
+"label": "Thomas Hobbes"
+},
+"Q3772571": {
+"label": "Caribbean Development Bank"
+},
+"Q37767": {
+"label": "T. S. Eliot"
+},
+"Q37876": {
+"label": "Natalie Portman"
+},
+"Q37944": {
+"label": "Masiela Lusha"
+},
+"Q379580": {
+"label": "John Muir"
+},
+"Q38": {
+"label": "Italy"
+},
+"Q380381": {
+"label": "Dave Matthews"
+},
+"Q380407": {
+"label": "Nikolai Fomenko"
+},
+"Q380799": {
+"label": "M. Pokora"
+},
+"Q38082": {
+"label": "Lewis Carroll"
+},
+"Q3816": {
+"label": "George Sand"
+},
+"Q381884": {
+"label": "Sergey Lazarev"
+},
+"Q38193": {
+"label": "Arthur Schopenhauer"
+},
+"Q381944": {
+"label": "Eldar Ryazanov"
+},
+"Q38392": {
+"label": "William Faulkner"
+},
+"Q384535": {
+"label": "African Union – United Nations Hybrid Operation in Darfur"
+},
+"Q386053": {
+"label": "Donny Osmond"
+},
+"Q3866537": {
+"label": "Movement Coordination Centre Europe"
+},
+"Q387539": {
+"label": "Hollywood Records"
+},
+"Q38757": {
+"label": "Bertolt Brecht"
+},
+"Q388035": {
+"label": "Gloria Trevi"
+},
+"Q38848": {
+"label": "heavy metal"
+},
+"Q38875": {
+"label": "Mos Def"
+},
+"Q38903": {
+"label": "Universal Music Group"
+},
+"Q39": {
+"label": "Switzerland"
+},
+"Q392": {
+"label": "Bob Dylan"
+},
+"Q39246": {
+"label": "Richard Feynman"
+},
+"Q395": {
+"label": "mathematics"
+},
+"Q39631": {
+"label": "physician"
+},
+"Q39658": {
+"label": "Carl Peter Thunberg"
+},
+"Q397": {
+"label": "Latin"
+},
+"Q398": {
+"label": "Bahrain"
+},
+"Q39803": {
+"label": "Mario Vargas Llosa"
+},
+"Q39829": {
+"label": "Stephen King"
+},
+"Q3986379": {
+"label": "The Compleat Beatles"
+},
+"Q399": {
+"label": "Armenia"
+},
+"Q39989": {
+"label": "Ronny Cox"
+},
+"Q40": {
+"label": "Austria"
+},
+"Q40096": {
+"label": "Will Smith"
+},
+"Q40213": {
+"label": "William Butler Yeats"
+},
+"Q4028": {
+"label": "Paul Simon"
+},
+"Q4029": {
+"label": "Tara Strong"
+},
+"Q403": {
+"label": "Serbia"
+},
+"Q4030": {
+"label": "Duke Ellington"
+},
+"Q40348": {
+"label": "lawyer"
+},
+"Q4039": {
+"label": "Art Garfunkel"
+},
+"Q4042": {
+"label": "CeeLo Green"
+},
+"Q40479": {
+"label": "David Mitchell"
+},
+"Q4061": {
+"label": "Woody Guthrie"
+},
+"Q40640": {
+"label": "Ray Bradbury"
+},
+"Q408": {
+"label": "Australia"
+},
+"Q40874": {
+"label": "Doris Lessing"
+},
+"Q40909": {
+"label": "Virginia Woolf"
+},
+"Q40912": {
+"label": "Frank Sinatra"
+},
+"Q41": {
+"label": "Greece"
+},
+"Q410": {
+"label": "Carl Sagan"
+},
+"Q41042": {
+"label": "Harold Pinter"
+},
+"Q41076": {
+"label": "Mariah Carey"
+},
+"Q41166": {
+"label": "Jonathan Swift"
+},
+"Q41173": {
+"label": "Demi Lovato"
+},
+"Q41239": {
+"label": "Konstantin Eduardovich Tsiolkovskii"
+},
+"Q41257": {
+"label": "Heinrich Rudolf Hertz"
+},
+"Q41269": {
+"label": "Henri Becquerel"
+},
+"Q413": {
+"label": "physics"
+},
+"Q41304": {
+"label": "Weimar Republic"
+},
+"Q41309": {
+"label": "Franz Liszt"
+},
+"Q41351": {
+"label": "Jodie Foster"
+},
+"Q414": {
+"label": "Argentina"
+},
+"Q414110": {
+"label": "Academy of Arts, Berlin"
+},
+"Q414188": {
+"label": "Göttingen Academy of Sciences"
+},
+"Q414379": {
+"label": "Academy of Useful Science"
+},
+"Q41488": {
+"label": "Wole Soyinka"
+},
+"Q41513": {
+"label": "William Blake"
+},
+"Q41550": {
+"label": "Organisation for Economic Cooperation and Development"
+},
+"Q41568": {
+"label": "Michel de Montaigne"
+},
+"Q41590": {
+"label": "Mircea Eliade"
+},
+"Q41594": {
+"label": "Christina Aguilera"
+},
+"Q419": {
+"label": "Peru"
+},
+"Q42": {
+"label": "Douglas Adams"
+},
+"Q42156": {
+"label": "Henri Bergson"
+},
+"Q42229": {
+"label": "Mel Gibson"
+},
+"Q42262": {
+"label": "European Space Agency"
+},
+"Q423": {
+"label": "North Korea"
+},
+"Q4235": {
+"label": "Miley Cyrus"
+},
+"Q42398": {
+"label": "Michail Sholokhov"
+},
+"Q424": {
+"label": "Cambodia"
+},
+"Q42402": {
+"label": "Andrea Bocelli"
+},
+"Q42406": {
+"label": "English people"
+},
+"Q42493": {
+"label": "Katy Perry"
+},
+"Q42574": {
+"label": "James Cameron"
+},
+"Q425821": {
+"label": "Mark Ronson"
+},
+"Q4263842": {
+"label": "literary critic"
+},
+"Q42747": {
+"label": "Heinrich Böll"
+},
+"Q42775": {
+"label": "Johnny Cash"
+},
+"Q42831": {
+"label": "Ivan Turgenev"
+},
+"Q42884": {
+"label": "Germans"
+},
+"Q42904": {
+"label": "Dima Bilan"
+},
+"Q43": {
+"label": "Turkey"
+},
+"Q430076": {
+"label": "Marc Connelly"
+},
+"Q430922": {
+"label": "Paul Reiser"
+},
+"Q432": {
+"label": "Islam"
+},
+"Q43203": {
+"label": "Clint Eastwood"
+},
+"Q432421": {
+"label": "Natasha Shneider"
+},
+"Q43287": {
+"label": "German Empire"
+},
+"Q43293": {
+"label": "J. M. Coetzee"
+},
+"Q433060": {
+"label": "Daniel Johnston"
+},
+"Q43327": {
+"label": "Motown"
+},
+"Q43343": {
+"label": "contemporary folk music"
+},
+"Q43432": {
+"label": "Justin Timberlake"
+},
+"Q4345832": {
+"label": "Saint Petersburg Academy of Sciences"
+},
+"Q434745": {
+"label": "Tinashe"
+},
+"Q434915": {
+"label": "Jann Arden"
+},
+"Q436693": {
+"label": "Ivor Novello"
+},
+"Q436712": {
+"label": "Ben Elton"
+},
+"Q43718": {
+"label": "Nikolai Gogol"
+},
+"Q438164": {
+"label": "Samuel R. Delany"
+},
+"Q43845": {
+"label": "businessperson"
+},
+"Q439315": {
+"label": "Jemaine Clement"
+},
+"Q44086": {
+"label": "Carl Orff"
+},
+"Q440996": {
+"label": "Marietta Shaginyan"
+},
+"Q44107": {
+"label": "Peter Handke"
+},
+"Q4412": {
+"label": "West Africa"
+},
+"Q4413456": {
+"label": "Republic Records"
+},
+"Q44176": {
+"label": "Hulk Hogan"
+},
+"Q44221": {
+"label": "Sean Penn"
+},
+"Q442830": {
+"label": "Ivan Urgant"
+},
+"Q44301": {
+"label": "Jim Morrison"
+},
+"Q44306": {
+"label": "Salman Rushdie"
+},
+"Q443120": {
+"label": "Lance Bass"
+},
+"Q443897": {
+"label": "Gretchen Wilson"
+},
+"Q44398": {
+"label": "Falco"
+},
+"Q443995": {
+"label": "John Cameron Mitchell"
+},
+"Q44403": {
+"label": "Heinrich Heine"
+},
+"Q44412": {
+"label": "Hans Christian Ørsted"
+},
+"Q44414": {
+"label": "Trey Parker"
+},
+"Q44426": {
+"label": "Rainer Werner Fassbinder"
+},
+"Q44461": {
+"label": "Richard Dawkins"
+},
+"Q44481": {
+"label": "Pierre-Simon Laplace"
+},
+"Q44519": {
+"label": "Selma Lagerlöf"
+},
+"Q44606": {
+"label": "Gackt"
+},
+"Q44648": {
+"label": "Eric Burdon"
+},
+"Q446743": {
+"label": "Julian Klaczko"
+},
+"Q44695": {
+"label": "Konstantin Simonov"
+},
+"Q4473": {
+"label": "Jennette McCurdy"
+},
+"Q44855": {
+"label": "Jackie Jackson"
+},
+"Q44857": {
+"label": "John Legend"
+},
+"Q448764": {
+"label": "Stephen Spender"
+},
+"Q448837": {
+"label": "André 3000"
+},
+"Q45": {
+"label": "Portugal"
+},
+"Q450412": {
+"label": "Richard Sennett"
+},
+"Q451608": {
+"label": "Gaspard de Prony"
+},
+"Q45177": {
+"label": "Visa Waiver Program"
+},
+"Q451812": {
+"label": "Lianne La Havas"
+},
+"Q45255": {
+"label": "Karl Valentin"
+},
+"Q45321": {
+"label": "Harald Lesch"
+},
+"Q453288": {
+"label": "George Steiner"
+},
+"Q4538": {
+"label": "Jonathan Winters"
+},
+"Q455236": {
+"label": "Alexis Korner"
+},
+"Q45765": {
+"label": "Jack London"
+},
+"Q458": {
+"label": "European Union"
+},
+"Q45909": {
+"label": "John Cale"
+},
+"Q459620": {
+"label": "Deutsche Akademie für Sprache und Dichtung"
+},
+"Q45970": {
+"label": "Czesław Miłosz"
+},
+"Q45981": {
+"label": "rhythm and blues"
+},
+"Q46": {
+"label": "Europe"
+},
+"Q46096": {
+"label": "Felix Mendelssohn"
+},
+"Q4610556": {
+"label": "model"
+},
+"Q461104": {
+"label": "Jaroslav Vrchlický"
+},
+"Q4612": {
+"label": "Marlene Dietrich"
+},
+"Q4617": {
+"label": "Corbin Bleu"
+},
+"Q46185": {
+"label": "bass guitar"
+},
+"Q463281": {
+"label": "American Academy of Arts and Letters"
+},
+"Q463303": {
+"label": "American Academy of Arts and Sciences"
+},
+"Q463501": {
+"label": "Valeriya Novodvorskaya"
+},
+"Q4636": {
+"label": "Barbra Streisand"
+},
+"Q464218": {
+"label": "Connie Smith"
+},
+"Q465636": {
+"label": "Doc Watson"
+},
+"Q46599": {
+"label": "Mikhail Lermontov"
+},
+"Q466089": {
+"label": "American Philosophical Society"
+},
+"Q46633": {
+"label": "Charles Babbage"
+},
+"Q467027": {
+"label": "Buffy Sainte-Marie"
+},
+"Q46706": {
+"label": "Eugène Ionesco"
+},
+"Q46739": {
+"label": "Octavio Paz"
+},
+"Q467423": {
+"label": "Robin Thicke"
+},
+"Q467482": {
+"label": "Jaan Kaplinski"
+},
+"Q467519": {
+"label": "Randy Travis"
+},
+"Q470334": {
+"label": "Euclides da Cunha"
+},
+"Q47064": {
+"label": "military personnel"
+},
+"Q470758": {
+"label": "Colm Tóibín"
+},
+"Q47087": {
+"label": "Arthur C. Clarke"
+},
+"Q47100": {
+"label": "Ben Stiller"
+},
+"Q47122": {
+"label": "Enrique Iglesias"
+},
+"Q471443": {
+"label": "Ilya Ilf"
+},
+"Q47152": {
+"label": "Mary Shelley"
+},
+"Q47162": {
+"label": "Romain Rolland"
+},
+"Q47164": {
+"label": "Santa Monica"
+},
+"Q471664": {
+"label": "Leonid Leonov"
+},
+"Q47216": {
+"label": "Condoleezza Rice"
+},
+"Q47243": {
+"label": "Elfriede Jelinek"
+},
+"Q47426": {
+"label": "Milton Friedman"
+},
+"Q47447": {
+"label": "Ed Sheeran"
+},
+"Q47480": {
+"label": "Paul Dirac"
+},
+"Q47484": {
+"label": "André Gide"
+},
+"Q47543": {
+"label": "Organisation of Islamic Cooperation"
+},
+"Q47667": {
+"label": "Hu Shih"
+},
+"Q476921": {
+"label": "renal insufficiency"
+},
+"Q47695": {
+"label": "Rudolf Christoph Eucken"
+},
+"Q4773904": {
+"label": "anthropologist"
+},
+"Q477461": {
+"label": "Amr Diab"
+},
+"Q4783148": {
+"label": "Arab Bank for Economic Development in Africa"
+},
+"Q47899": {
+"label": "Paris Hilton"
+},
+"Q47912": {
+"label": "lung cancer"
+},
+"Q48": {
+"label": "Asia"
+},
+"Q482": {
+"label": "poetry"
+},
+"Q48226": {
+"label": "Ralph Waldo Emerson"
+},
+"Q482980": {
+"label": "author"
+},
+"Q483203": {
+"label": "Sting"
+},
+"Q48337": {
+"label": "Morgan Freeman"
+},
+"Q483501": {
+"label": "artist"
+},
+"Q483507": {
+"label": "Kelly Clarkson"
+},
+"Q483907": {
+"label": "Jack Black"
+},
+"Q484292": {
+"label": "Chinghiz Aitmatov"
+},
+"Q484302": {
+"label": "James Hetfield"
+},
+"Q484523": {
+"label": "Jared Leto"
+},
+"Q484641": {
+"label": "pop rock"
+},
+"Q485310": {
+"label": "Neil Patrick Harris"
+},
+"Q4853732": {
+"label": "children's writer"
+},
+"Q486748": {
+"label": "pianist"
+},
+"Q487491": {
+"label": "Anatole Abragam"
+},
+"Q488205": {
+"label": "singer-songwriter"
+},
+"Q48990": {
+"label": "Nikolay Semyonov"
+},
+"Q49": {
+"label": "North America"
+},
+"Q49001": {
+"label": "Whoopi Goldberg"
+},
+"Q49017": {
+"label": "Hugh Laurie"
+},
+"Q49074": {
+"label": "Kurt Vonnegut"
+},
+"Q49081": {
+"label": "Christopher Hitchens"
+},
+"Q49084": {
+"label": "short story"
+},
+"Q49085": {
+"label": "African Americans"
+},
+"Q49088": {
+"label": "Columbia University"
+},
+"Q49112": {
+"label": "Yale University"
+},
+"Q49115": {
+"label": "Cornell University"
+},
+"Q49210": {
+"label": "New York University"
+},
+"Q49355": {
+"label": "James Bryant Conant"
+},
+"Q49451": {
+"label": "progressive rock"
+},
+"Q49542": {
+"label": "Russians"
+},
+"Q4964182": {
+"label": "philosopher"
+},
+"Q496967": {
+"label": "Alliance of Small Island States"
+},
+"Q49734": {
+"label": "Cass Elliot"
+},
+"Q49738": {
+"label": "German Academy of Sciences at Berlin"
+},
+"Q49757": {
+"label": "poet"
+},
+"Q49767": {
+"label": "François-René de Chateaubriand"
+},
+"Q4985": {
+"label": "Herman Melville"
+},
+"Q50020": {
+"label": "John Stuart Mill"
+},
+"Q501": {
+"label": "Charles Baudelaire"
+},
+"Q502": {
+"label": "Stendhal"
+},
+"Q503246": {
+"label": "Juilliard School"
+},
+"Q504": {
+"label": "Émile Zola"
+},
+"Q5043": {
+"label": "Christianity"
+},
+"Q505476": {
+"label": "Avicii"
+},
+"Q505994": {
+"label": "Tony Visconti"
+},
+"Q50713": {
+"label": "Jean Renoir"
+},
+"Q50764": {
+"label": "Éric Rohmer"
+},
+"Q507864": {
+"label": "Donny Hathaway"
+},
+"Q5104": {
+"label": "Miranda Cosgrove"
+},
+"Q5105": {
+"label": "Céline Dion"
+},
+"Q51094": {
+"label": "Yuri Shevchuk"
+},
+"Q51101": {
+"label": "Jolin Tsai"
+},
+"Q512": {
+"label": "Vladimir Vysotsky"
+},
+"Q51290": {
+"label": "harmonica"
+},
+"Q5146": {
+"label": "Portuguese"
+},
+"Q51488": {
+"label": "John Cassavetes"
+},
+"Q51566": {
+"label": "Spike Lee"
+},
+"Q520549": {
+"label": "geologist"
+},
+"Q52447": {
+"label": "RZA"
+},
+"Q526406": {
+"label": "Ric Ocasek"
+},
+"Q526709": {
+"label": "William Dean Howells"
+},
+"Q52954": {
+"label": "keyboard instrument"
+},
+"Q53001": {
+"label": "Jean-Luc Godard"
+},
+"Q5327": {
+"label": "Adolf Butenandt"
+},
+"Q533284": {
+"label": "Gustavo Cerati"
+},
+"Q5333": {
+"label": "Charles Lyell"
+},
+"Q533369": {
+"label": "Saul Williams"
+},
+"Q535": {
+"label": "Victor Hugo"
+},
+"Q5354": {
+"label": "Ernst Mayr"
+},
+"Q536723": {
+"label": "Lori Lieberman"
+},
+"Q53714": {
+"label": "Chord Overstreet"
+},
+"Q538": {
+"label": "Oceania"
+},
+"Q5383": {
+"label": "David Bowie"
+},
+"Q539171": {
+"label": "Dalida"
+},
+"Q542101": {
+"label": "Boris Grebenshchikov"
+},
+"Q543804": {
+"label": "German Academy of Sciences Leopoldina"
+},
+"Q544387": {
+"label": "Ray Charles"
+},
+"Q54828": {
+"label": "Ivan Yefremov"
+},
+"Q54860": {
+"label": "Walt Disney Records"
+},
+"Q54945": {
+"label": "Hannes Alfvén"
+},
+"Q55": {
+"label": "Netherlands"
+},
+"Q55004": {
+"label": "Kurt Weill"
+},
+"Q55044": {
+"label": "Ludwig Maximilian University of Munich"
+},
+"Q550778": {
+"label": "John de Lancie"
+},
+"Q55207": {
+"label": "Nikita Mikhalkov"
+},
+"Q55208": {
+"label": "Andrei Konchalovsky"
+},
+"Q553276": {
+"label": "Steve Allen"
+},
+"Q554406": {
+"label": "Alberto Manguel"
+},
+"Q55456": {
+"label": "Nino Manfredi"
+},
+"Q555226": {
+"label": "Sid Caesar"
+},
+"Q557": {
+"label": "Patti Smith"
+},
+"Q557632": {
+"label": "Decca"
+},
+"Q55796": {
+"label": "Peter Ustinov"
+},
+"Q55800": {
+"label": "Oprah Winfrey"
+},
+"Q55960555": {
+"label": "recording artist"
+},
+"Q5608": {
+"label": "Eminem"
+},
+"Q5611262": {
+"label": "Group on Earth Observations"
+},
+"Q561401": {
+"label": "Spike Milligan"
+},
+"Q561458": {
+"label": "Henry Louis Gates"
+},
+"Q563": {
+"label": "Brigitte Fontaine"
+},
+"Q563057": {
+"label": "Charlie Rich"
+},
+"Q567": {
+"label": "Angela Merkel"
+},
+"Q5679": {
+"label": "Lord Byron"
+},
+"Q5682": {
+"label": "Miguel de Cervantes"
+},
+"Q5685": {
+"label": "Anton Chekhov"
+},
+"Q5686": {
+"label": "Charles Dickens"
+},
+"Q57075": {
+"label": "Fritz Haber"
+},
+"Q57106": {
+"label": "Heinrich Schliemann"
+},
+"Q57139": {
+"label": "Max Reger"
+},
+"Q5716684": {
+"label": "dancer"
+},
+"Q57244": {
+"label": "Paul Hindemith"
+},
+"Q572741": {
+"label": "Kwame Anthony Appiah"
+},
+"Q57281": {
+"label": "August Wilhelm Schlegel"
+},
+"Q57382": {
+"label": "Christa Wolf"
+},
+"Q57384": {
+"label": "Wernher von Braun"
+},
+"Q574": {
+"label": "East Timor"
+},
+"Q5749": {
+"label": "Pierre-Joseph Proudhon"
+},
+"Q5752": {
+"label": "Peter Kropotkin"
+},
+"Q57535": {
+"label": "Sebastian Haffner"
+},
+"Q57554": {
+"label": "Georg Christoph Lichtenberg"
+},
+"Q57619": {
+"label": "Frank Wedekind"
+},
+"Q57802": {
+"label": "Gotthelf Fischer von Waldheim"
+},
+"Q578109": {
+"label": "television producer"
+},
+"Q58062": {
+"label": "Georg Forster"
+},
+"Q5809": {
+"label": "Che Guevara"
+},
+"Q582152": {
+"label": "Yuri Vizbor"
+},
+"Q582713": {
+"label": "Simon Sechter"
+},
+"Q58328": {
+"label": "Jean-Baptiste Biot"
+},
+"Q58339": {
+"label": "disco"
+},
+"Q585643": {
+"label": "Atco Records"
+},
+"Q58612": {
+"label": "Yehuda Amichai"
+},
+"Q58720": {
+"label": "Mikhail Vassilyevich Lomonosov"
+},
+"Q58735": {
+"label": "Lily Allen"
+},
+"Q587361": {
+"label": "Rick Rubin"
+},
+"Q5878": {
+"label": "Gabriel García Márquez"
+},
+"Q5879": {
+"label": "Johann Wolfgang von Goethe"
+},
+"Q5891": {
+"label": "philosophy"
+},
+"Q58978": {
+"label": "Max Born"
+},
+"Q59185": {
+"label": "Busta Rhymes"
+},
+"Q5921": {
+"label": "Chuck Berry"
+},
+"Q5928": {
+"label": "Jimi Hendrix"
+},
+"Q593644": {
+"label": "chemist"
+},
+"Q5950": {
+"label": "James Brown"
+},
+"Q596717": {
+"label": "Phil Harris"
+},
+"Q597433": {
+"label": "Peter Tork"
+},
+"Q5994": {
+"label": "piano"
+},
+"Q60": {
+"label": "New York City"
+},
+"Q60025": {
+"label": "Hannah Arendt"
+},
+"Q60052": {
+"label": "Gustav Kirchhoff"
+},
+"Q60059": {
+"label": "Albertus Magnus"
+},
+"Q60070": {
+"label": "Friedrich Wilhelm Joseph Schelling"
+},
+"Q60128": {
+"label": "Alexander Alexandrovich Fadeyev"
+},
+"Q60197": {
+"label": "Alfred Einstein"
+},
+"Q60285": {
+"label": "Ernst Troeltsch"
+},
+"Q60579": {
+"label": "Moritz von Jacobi"
+},
+"Q60586": {
+"label": "Barthold Georg Niebuhr"
+},
+"Q6060": {
+"label": "50 Cent"
+},
+"Q6078": {
+"label": "Dr. Dre"
+},
+"Q60884": {
+"label": "Günther Anders"
+},
+"Q6096": {
+"label": "Snoop Dogg"
+},
+"Q60969": {
+"label": "Hermann Burmeister"
+},
+"Q60970": {
+"label": "Sakis Rouvas"
+},
+"Q61": {
+"label": "Washington, D.C."
+},
+"Q61064": {
+"label": "Wassily Kandinsky"
+},
+"Q6107": {
+"label": "Tupac Shakur"
+},
+"Q61078": {
+"label": "Walter Benjamin"
+},
+"Q61197": {
+"label": "Johann Christian Poggendorff"
+},
+"Q61318": {
+"label": "August Ludwig von Schlözer"
+},
+"Q61374": {
+"label": "Wolfhart Pannenberg"
+},
+"Q61407": {
+"label": "Ernst Curtius"
+},
+"Q61597": {
+"label": "Erika Mann"
+},
+"Q61723": {
+"label": "Gustav Landauer"
+},
+"Q61813": {
+"label": "Abraham Gotthelf Kästner"
+},
+"Q61863": {
+"label": "Ulrich von Wilamowitz-Moellendorff"
+},
+"Q62": {
+"label": "San Francisco"
+},
+"Q624307": {
+"label": "Arab Monetary Fund"
+},
+"Q62766": {
+"label": "Jay-Z"
+},
+"Q63078": {
+"label": "Hermann Usener"
+},
+"Q633": {
+"label": "Neil Young"
+},
+"Q63458": {
+"label": "Theodor Nöldeke"
+},
+"Q636": {
+"label": "Kate Bush"
+},
+"Q63670": {
+"label": "Peter Gay"
+},
+"Q639669": {
+"label": "musician"
+},
+"Q64": {
+"label": "Berlin"
+},
+"Q64238": {
+"label": "George Henschel"
+},
+"Q6423963": {
+"label": "Anglicanism"
+},
+"Q64406": {
+"label": "Henrik Steffens"
+},
+"Q645889": {
+"label": "Reprise Records"
+},
+"Q649": {
+"label": "Moscow"
+},
+"Q65": {
+"label": "Los Angeles"
+},
+"Q6512": {
+"label": "Søren Kierkegaard"
+},
+"Q652": {
+"label": "Italian"
+},
+"Q6527": {
+"label": "Jean-Jacques Rousseau"
+},
+"Q6530": {
+"label": "Stanisław Lem"
+},
+"Q65350": {
+"label": "Carl Friedrich von Weizsäcker"
+},
+"Q6538": {
+"label": "Günter Grass"
+},
+"Q653884": {
+"label": "Hispanic America"
+},
+"Q654283": {
+"label": "Def Jam Recordings"
+},
+"Q656": {
+"label": "Saint Petersburg"
+},
+"Q656801": {
+"label": "International Finance Corporation"
+},
+"Q657": {
+"label": "Chad"
+},
+"Q6607": {
+"label": "guitar"
+},
+"Q66107": {
+"label": "Henry Kissinger"
+},
+"Q6625963": {
+"label": "novelist"
+},
+"Q663492": {
+"label": "Eurocontrol"
+},
+"Q664": {
+"label": "New Zealand"
+},
+"Q664167": {
+"label": "Arista"
+},
+"Q66732": {
+"label": "Eugen Rosenstock-Huessy"
+},
+"Q667661": {
+"label": "literary realism"
+},
+"Q668": {
+"label": "India"
+},
+"Q6694": {
+"label": "Alexander von Humboldt"
+},
+"Q6701": {
+"label": "Jacob Grimm"
+},
+"Q67076": {
+"label": "Ludwig Geiger"
+},
+"Q6711": {
+"label": "Allen Ginsberg"
+},
+"Q6714": {
+"label": "Wilhelm Grimm"
+},
+"Q672": {
+"label": "Tuvalu"
+},
+"Q675": {
+"label": "André-Marie Ampère"
+},
+"Q67526": {
+"label": "Wolfgang Schadewaldt"
+},
+"Q676": {
+"label": "prose"
+},
+"Q678": {
+"label": "Tonga"
+},
+"Q678551": {
+"label": "American Jews"
+},
+"Q683": {
+"label": "Samoa"
+},
+"Q684415": {
+"label": "Bavarian Academy of Sciences and Humanities"
+},
+"Q685": {
+"label": "Solomon Islands"
+},
+"Q686": {
+"label": "Vanuatu"
+},
+"Q6882": {
+"label": "James Joyce"
+},
+"Q690974": {
+"label": "Brandy Norwood"
+},
+"Q691": {
+"label": "Papua New Guinea"
+},
+"Q6927": {
+"label": "20th century"
+},
+"Q695": {
+"label": "Palau"
+},
+"Q69631": {
+"label": "Harald Weinrich"
+},
+"Q697": {
+"label": "Nauru"
+},
+"Q699541": {
+"label": "Geoffrey Ingram Taylor"
+},
+"Q7013": {
+"label": "Lena Meyer-Landrut"
+},
+"Q702": {
+"label": "Federated States of Micronesia"
+},
+"Q702468": {
+"label": "Salvador de Madariaga"
+},
+"Q704015": {
+"label": "Konstantin Fedin"
+},
+"Q7042855": {
+"label": "film editor"
+},
+"Q704696": {
+"label": "Ray Lankester"
+},
+"Q704700": {
+"label": "John Hartford"
+},
+"Q704742": {
+"label": "Sticky Fingaz"
+},
+"Q704931": {
+"label": "Edmund Wilson"
+},
+"Q705333": {
+"label": "David Clayton-Thomas"
+},
+"Q705715": {
+"label": "RuPaul"
+},
+"Q7066": {
+"label": "atheism"
+},
+"Q70737": {
+"label": "Hans Mayer"
+},
+"Q70855": {
+"label": "Friedrich von Raumer"
+},
+"Q708963": {
+"label": "Allan Sherman"
+},
+"Q709": {
+"label": "Marshall Islands"
+},
+"Q710": {
+"label": "Kiribati"
+},
+"Q711": {
+"label": "Mongolia"
+},
+"Q712": {
+"label": "Fiji"
+},
+"Q712359": {
+"label": "Roger Miller"
+},
+"Q712860": {
+"label": "Chris Martin"
+},
+"Q712914": {
+"label": "Jerry Reed"
+},
+"Q713750": {
+"label": "West Germany"
+},
+"Q714845": {
+"label": "The Edge"
+},
+"Q7159": {
+"label": "African Union"
+},
+"Q717": {
+"label": "Venezuela"
+},
+"Q7172": {
+"label": "Arab League"
+},
+"Q7184": {
+"label": "NATO"
+},
+"Q7197": {
+"label": "Simone de Beauvoir"
+},
+"Q7199": {
+"label": "Marcel Proust"
+},
+"Q7200": {
+"label": "Alexander Pushkin"
+},
+"Q7204": {
+"label": "Middle East"
+},
+"Q721819": {
+"label": "Roy Clark"
+},
+"Q722042": {
+"label": "Master P"
+},
+"Q722202": {
+"label": "Yoram Kaniuk"
+},
+"Q72334": {
+"label": "Toni Morrison"
+},
+"Q7241": {
+"label": "Rabindranath Tagore"
+},
+"Q7243": {
+"label": "Leo Tolstoy"
+},
+"Q7245": {
+"label": "Mark Twain"
+},
+"Q726071": {
+"label": "Jimmy Buffett"
+},
+"Q726251": {
+"label": "Elektra"
+},
+"Q729117": {
+"label": "Edmund White"
+},
+"Q72984": {
+"label": "Bing Crosby"
+},
+"Q730": {
+"label": "Suriname"
+},
+"Q7302": {
+"label": "George Frideric Handel"
+},
+"Q730261": {
+"label": "Fredro Starr"
+},
+"Q73089": {
+"label": "Gene Kelly"
+},
+"Q7314": {
+"label": "Igor Stravinsky"
+},
+"Q7315": {
+"label": "Pyotr Ilyich Tchaikovsky"
+},
+"Q7318": {
+"label": "Nazi Germany"
+},
+"Q7325": {
+"label": "Jewish people"
+},
+"Q732513": {
+"label": "Jô Soares"
+},
+"Q733": {
+"label": "Paraguay"
+},
+"Q734": {
+"label": "Guyana"
+},
+"Q73463": {
+"label": "Miguel"
+},
+"Q7351": {
+"label": "Robert Schumann"
+},
+"Q736": {
+"label": "Ecuador"
+},
+"Q736099": {
+"label": "Renato Carosone"
+},
+"Q739": {
+"label": "Colombia"
+},
+"Q741862": {
+"label": "Massimo Bontempelli"
+},
+"Q742634": {
+"label": "Augusto Righi"
+},
+"Q7439": {
+"label": "Richard Stallman"
+},
+"Q750": {
+"label": "Bolivia"
+},
+"Q7504": {
+"label": "Irène Joliot-Curie"
+},
+"Q753110": {
+"label": "songwriter"
+},
+"Q754": {
+"label": "Trinidad and Tobago"
+},
+"Q7542": {
+"label": "Prince"
+},
+"Q7546": {
+"label": "Ingmar Bergman"
+},
+"Q75612": {
+"label": "Isaac Bashevis Singer"
+},
+"Q757": {
+"label": "Saint Vincent and the Grenadines"
+},
+"Q75809": {
+"label": "Lutheranism"
+},
+"Q75814": {
+"label": "Wilhelm Wundt"
+},
+"Q75828": {
+"label": "Heinrich Wilhelm Olbers"
+},
+"Q760": {
+"label": "Saint Lucia"
+},
+"Q7604": {
+"label": "Leonhard Euler"
+},
+"Q762": {
+"label": "Leonardo da Vinci"
+},
+"Q763": {
+"label": "Saint Kitts and Nevis"
+},
+"Q76409": {
+"label": "Charles Bukowski"
+},
+"Q76432": {
+"label": "Rudolf Virchow"
+},
+"Q76442": {
+"label": "Johann Christoph Gottsched"
+},
+"Q76478": {
+"label": "Kirsten Dunst"
+},
+"Q76490": {
+"label": "Helge Schneider"
+},
+"Q76546": {
+"label": "Erich Kästner"
+},
+"Q766": {
+"label": "Jamaica"
+},
+"Q76600": {
+"label": "Manfred Eigen"
+},
+"Q76641": {
+"label": "Felix Klein"
+},
+"Q76683": {
+"label": "Ludwig Prandtl"
+},
+"Q76686": {
+"label": "August Schleicher"
+},
+"Q76738": {
+"label": "Athanasius Kircher"
+},
+"Q76772": {
+"label": "Heinrich Wilhelm Gottfried von Waldeyer-Hartz"
+},
+"Q76791": {
+"label": "Ferdinand von Richthofen"
+},
+"Q76823": {
+"label": "Karl Mannheim"
+},
+"Q76892": {
+"label": "Friedrich Carl von Savigny"
+},
+"Q769": {
+"label": "Grenada"
+},
+"Q76959": {
+"label": "Ralf Dahrendorf"
+},
+"Q77": {
+"label": "Uruguay"
+},
+"Q77024": {
+"label": "Lion Feuchtwanger"
+},
+"Q77060": {
+"label": "Dietrich Fischer-Dieskau"
+},
+"Q77087": {
+"label": "Klaus Mann"
+},
+"Q77109": {
+"label": "Golo Mann"
+},
+"Q77112": {
+"label": "David Foster"
+},
+"Q77143": {
+"label": "Thomas Anders"
+},
+"Q77144": {
+"label": "Leo Strauss"
+},
+"Q77184": {
+"label": "Leopold von Ranke"
+},
+"Q7737": {
+"label": "Russian"
+},
+"Q774": {
+"label": "Guatemala"
+},
+"Q7747": {
+"label": "Vladimir Putin"
+},
+"Q7749": {
+"label": "rock and roll"
+},
+"Q778": {
+"label": "Bahamas"
+},
+"Q7785": {
+"label": "Commonwealth of Nations"
+},
+"Q77888": {
+"label": "Wilhelm von Humboldt"
+},
+"Q7809": {
+"label": "UNESCO"
+},
+"Q781": {
+"label": "Antigua and Barbuda"
+},
+"Q7825": {
+"label": "World Trade Organization"
+},
+"Q782942": {
+"label": "Australia Group"
+},
+"Q783": {
+"label": "Honduras"
+},
+"Q7833": {
+"label": "Boris Vian"
+},
+"Q783992": {
+"label": "Burton Cummings"
+},
+"Q784": {
+"label": "Dominica"
+},
+"Q78487": {
+"label": "Robert Musil"
+},
+"Q78491": {
+"label": "Stefan Zweig"
+},
+"Q78492": {
+"label": "Tomáš Garrigue Masaryk"
+},
+"Q78496": {
+"label": "Konrad Lorenz"
+},
+"Q78505": {
+"label": "Peter Lorre"
+},
+"Q78506": {
+"label": "Ingeborg Bachmann"
+},
+"Q786": {
+"label": "Dominican Republic"
+},
+"Q78608": {
+"label": "Carl Djerassi"
+},
+"Q78704": {
+"label": "Hanns Eisler"
+},
+"Q79": {
+"label": "Egypt"
+},
+"Q790": {
+"label": "Haiti"
+},
+"Q79025": {
+"label": "Walter Scott"
+},
+"Q79078": {
+"label": "Wilhelm Blaschke"
+},
+"Q792": {
+"label": "El Salvador"
+},
+"Q794": {
+"label": "Iran"
+},
+"Q796": {
+"label": "Iraq"
+},
+"Q79759": {
+"label": "John Milton"
+},
+"Q7976": {
+"label": "American English"
+},
+"Q79838": {
+"label": "accordion"
+},
+"Q79854": {
+"label": "Communist Party of the Soviet Union"
+},
+"Q79969": {
+"label": "Emma Goldman"
+},
+"Q800": {
+"label": "Costa Rica"
+},
+"Q801": {
+"label": "Israel"
+},
+"Q8011": {
+"label": "Avicenna"
+},
+"Q80135": {
+"label": "Dmitri Shostakovich"
+},
+"Q8016": {
+"label": "Winston Churchill"
+},
+"Q8018": {
+"label": "Augustine of Hippo"
+},
+"Q80222": {
+"label": "Joseph-Louis Lagrange"
+},
+"Q804": {
+"label": "Panama"
+},
+"Q80424": {
+"label": "Nelly Furtado"
+},
+"Q80440": {
+"label": "Anna Akhmatova"
+},
+"Q805": {
+"label": "Yemen"
+},
+"Q80510": {
+"label": "Alla Pugacheva"
+},
+"Q80596": {
+"label": "Arthur Miller"
+},
+"Q806349": {
+"label": "bandleader"
+},
+"Q80739": {
+"label": "Charlton Heston"
+},
+"Q809": {
+"label": "Polish"
+},
+"Q80938": {
+"label": "John Travolta"
+},
+"Q810": {
+"label": "Jordan"
+},
+"Q81082": {
+"label": "Henri Poincaré"
+},
+"Q81096": {
+"label": "engineer"
+},
+"Q811": {
+"label": "Nicaragua"
+},
+"Q812155": {
+"label": "Bavarian Academy of Fine Arts"
+},
+"Q81244": {
+"label": "Karl Popper"
+},
+"Q81299": {
+"label": "Organization for Security and Co-operation in Europe"
+},
+"Q813": {
+"label": "Kyrgyzstan"
+},
+"Q816706": {
+"label": "Southern African Development Community"
+},
+"Q817": {
+"label": "Kuwait"
+},
+"Q81752": {
+"label": "Anton Bruckner"
+},
+"Q8178443": {
+"label": "librettist"
+},
+"Q819": {
+"label": "Laos"
+},
+"Q82083": {
+"label": "John Keats"
+},
+"Q82110": {
+"label": "Steven Seagal"
+},
+"Q822": {
+"label": "Lebanon"
+},
+"Q822146": {
+"label": "lyricist"
+},
+"Q82222": {
+"label": "Little Richard"
+},
+"Q82238": {
+"label": "Cliff Richard"
+},
+"Q8246794": {
+"label": "blogger"
+},
+"Q826": {
+"label": "Maldives"
+},
+"Q8261": {
+"label": "novel"
+},
+"Q826700": {
+"label": "International Energy Agency"
+},
+"Q827525": {
+"label": "International Development Association"
+},
+"Q82925": {
+"label": "Joseph Conrad"
+},
+"Q82955": {
+"label": "politician"
+},
+"Q83059": {
+"label": "Saul Bellow"
+},
+"Q83158": {
+"label": "Jean Cocteau"
+},
+"Q83172": {
+"label": "Russian Academy of Sciences"
+},
+"Q83270": {
+"label": "hard rock"
+},
+"Q83287": {
+"label": "Selena Gomez"
+},
+"Q83297": {
+"label": "John William Strutt, 3rd Baron Rayleigh"
+},
+"Q833": {
+"label": "Malaysia"
+},
+"Q83326": {
+"label": "Béla Bartók"
+},
+"Q83333": {
+"label": "James D. Watson"
+},
+"Q83338": {
+"label": "Robin Williams"
+},
+"Q83396": {
+"label": "Eleanor Roosevelt"
+},
+"Q8341": {
+"label": "jazz"
+},
+"Q83440": {
+"label": "country music"
+},
+"Q8349": {
+"label": "\"Weird Al\" Yankovic"
+},
+"Q835": {
+"label": "Mikhail Bulgakov"
+},
+"Q83501": {
+"label": "Vladimir Prelog"
+},
+"Q8355": {
+"label": "violin"
+},
+"Q83557": {
+"label": "Nikolay Basov"
+},
+"Q836": {
+"label": "Myanmar"
+},
+"Q83643": {
+"label": "Andrey Gubin"
+},
+"Q837": {
+"label": "Nepal"
+},
+"Q84": {
+"label": "London"
+},
+"Q84186": {
+"label": "Ivan Illich"
+},
+"Q842": {
+"label": "Oman"
+},
+"Q842324": {
+"label": "indie pop"
+},
+"Q84238": {
+"label": "Peter Drucker"
+},
+"Q842490": {
+"label": "Organisation for the Prohibition of Chemical Weapons"
+},
+"Q843": {
+"label": "Pakistan"
+},
+"Q843402": {
+"label": "Warner Bros. Records"
+},
+"Q84423": {
+"label": "Martin Buber"
+},
+"Q8446": {
+"label": "Kurt Cobain"
+},
+"Q84509": {
+"label": "Felix Philipp Kanitz"
+},
+"Q846": {
+"label": "Qatar"
+},
+"Q8475": {
+"label": "Interpol"
+},
+"Q850412": {
+"label": "contemporary R&B"
+},
+"Q851": {
+"label": "Saudi Arabia"
+},
+"Q853": {
+"label": "Andrei Tarkovsky"
+},
+"Q854": {
+"label": "Sri Lanka"
+},
+"Q855091": {
+"label": "guitarist"
+},
+"Q858": {
+"label": "Syria"
+},
+"Q859": {
+"label": "Plato"
+},
+"Q85914": {
+"label": "Herman Francis Mark"
+},
+"Q862": {
+"label": "Joseph Brodsky"
+},
+"Q863": {
+"label": "Tajikistan"
+},
+"Q864380": {
+"label": "biographer"
+},
+"Q864503": {
+"label": "biologist"
+},
+"Q8646": {
+"label": "Hong Kong"
+},
+"Q865": {
+"label": "Taiwan"
+},
+"Q86820": {
+"label": "Hugo Huppert"
+},
+"Q869": {
+"label": "Thailand"
+},
+"Q8704": {
+"label": "Walt Disney"
+},
+"Q874": {
+"label": "Turkmenistan"
+},
+"Q8772": {
+"label": "Joseph Fourier"
+},
+"Q878": {
+"label": "United Arab Emirates"
+},
+"Q881": {
+"label": "Vietnam"
+},
+"Q8814": {
+"label": "Augustin-Louis Cauchy"
+},
+"Q882": {
+"label": "Charlie Chaplin"
+},
+"Q884": {
+"label": "South Korea"
+},
+"Q8873": {
+"label": "Satyajit Ray"
+},
+"Q887347": {
+"label": "Bo Burnham"
+},
+"Q888152": {
+"label": "Bob Mould"
+},
+"Q888666": {
+"label": "Bobby Scott"
+},
+"Q889": {
+"label": "Afghanistan"
+},
+"Q8908": {
+"label": "Council of Europe"
+},
+"Q892": {
+"label": "J. R. R. Tolkien"
+},
+"Q899770": {
+"label": "International Centre for Settlement of Investment Disputes"
+},
+"Q90": {
+"label": "Paris"
+},
+"Q901": {
+"label": "scientist"
+},
+"Q901402": {
+"label": "geographer"
+},
+"Q902": {
+"label": "Bangladesh"
+},
+"Q9027": {
+"label": "Swedish"
+},
+"Q9047": {
+"label": "Gottfried Wilhelm Leibniz"
+},
+"Q9049": {
+"label": "Noam Chomsky"
+},
+"Q905": {
+"label": "Franz Kafka"
+},
+"Q9056": {
+"label": "Czech"
+},
+"Q9061": {
+"label": "Karl Marx"
+},
+"Q9067": {
+"label": "Hungarian"
+},
+"Q909": {
+"label": "Jorge Luis Borges"
+},
+"Q9095": {
+"label": "James Clerk Maxwell"
+},
+"Q912": {
+"label": "Mali"
+},
+"Q916": {
+"label": "Angola"
+},
+"Q917": {
+"label": "Bhutan"
+},
+"Q918966": {
+"label": "Nahum Sokolow"
+},
+"Q9204": {
+"label": "C. S. Lewis"
+},
+"Q921": {
+"label": "Brunei"
+},
+"Q9235": {
+"label": "Georg Wilhelm Friedrich Hegel"
+},
+"Q924": {
+"label": "Tanzania"
+},
+"Q924232": {
+"label": "Vince Gill"
+},
+"Q9268": {
+"label": "Judaism"
+},
+"Q928": {
+"label": "Philippines"
+},
+"Q9288": {
+"label": "Hebrew"
+},
+"Q929": {
+"label": "Central African Republic"
+},
+"Q9312": {
+"label": "Immanuel Kant"
+},
+"Q93166": {
+"label": "Milan Kundera"
+},
+"Q9317": {
+"label": "John Maynard Keynes"
+},
+"Q9327": {
+"label": "Guy de Maupassant"
+},
+"Q93341": {
+"label": "Miles Davis"
+},
+"Q93343": {
+"label": "Percy Bysshe Shelley"
+},
+"Q93356": {
+"label": "Seamus Heaney"
+},
+"Q93401": {
+"label": "Franz Miklosich"
+},
+"Q9353": {
+"label": "John Locke"
+},
+"Q935369": {
+"label": "Daniel Lanois"
+},
+"Q9358": {
+"label": "Friedrich Nietzsche"
+},
+"Q9364": {
+"label": "Jean-Paul Sartre"
+},
+"Q937": {
+"label": "Albert Einstein"
+},
+"Q938622": {
+"label": "Pontifical Academy of Sciences"
+},
+"Q9387": {
+"label": "Max Weber"
+},
+"Q9391": {
+"label": "Ludwig Wittgenstein"
+},
+"Q93996": {
+"label": "Ernst Mach"
+},
+"Q94081": {
+"label": "Bob Hope"
+},
+"Q9438": {
+"label": "Thomas Aquinas"
+},
+"Q944275": {
+"label": "James Lighthill"
+},
+"Q945": {
+"label": "Togo"
+},
+"Q94701": {
+"label": "Heinrich Brunner"
+},
+"Q947519": {
+"label": "John Ciardi"
+},
+"Q947873": {
+"label": "television presenter"
+},
+"Q948": {
+"label": "Tunisia"
+},
+"Q948329": {
+"label": "character actor"
+},
+"Q949": {
+"label": "John Bardeen"
+},
+"Q95089": {
+"label": "Ginger Rogers"
+},
+"Q952491": {
+"label": "Ian McLagan"
+},
+"Q953": {
+"label": "Zambia"
+},
+"Q954": {
+"label": "Zimbabwe"
+},
+"Q954997": {
+"label": "Michael Nesmith"
+},
+"Q957627": {
+"label": "Luis Alberto Spinetta"
+},
+"Q958": {
+"label": "South Sudan"
+},
+"Q958578": {
+"label": "Lloyd Price"
+},
+"Q9592": {
+"label": "Catholic Church"
+},
+"Q96": {
+"label": "Mexico"
+},
+"Q960081": {
+"label": "Kenneth Burke"
+},
+"Q962": {
+"label": "Benin"
+},
+"Q963": {
+"label": "Botswana"
+},
+"Q9648008": {
+"label": "banjoist"
+},
+"Q965": {
+"label": "Burkina Faso"
+},
+"Q966565": {
+"label": "Tex Ritter"
+},
+"Q967": {
+"label": "Burundi"
+},
+"Q9682": {
+"label": "Elizabeth II"
+},
+"Q970": {
+"label": "Comoros"
+},
+"Q971": {
+"label": "Republic of the Congo"
+},
+"Q9711": {
+"label": "Honoré de Balzac"
+},
+"Q9730": {
+"label": "classical music"
+},
+"Q9734": {
+"label": "symphony"
+},
+"Q974": {
+"label": "Democratic Republic of the Congo"
+},
+"Q9759": {
+"label": "blues"
+},
+"Q977": {
+"label": "Djibouti"
+},
+"Q9778": {
+"label": "electronic music"
+},
+"Q9798": {
+"label": "saxophone"
+},
+"Q981971": {
+"label": "Mario Praz"
+},
+"Q983": {
+"label": "Equatorial Guinea"
+},
+"Q984644": {
+"label": "Gavriil Troyepolsky"
+},
+"Q986": {
+"label": "Eritrea"
+},
+"Q989": {
+"label": "John Paul II"
+},
+"Q991": {
+"label": "Fyodor Dostoyevsky"
+},
+"Q9960": {
+"label": "Ronald Reagan"
+}
+}

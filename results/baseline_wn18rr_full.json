@@ -1,0 +1,1 @@
+{"dataset": "WN18RR", "ckpt": "ultra_4g.pth", "source": "Colab run of baseline_jobs.py", "n_triples": 3134, "mrr": 0.48379918932914734, "hits@1": 0.41464582085609436, "hits@3": 0.5197830200195312, "hits@10": 0.6172623038291931, "mrr_tail_only": 0.5102241635322571, "hits@10_tail_only": 0.6266751885414124, "seconds": 4594.5}

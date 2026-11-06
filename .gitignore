@@ -1,0 +1,22 @@
+# fetched by the README's two setup commands
+ultra/
+kg-datasets/
+# build products and local runs
+__pycache__/
+*.pyc
+report/*.aux
+report/*.log
+report/*.out
+report/*.blg
+report/*.brf
+report/*.bbl
+presentation/*.aux
+presentation/*.log
+presentation/*.nav
+presentation/*.out
+presentation/*.snm
+presentation/*.toc
+video/*.mp4
+video/frames/
+colab_check/
+CAP6938_pathfaith_code.zip

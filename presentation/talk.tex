@@ -1,0 +1,358 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+\usetheme{default}
+\usepackage{times}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamercolor{frametitle}{fg=black}
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\definecolor{wn}{HTML}{2B6CB0}
+\definecolor{fb}{HTML}{C0392B}
+\definecolor{cx}{HTML}{27AE60}
+\definecolor{nl}{HTML}{8E44AD}
+\definecolor{soft}{HTML}{7F8C8D}
+
+\input{../report/numbers.tex}
+
+\title{\textbf{Are NBFNet's Path Explanations Actually Faithful?}}
+\subtitle{A deletion and edit benchmark on a frozen knowledge graph reasoner}
+\author{Shadi Khodagholi}
+\institute{\small CAP 6938 AI Knowledge Systems \textperiodcentered{} Research Track \textperiodcentered{} UCF}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+% ------------------------------------------------------------------ what it does
+\begin{frame}{What this project does}
+\centering
+\begin{tikzpicture}[node distance=7mm and 9mm, font=\small,
+  box/.style={draw, rounded corners=2pt, align=center, inner sep=5pt, minimum height=9mm},
+  arr/.style={-{Stealth[length=2.2mm]}, thick}]
+  \node[box] (q) {query\\\texttt{(Delany, religion, ?)}};
+  \node[box, right=of q, fill=gray!10] (m) {NBFNet\\(frozen)};
+  \node[box, right=of m] (a) {answer\\\texttt{atheism}};
+  \node[box, below=of m, fill=blue!6, text width=56mm] (e)
+    {its own explanation: the top paths,\\read off \(\partial\,\text{score}/\partial\,\text{edge}\)};
+  \draw[arr] (q) -- (m); \draw[arr] (m) -- (a); \draw[arr] (m) -- (e);
+  \node[box, right=of e, fill=orange!10, text width=40mm] (i)
+    {\textbf{this project:} change the graph and see if the answer moves};
+  \draw[arr, dashed] (e) -- (i);
+\end{tikzpicture}
+
+\vspace{0.6em}
+\begin{itemize}\small
+  \item The paths are sold as the \textbf{provenance} of the answer. That is the
+        whole case for paths over embeddings.
+  \item A gradient says what happens if an edge changes \emph{a little}. Whether
+        the model \emph{relied} on it is a question about removing it.
+  \item So I audit the released explanation code by \textbf{intervening}, not
+        inspecting: Topic~8's lesson, on a substrate where the edit is exact.
+\end{itemize}
+\end{frame}
+
+% ------------------------------------------------------------------ method
+\begin{frame}{Five interventions, on the graph itself}
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+ & what changes in the graph & the question it answers \\
+\midrule
+A & nothing; call NBFNet's \texttt{visualize()} & what does the method claim? \\
+B & delete each shortlisted path, one at a time & does its ranking match real effect? \\
+C & delete the whole shortlist, or keep only it & necessary? sufficient? \\
+D & point the last hop at a different entity & does the answer follow the edit? \\
+E & turn one relation channel's gain from 1 to 0 & does the gradient predict the dose? \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3em}
+\begin{itemize}\small
+  \item Every intervention removes or rewires real edges and reruns the model. No
+        masks, no approximations, \textbf{no training}: the released checkpoint,
+        every parameter frozen.
+  \item Controls: the same number of \textbf{random} edges; the \textbf{bottom}
+        of the method's own candidate list; the tail entity's \textbf{degree};
+        whether the query's \textbf{reverse fact} is already in the graph.
+\end{itemize}
+\end{frame}
+
+% ------------------------------------------------------------------ benchmark
+\begin{frame}{The benchmark}
+\begin{columns}[T]
+\begin{column}{0.55\textwidth}
+\small
+\begin{tabular}{lrrl}
+\toprule
+graph & queries & MRR & \\
+\midrule
+\textcolor{wn}{WN18RR}    & \wnQueries & \wnMrr & in pre-training \\
+\textcolor{fb}{FB15k-237} & \fbQueries & \fbMrr & in pre-training \\
+\textcolor{cx}{CoDEx-S}   & \cxQueries & \cxMrr & held out \\
+\textcolor{nl}{NELL23k}   & \nlQueries & \nlMrr & held out \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.6em}
+\(\bullet\) \allQueries{} queries, each with 20 candidate paths\\
+\(\bullet\) \allDeletions{} single-path deletions, plus joint deletions,
+keep-only, random controls and rewires\\
+\(\bullet\) MRR on the \textbf{full} test set of each graph, with ULTRA's own
+evaluation code
+\end{column}
+\begin{column}{0.43\textwidth}
+\small
+\textbf{Design choices that matter}
+\begin{itemize}
+  \item Queries drawn in a \textbf{fixed random order}, set before anything was
+        measured. No picking.
+  \item Only queries the model ranks in its top ten: explaining a mistake is
+        a different question.
+  \item Two graphs the model was trained on, two it never saw.
+  \item Every interval is a 95\% bootstrap over queries. The model is
+        deterministic, so queries are the only source of variance.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+% ------------------------------------------------------------------ CLT
+\begin{frame}{Is that enough queries? The data answers it}
+\begin{center}
+\includegraphics[width=0.78\textwidth]{../video/figs/convergence_big.pdf}
+\end{center}
+\vspace{-0.6em}
+{\small Dots at the left: every disjoint block of five queries. On WN18RR, a
+five-query study of ``does the top path beat chance'' could have reported
+anything from \wnRelTopGapFiveLo{} to \wnRelTopGapFiveHi: either sign. At
+full size, \wnRelTopGapN{} queries, the interval is \(\pm\)\wnRelTopGapHalf.}
+\end{frame}
+
+% ------------------------------------------------------------------ demo
+\begin{frame}{Live demo}
+\begin{center}
+\Large\texttt{python -m pathfaith.demo --n 5}
+\end{center}
+\vspace{0.6em}
+\begin{itemize}
+  \item Loads the frozen checkpoint on CPU and picks five queries it gets right,
+        on CoDEx-S, a graph it never saw, with real Wikidata names.
+  \item For each: prints NBFNet's own explanation, then runs every intervention
+        \textbf{live}, one forward pass per line.
+  \item Watch the \textbf{random-edge control} stay at zero, the
+        \textbf{busiest edge} line, and the \textbf{neuromodulate} line: one
+        relation channel turned down to half and to zero, against what the
+        gradient predicted.
+  \item It ends by reading the full benchmark off disk, so the five live
+        queries are visibly one slice of \allQueries.
+\end{itemize}
+\vspace{0.4em}
+{\small\textcolor{soft}{Then again with \texttt{--seed 7}: a different draw
+of queries, to show it is not one lucky run. A recording of both runs is the
+fallback.}}
+\end{frame}
+
+% ------------------------------------------------------------------ result 1
+\begin{frame}{Result 1: the edges it picks are load-bearing}
+\begin{center}\small
+\begin{tabular}{lcccc}
+\toprule
+ & \textcolor{wn}{WN18RR} & \textcolor{fb}{FB15k-237} & \textcolor{cx}{CoDEx-S} & \textcolor{nl}{NELL23k} \\
+\midrule
+delete shortlist, share of \(p\) removed & \wnCompFracOfBase & \fbCompFracOfBase & \cxCompFracOfBase & \nlCompFracOfBase \\
+\quad 95\% CI & {\scriptsize\wnCompFracOfBaseCI} & {\scriptsize\fbCompFracOfBaseCI} & {\scriptsize\cxCompFracOfBaseCI} & {\scriptsize\nlCompFracOfBaseCI} \\
+delete as many random edges & \wnCompRandomFracOfBase & \fbCompRandomFracOfBase & \cxCompRandomFracOfBase & \nlCompRandomFracOfBase \\
+answer falls out of top 10 & \wnFracRankBroken\% & \fbFracRankBroken\% & \cxFracRankBroken\% & \nlFracRankBroken\% \\
+keep only shortlist: answer \emph{gains} \(p\) & \wnFracSuffAboveOne\% & \fbFracSuffAboveOne\% & \cxFracSuffAboveOne\% & \nlFracSuffAboveOne\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.4em}
+\begin{itemize}\small
+  \item On every graph, deleting the explanation hurts and deleting random edges
+        does not. The gradient is pointing at something real.
+  \item Keep-only is not a clean test on a graph: strip it to a few edges and
+        the rival answers vanish too, so \(p\) can go \emph{up}. I report it and
+        draw nothing from it.
+\end{itemize}
+\end{frame}
+
+% ------------------------------------------------------------------ result 2
+\begin{frame}{Result 2: the order it puts them in is not}
+\begin{center}\small
+\begin{tabular}{lcccc}
+\toprule
+ & \textcolor{wn}{WN18RR} & \textcolor{fb}{FB15k-237} & \textcolor{cx}{CoDEx-S} & \textcolor{nl}{NELL23k} \\
+\midrule
+top path is the most damaging & \wnTopOneIsBest & \fbTopOneIsBest & \cxTopOneIsBest & \nlTopOneIsBest \\
+\quad chance rate (ties count) & \wnTopOneChance & \fbTopOneChance & \cxTopOneChance & \nlTopOneChance \\
+Kendall \(\tau\), rank vs.\ effect & \wnKendallTauGradVsDrop & \fbKendallTauGradVsDrop & \cxKendallTauGradVsDrop & \nlKendallTauGradVsDrop \\
+\quad 95\% CI & {\scriptsize\wnKendallTauGradVsDropCI} & {\scriptsize\fbKendallTauGradVsDropCI} & {\scriptsize\cxKendallTauGradVsDropCI} & {\scriptsize\nlKendallTauGradVsDropCI} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.4em}
+\begin{itemize}\small
+  \item A faithful ranking would give \(\tau\) near 1. As released, it is near zero everywhere,
+        and on WN18RR the top path is the most damaging one \emph{less} often
+        than a coin would pick it.
+  \item This is Hase et al.'s Topic~8 result one domain over: what the method
+        locates is not what predicts the effect of changing it.
+\end{itemize}
+\end{frame}
+
+% ------------------------------------------------------------------ the bug
+\begin{frame}{Trying to fix the order, I found a bug in the explanation code}
+\begin{center}
+\includegraphics[width=0.97\textwidth]{../video/figs/direction_big.pdf}
+\end{center}
+\vspace{-0.6em}
+{\small The fast kernel the model runs on sends messages one way along each
+edge; the generic code \texttt{visualize()} falls back to, to get a gradient,
+sends them the other way. So the explanation differentiates a
+\textbf{different model}: scores up to \allDirGapMax{} logits off, gradient
+off by as much as the effect (median error \allDirErrReleased\%), wrong sign on \allDirSignReleased{}
+of \allDirN{} directions. Fix: run it on the reversed graph. Error then
+\allDirErrCorrected\%. The same code is in NBFNet-PyG.}
+\end{frame}
+
+% ------------------------------------------------------------------ fixes
+\begin{frame}{Fixing it helps a little. Integrated gradients help more. Neither is enough.}
+\begin{center}
+\includegraphics[width=0.80\textwidth]{../video/figs/robustness_big.pdf}
+\end{center}
+\vspace{-0.7em}
+{\small One variable at a time. Direction fix: Kendall \(\tau\) up by
+\cxFxTauGain{} on CoDEx-S and \nlFxTauGain{} on NELL23k. Integrated gradients
+on the same candidates: \(\tau\) = \cxIgTau{} and \nlIgTau. The ULTRA paper's
+own checkpoint (MRR \cxTgMrr{} vs.\ 0.472 reported) gives the same picture.}
+\end{frame}
+
+% ------------------------------------------------------------------ result 3
+\begin{frame}{Result 3: one edge or many depends on the graph}
+\begin{center}\small
+\begin{tabular}{lcccc}
+\toprule
+ & \textcolor{wn}{WN18RR} & \textcolor{fb}{FB15k-237} & \textcolor{cx}{CoDEx-S} & \textcolor{nl}{NELL23k} \\
+\midrule
+paths sharing the busiest edge & \wnBottleneckFrac & \fbBottleneckFrac & \cxBottleneckFrac & \nlBottleneckFrac \\
+distinct edges / edges listed & \wnDistinctEdgeRatio & \fbDistinctEdgeRatio & \cxDistinctEdgeRatio & \nlDistinctEdgeRatio \\
+that one edge recovers & \wnSingleEdgeRecoversFrac & \fbSingleEdgeRecoversFrac & \cxSingleEdgeRecoversFrac & \nlSingleEdgeRecoversFrac \\
+reverse fact already in graph & \wnRevPct\% & \fbRevPct\% & \cxRevPct\% & \nlRevPct\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.4em}
+\begin{itemize}\small
+  \item On WN18RR the list of paths is mostly one edge written out many ways, and
+        much of that is queries a one-hop reverse lookup answers, served as up
+        to twenty paths of up to six hops.
+  \item On denser graphs the paths are genuinely different. The explanation
+        degenerates where the task is degenerate, and \textbf{nothing in its
+        output tells you which case you are in}.
+\end{itemize}
+\end{frame}
+
+% ------------------------------------------------------------------ neuromodulation
+\begin{frame}{Relation channels as neuromodulators}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\small
+\textbf{Bull et al., NeurIPS 2025:} a few broadcast modulators multiply a
+circuit's connections,
+\[ W_{\mathrm{eff}} = W_0 + \textstyle\sum_k T_k\, n_k , \]
+so a slow, low-dimensional \textbf{context} reshapes fast \textbf{content}
+without rewiring it.
+
+\vspace{0.6em}
+\textbf{ULTRA already works this way.} Its relation pass runs once per query
+and gives one vector \(q_c\) per relation type. Every message along an edge of
+type \(c\) is \(h \odot q_c\): one channel reaching all of its edges at once.
+\end{column}
+\begin{column}{0.5\textwidth}
+\small
+\textbf{The pharmacology test}
+\begin{itemize}
+  \item Give each channel a gain \(g_c\); \(g = 1\) is the real model.
+  \item Gradient \(\partial p / \partial g_c\) at \(g=1\): the slope. It is NBFNet's
+        own edge gradient, summed over the channel.
+  \item Dose response: turn \(g_c\) down to .75, .5, .25, 0.
+  \item Channels the explanation uses, channels the gradient ranks first,
+        random channels as control.
+  \item Check: gain 0 on the explanation's edges reproduces the deletion
+        result exactly.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Result 4: the channels are switches, and the gradient cannot see it}
+\begin{center}
+\includegraphics[width=0.77\textwidth]{../video/figs/dose_response_big.pdf}
+\end{center}
+\vspace{-0.8em}
+{\small Silencing the strongest channel the explanation uses removes
+\wnNmBest, \fbNmBest, \cxNmBest, \nlNmBest{} of \(p\) (WN, FB, CX, NL); a
+random channel removes \(\le\)\allNmRandomMax. At half gain only
+\wnNmHalfDose, \fbNmHalfDose, \cxNmHalfDose, \nlNmHalfDose{} of that effect is
+there. The corrected gradient has the right sign \wnNmSignAgree,
+\fbNmSignAgree, \cxNmSignAgree, \nlNmSignAgree\% of the time.}
+\end{frame}
+
+% ------------------------------------------------------------------ takeaway
+\begin{frame}{What it adds up to}
+\begin{center}
+\large The method \textbf{localises}. Localisation is not explanation.
+\end{center}
+\vspace{0.1em}
+\begin{itemize}\footnotesize
+  \item It finds a region of the graph the model depends on: true on all four
+        graphs, against a random control that never moves.
+  \item As released, it differentiates the wrong model. Fixed, it still does
+        not rank within that region; integrated gradients rank better, still
+        far from faithful.
+  \item It does not decompose the region into separate evidence, and the list
+        looks the same whether the model did multi-hop reasoning or one lookup.
+  \item \textbf{Cheap fixes:} reverse the graph before \texttt{visualize()};
+        rank with integrated gradients; report the busiest edge and confirm it
+        with one deletion; print the distinct-edge count.
+\end{itemize}
+\vspace{0.1em}
+{\footnotesize\textcolor{soft}{Limits: one model family; correct predictions only;
+deleting a path disturbs paths that share its edges, which I measured and
+report as a finding rather than argue away.}}
+\end{frame}
+
+% ------------------------------------------------------------------ backup
+\begin{frame}{Backup: the control I found by reading an example}
+\small
+Building a worked example, the top ``path'' came back as one hop: the stored
+reverse of a training fact. WN18RR keeps symmetric relations, so for
+\wnRevPct\% of its queries one lookup answers the question. The test edge itself
+is never present, so this is not leakage, but it changes what there is to explain.
+
+\vspace{0.4em}
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+WN18RR & reverse present & reverse absent \\
+\midrule
+queries & \wnRevN & \wnNoRevN \\
+paths sharing one edge & \wnRevBottleneckFrac & \wnNoRevBottleneckFrac \\
+Kendall \(\tau\) & \wnRevKendallTauGradVsDrop & \wnNoRevKendallTauGradVsDrop \\
+one edge recovers & \wnRevSingleEdgeRecoversFrac & \wnNoRevSingleEdgeRecoversFrac \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3em}
+Redundancy and the dead ranking hold on both halves. How much one edge carries
+does not, which is why it is reported per graph and per half.
+\end{frame}
+
+\end{document}

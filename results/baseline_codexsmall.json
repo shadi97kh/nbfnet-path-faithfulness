@@ -1,0 +1,14 @@
+{
+  "dataset": "CoDExSmall",
+  "checkpoint": "ultra_4g.pth",
+  "n_triples": 1828,
+  "n_rankings": 3656,
+  "seed": 0,
+  "mr": 42.38840103149414,
+  "mrr": 0.4637776017189026,
+  "hits@1": 0.36050328612327576,
+  "hits@3": 0.5144967436790466,
+  "hits@10": 0.6652078628540039,
+  "seconds": 84.6,
+  "sec_per_query": 0.023
+}

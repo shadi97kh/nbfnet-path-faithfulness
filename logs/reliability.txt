@@ -1,0 +1,26 @@
+
+WN18RR
+  delete shortlist (share of p removed)    n= 200  +0.858 [+0.816, +0.898]  +/-0.041   split-half gap p95 0.086   5-query blocks span [+0.53, +1.00]
+  one edge recovers (share of effect)      n= 186  +0.650 [+0.583, +0.716]  +/-0.067   split-half gap p95 0.140   5-query blocks span [+0.17, +1.09]
+  paths sharing one edge                   n= 200  +0.884 [+0.856, +0.909]  +/-0.027   split-half gap p95 0.055   5-query blocks span [+0.52, +1.00]
+  top path minus chance                    n= 194  -0.028 [-0.079, +0.025]  +/-0.052   split-half gap p95 0.102   5-query blocks span [-0.51, +0.33]
+
+FB15k-237
+  delete shortlist (share of p removed)    n= 200  +0.259 [+0.214, +0.304]  +/-0.045   split-half gap p95 0.091   5-query blocks span [-0.37, +0.64]
+  one edge recovers (share of effect)      n= 136  +0.025 [-0.016, +0.066]  +/-0.041   split-half gap p95 0.081   5-query blocks span [-0.23, +0.25]
+  paths sharing one edge                   n= 200  +0.734 [+0.701, +0.769]  +/-0.034   split-half gap p95 0.067   5-query blocks span [+0.45, +0.95]
+  top path minus chance                    n= 200  +0.023 [-0.011, +0.066]  +/-0.039   split-half gap p95 0.077   5-query blocks span [-0.08, +0.34]
+
+CoDEx-S
+  delete shortlist (share of p removed)    n= 200  +0.427 [+0.387, +0.469]  +/-0.041   split-half gap p95 0.080   5-query blocks span [+0.04, +0.64]
+  one edge recovers (share of effect)      n= 178  +0.143 [+0.093, +0.198]  +/-0.053   split-half gap p95 0.100   5-query blocks span [-0.05, +0.59]
+  paths sharing one edge                   n= 200  +0.721 [+0.685, +0.755]  +/-0.035   split-half gap p95 0.067   5-query blocks span [+0.42, +0.96]
+  top path minus chance                    n= 200  +0.072 [+0.028, +0.120]  +/-0.046   split-half gap p95 0.090   5-query blocks span [-0.06, +0.53]
+
+NELL23k
+  delete shortlist (share of p removed)    n= 200  +0.368 [+0.290, +0.447]  +/-0.078   split-half gap p95 0.153   5-query blocks span [-0.28, +0.85]
+  one edge recovers (share of effect)      n= 155  +0.086 [+0.029, +0.149]  +/-0.060   split-half gap p95 0.121   5-query blocks span [-0.31, +0.43]
+  paths sharing one edge                   n= 200  +0.658 [+0.612, +0.703]  +/-0.046   split-half gap p95 0.090   5-query blocks span [+0.37, +0.91]
+  top path minus chance                    n= 196  -0.000 [-0.056, +0.056]  +/-0.056   split-half gap p95 0.117   5-query blocks span [-0.34, +0.54]
+
+wrote results/reliability.json

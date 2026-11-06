@@ -1,0 +1,9 @@
+# tested with these versions on CPU (Python 3.13)
+torch>=2.4
+torch-geometric>=2.5
+torch-scatter        # or colab/torch_scatter_shim, a pure-PyTorch stand-in
+easydict
+ninja
+pyyaml
+numpy
+matplotlib

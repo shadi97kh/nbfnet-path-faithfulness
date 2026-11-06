@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "torch_scatter"
+version = "0.0.0+puretorch"
+description = "Pure-PyTorch stand-in for the torch_scatter functions ULTRA calls, for machines without a prebuilt wheel"
+requires-python = ">=3.9"
+
+[tool.setuptools]
+packages = ["torch_scatter"]
