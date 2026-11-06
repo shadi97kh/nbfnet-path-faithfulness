@@ -60,6 +60,8 @@ between the explanation's ranking of its paths and what deleting each one does
 ## Quick start: the live demo
 
 ```bash
+git clone https://github.com/shadi97kh/nbfnet-path-faithfulness.git
+cd nbfnet-path-faithfulness
 pip install -r requirements.txt
 git clone https://github.com/DeepGraphLearning/ULTRA.git ultra
 git -C ultra checkout 427966ad8ed60420eef034063d44f3153addff90

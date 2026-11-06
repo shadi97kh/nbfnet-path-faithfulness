@@ -23,7 +23,7 @@ if [ "${1:-}" != "--no-audit" ]; then
 fi
 
 FILES=()
-for f in README.md run_benchmark.sh run_stage.sh finalize.sh package.sh pathfaith/*.py report/main.tex report/refs.bib report/numbers.tex report/case.tex report/figs/*.pdf report/main.pdf presentation/talk.tex presentation/talk.pdf video/narration_template.md video/narration.md video/build_video.sh video/record_demo.py video/figs/*.pdf video/demo_run.log video/timeline.txt kg-labels colab/pathfaith_colab.ipynb colab/torch_scatter_shim/pyproject.toml colab/torch_scatter_shim/torch_scatter/*.py results/*.json results/*.jsonl logs/benchmark.log logs/reliability.txt; do
+for f in README.md requirements.txt run_benchmark.sh run_stage.sh finalize.sh package.sh pathfaith/*.py report/main.tex report/refs.bib report/numbers.tex report/case.tex report/figs/*.pdf report/main.pdf presentation/talk.tex presentation/talk.pdf video/narration_template.md video/narration.md video/build_video.sh video/record_demo.py video/figs/*.pdf video/demo_run.log video/timeline.txt kg-labels colab/pathfaith_colab.ipynb colab/torch_scatter_shim/pyproject.toml colab/torch_scatter_shim/torch_scatter/*.py results/*.json results/*.jsonl logs/benchmark.log logs/reliability.txt; do
   if [ -e "$f" ]; then FILES+=("$f")
   else echo "  (not built yet, left out: $f)"; fi
 done
