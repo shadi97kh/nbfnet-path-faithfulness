@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # One stage of the benchmark, for running in pieces:
-#   ./run_stage.sh sweep|fixed|fixed3g|neuromod|ig|direction DS N   or   baseline DS N TAG
+#   ./run_stage.sh sweep|fixed|fixed3g|neuromod|direction DS N
+#   ./run_stage.sh ig DS N [STEPS|released]
+#   ./run_stage.sh baseline DS N TAG
 # Every stage resumes where it stopped.
 set -uo pipefail
 cd "$(dirname "$0")"
@@ -25,9 +27,19 @@ case "$1" in
       --seed 0 --path-controls 0 --corrected --ckpt "$ck" --out "$f" >> "logs/$1_${lc}.log" 2>&1
     python3 -m pathfaith.enrich --dataset "$2" --file "$f" >> logs/benchmark.log 2>&1 ;;
   ig)
-    lc=$(echo "$2" | tr '[:upper:]' '[:lower:]')
-    stage "integrated gradients $2 to $3 queries"
-    python3 -m pathfaith.ig --dataset "$2" --n "$3" >> "logs/ig_${lc}.log" 2>&1 ;;
+    # optional 4th argument: number of steps (default 16, written to
+    # ig_*_seed0.jsonl; other counts get their own file). "released" instead
+    # integrates the released code path's gradient, the completeness check
+    lc=$(echo "$2" | tr '[:upper:]' '[:lower:]'); steps=${4:-16}
+    stage "integrated gradients $2 to $3 queries ($steps)"
+    if [ "$steps" = released ]; then
+      python3 -m pathfaith.ig --dataset "$2" --n "$3" --released >> "logs/ig_${lc}_released.log" 2>&1
+    elif [ "$steps" = 16 ]; then
+      python3 -m pathfaith.ig --dataset "$2" --n "$3" >> "logs/ig_${lc}.log" 2>&1
+    else
+      python3 -m pathfaith.ig --dataset "$2" --n "$3" --steps "$steps" \
+        --out "results/ig_${lc}_steps${steps}_seed0.jsonl" >> "logs/ig_${lc}_s${steps}.log" 2>&1
+    fi ;;
   neuromod)
     lc=$(echo "$2" | tr '[:upper:]' '[:lower:]')
     stage "neuromod $2 to $3 queries"

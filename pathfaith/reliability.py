@@ -56,6 +56,30 @@ def per_query(rows):
             'top path minus chance': np.array(top1gap)}
 
 
+def drawn_index(rows):
+    """For each headline metric, the position in the draw order of every
+    query that has a value for it, so a curve can be indexed by how many
+    queries were drawn, not by how many happened to have that metric."""
+    out = {k: [] for k in per_query([])}
+    for i, r in enumerate(rows):
+        for k, v in per_query([r]).items():
+            if len(v):
+                out[k].append(i)
+    return {k: np.array(v) for k, v in out.items()}
+
+
+def convergence_drawn(values, drawn, n_total):
+    """Running estimate against the number of queries drawn, 5 to n_total;
+    each point uses the queries among the first n drawn that have a value."""
+    out = []
+    for n in grid(n_total):
+        k = int((drawn < n).sum())
+        if k >= 3:
+            m, lo, hi = boot_ci(values[:k])
+            out.append((n, m, lo, hi))
+    return out
+
+
 def boot_ci(x, n_boot=2000, seed=0):
     x = np.asarray(x, float)
     if len(x) < 2:

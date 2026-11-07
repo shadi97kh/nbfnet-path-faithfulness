@@ -127,10 +127,10 @@ def fig_direction(out, results_dir='results', figsize=(6.9, 1.95), big=False):
         lo, hi = float(min(dep.min(), rel.min())), float(max(dep.max(), rel.max()))
         a.plot([lo, hi], [lo, hi], color='k', lw=0.7, zorder=0)
         a.set_xlabel('score, deployed model')
-        a.set_ylabel('score, path the\nexplanation differentiates')
-        gap = max(d['gap_released'] for v in recs.values() for d in v)
+        a.set_ylabel('score on the code path\nthe explanation uses')
+        gap = max(d['gap_released'] for d in kept)
         a.set_title(f'(a) {len(kept)} queries, {next(iter(recs))}', loc='left')
-        a.text(0.03, 0.97, f'largest gap {gap:.1f}', transform=a.transAxes, va='top',
+        a.text(0.03, 0.97, f'largest gap here {gap:.1f}', transform=a.transAxes, va='top',
                fontsize=plt.rcParams['legend.fontsize'])
         a.legend(loc='upper left', bbox_to_anchor=(0.0, 0.9), frameon=False,
                  markerscale=3 if not big else 2, handletextpad=0.2)
@@ -526,8 +526,8 @@ def fig_robustness(out, results_dir='results', figsize=(6.9, 1.85), big=False):
                         continue
                     est, lo, hi = table[(lab, name)][m]
                     y = gi + offs[name]
-                    ax.plot([lo, hi], [y, y], color=color, lw=1.2 if not big else 2.2)
-                    ax.scatter([est], [y], color=color, marker=mk, s=14 if not big else 50,
+                    ax.plot([lo, hi], [y, y], color=color, lw=1.7 if not big else 2.6)
+                    ax.scatter([est], [y], color=color, marker=mk, s=24 if not big else 70,
                                zorder=3, label=name)
             if 'chance' in m or 'tau' in m:
                 ax.axvline(0, color='0.6', lw=0.6, zorder=0)

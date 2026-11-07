@@ -1,0 +1,26 @@
+Re-running recorded queries from a fresh clone of the public repository
+(github.com/shadi97kh/nbfnet-path-faithfulness, commit c5f0f59), with ULTRA at
+commit 427966a, on a CPU machine, 7 Nov 2026. The model is frozen and
+deterministic, so a re-run should give the recorded numbers exactly.
+
+python -m pathfaith.demo --n 2
+  2 queries attempted, 2 completed every intervention, 0 failed.
+
+python -m pathfaith.run_experiment --dataset CoDExSmall --n 5 --pool 20 --topk 5 --seed 0 --path-controls 0
+python -m pathfaith.compare_runs --new <that> --ref results/paths_codexsmall_seed0.jsonl
+  5 of 5 reproduce every recorded number to within 0.0001 (largest gap 0.0e+00)
+
+the same with --corrected, against results/paths_codexsmall_fixed_seed0.jsonl
+  5 of 5 reproduce every recorded number to within 0.0001 (largest gap 0.0e+00)
+
+python -m pathfaith.neuromod --dataset CoDExSmall --n 3, against results/neuromod_codexsmall_seed0.jsonl
+  3 of 3 reproduce every recorded number to within 0.0001 (largest gap 4.9e-07)
+
+python -m pathfaith.ig --dataset CoDExSmall --n 2, against results/ig_codexsmall_seed0.jsonl
+  largest gap in path attributions 0.0, in completeness gap 0.0
+
+python -m pathfaith.direction_check --dataset CoDExSmall --n 2, against results/direction_codexsmall.jsonl
+  largest gap in measured change, corrected gradient and score gap 0.0
+
+python -m pathfaith.reliability && python -m pathfaith.figures
+  rebuilt all 12 report figures and 13 slide figures from results/

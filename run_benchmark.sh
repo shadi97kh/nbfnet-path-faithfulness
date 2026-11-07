@@ -1,50 +1,41 @@
 #!/usr/bin/env bash
-# The full benchmark. Every stage is resumable, so this can be stopped and
-# restarted at any point without losing finished queries.
-#
-#   four graphs: two in ultra_4g's pre-training mixture (WN18RR, FB15k-237)
-#   and two held out from it (CoDEx-S, NELL23k)
-#   200 correctly answered queries per graph, 20 candidate paths each
-#   link prediction on the test sets, for the reproduction table
-#   the neuromodulatory channel experiment on the same queries
-#
-# About ten hours on two CPU cores, most of it FB15k-237.
+# Every run behind the report, in the order they depend on each other, with
+# the query counts that are in results/. Every stage resumes where it
+# stopped, so this can be stopped and restarted at any point. On two CPU
+# cores the whole thing takes most of a day, FB15k-237 and WN18RR most of it.
 set -uo pipefail
 cd "$(dirname "$0")"
-mkdir -p results logs
+S=./run_stage.sh
 
-stage() { echo "[$(date '+%H:%M:%S')] $*" | tee -a logs/benchmark.log; }
+# 1. the explanation as released, conditions A to D, 200 queries per graph
+for DS in WN18RR FB15k237 CoDExSmall NELL23k; do $S sweep "$DS" 200; done
 
-sweep() {  # dataset, target n
-  local DS=$1 N=$2 lc
-  lc=$(echo "$DS" | tr '[:upper:]' '[:lower:]')
-  stage "sweep $DS to $N queries"
-  python3 -m pathfaith.run_experiment --dataset "$DS" --n "$N" --pool 20 --topk 5 \
-    --seed 0 --path-controls 0 --out "results/paths_${lc}_seed0.jsonl" \
-    >> "logs/paths_${lc}.log" 2>&1
-  stage "enrich $DS"
-  python3 -m pathfaith.enrich --dataset "$DS" --file "results/paths_${lc}_seed0.jsonl" \
-    >> logs/benchmark.log 2>&1
-}
+# 2. the same with the direction-corrected explanation, and on ULTRA's
+#    3-graph checkpoint for the held-out graphs
+for DS in WN18RR CoDExSmall NELL23k; do $S fixed "$DS" 200; done
+$S fixed FB15k237 100
+for DS in CoDExSmall NELL23k; do $S fixed3g "$DS" 200; done
 
-baseline() {  # dataset, number of test triples (0 = all), output tag
-  stage "baseline $1 on $2 test triples (0 = all)"
-  python3 -m pathfaith.run_baseline --dataset "$1" --n "$2" --batch-size 8 \
-    --out "results/baseline_$3.json" > "logs/baseline_$3.log" 2>&1
-}
+# 3. condition E, relation channels (reads the corrected queries)
+$S neuromod CoDExSmall 200; $S neuromod NELL23k 200
+$S neuromod WN18RR 100;     $S neuromod FB15k237 50
 
-# 1. the path benchmark: every graph to 200 queries, in the fixed order
-for DS in WN18RR CoDExSmall NELL23k FB15k237; do sweep "$DS" 200; done
+# 4. integrated gradients on the corrected candidates, the step-count
+#    ablation, and the completeness check with the released gradient
+$S ig CoDExSmall 200; $S ig NELL23k 200; $S ig WN18RR 100; $S ig FB15k237 100
+$S ig CoDExSmall 50 32; $S ig CoDExSmall 50 64
+$S ig CoDExSmall 30 released
 
-# 2. reproduction: full test sets, and a 2,000-triple sample of FB15k-237,
-#    whose full test set alone takes over two hours on two cores
-[ -f results/baseline_codexsmall.json ]      || baseline CoDExSmall 0 codexsmall
-[ -f results/baseline_wn18rr_full.json ]     || baseline WN18RR 0 wn18rr_full
-[ -f results/baseline_nell23k_full.json ]    || baseline NELL23k 0 nell23k_full
-[ -f results/baseline_fb15k237_2000.json ]   || baseline FB15k237 2000 fb15k237_2000
+# 5. the message-direction check
+$S direction CoDExSmall 30; $S direction NELL23k 20
 
-# 3. neuromodulatory channels, on the same queries in the same order
-for DS in CoDExSmall NELL23k WN18RR; do ./run_stage.sh neuromod "$DS" 200; done
-./run_stage.sh neuromod FB15k237 100
+# 6. link prediction for the reproduction table. The ultra_3g runs, the full
+#    WN18RR and NELL23k test sets and the FB15k-237 sample were run on Colab
+#    with colab/baseline_jobs.py; this is the same thing locally
+[ -f results/baseline_codexsmall.json ]    || $S baseline CoDExSmall 0 codexsmall
+[ -f results/baseline_wn18rr_full.json ]   || $S baseline WN18RR 0 wn18rr_full
+[ -f results/baseline_nell23k_full.json ]  || $S baseline NELL23k 0 nell23k_full
+[ -f results/baseline_fb15k237_2000.json ] || $S baseline FB15k237 2000 fb15k237_2000
 
-stage "ALL DONE"
+python3 -m pathfaith.reliability
+python3 -m pathfaith.figures

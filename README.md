@@ -11,9 +11,9 @@ paths, keep only the paths, or point them somewhere else, rerun the model, and
 measure what the prediction does. It also turns whole relation types down,
 like a neuromodulator, to see whether the gradient predicts the effect.
 
-The audit found a bug in the released explanation code, shared with
-NBFNet-PyG: the explanation differentiates the model with every message
-reversed (see "The message-direction bug" below). Every result is reported
+The audit found a bug in the released explanation code: the explanation
+differentiates the model with every message reversed. NBFNet-PyG has the same
+code pattern, which I read but did not run (see "The message-direction bug" below). Every result is reported
 for the explanation as released and for the corrected one.
 
 Nothing here trains anything. Every number comes from ULTRA's released
@@ -29,7 +29,7 @@ parameter frozen.
 
 ## Results at a glance
 
-800 correctly answered queries over four graphs (200 each), 15,447 single-path
+800 queries the model ranks in its top ten, over four graphs (200 each), 15,447 single-path
 deletions. Shares are of the gold answer's probability; tau is Kendall's tau
 between the explanation's ranking of its paths and what deleting each one does
 (1 would be a faithful ranking).
@@ -41,17 +41,22 @@ between the explanation's ranking of its paths and what deleting each one does
 | delete as many random edges | 0.000 | 0.000 | 0.000 | 0.007 |
 | tau, explanation as released | -0.009 | 0.048 | 0.076 | 0.041 |
 | tau, direction-corrected explanation | 0.082 | 0.153 | 0.185 | 0.103 |
-| tau, integrated gradients on the same paths | | | 0.489 | 0.445 |
+| tau, integrated gradients on the same paths | 0.270 | 0.432 | 0.489 | 0.445 |
 | one shared edge recovers this share of the effect | 0.650 | 0.025 | 0.143 | 0.086 |
 | silence the main relation channel: share of p removed | 0.995 | 0.770 | 0.895 | 0.895 |
+
+Integrated gradients was run on 100 WN18RR and 50 FB15k-237 queries, the
+channel experiment on 100 and 50; every other row uses all 200 per graph.
 
 * **A bug in the released explanation.** It differentiates the model with every
   message reversed: scores up to 10.5 logits off, gradient off by as much as
   the effect it predicts, wrong sign on 21 of 50 random directions. Fixed, the
   error is 0.7%.
 * **The selected edges are load-bearing; the order is not.** Fixing the bug
-  helps a little, integrated gradients help more, and neither makes the
-  ranking faithful.
+  helps a little, integrated gradients help more on every graph, and neither
+  makes the ranking faithful. Doubling and quadrupling the integration steps
+  shrinks integrated gradients' completeness error (15% to 5%) and leaves its
+  ranking where it was (tau 0.47 to 0.46).
 * **Relation channels act as switches.** Most of a channel's effect appears
   only as its gain nears zero, which a gradient taken at full gain cannot see.
 * ULTRA's own 3-graph checkpoint reproduces the paper's MRR here, 0.472 on
@@ -91,7 +96,8 @@ deployed model.
 It ends with a count of how many queries completed every intervention, then
 reads the full benchmark off disk so the five live queries are visibly one
 slice of it. `--seed 7` picks a different five, `--dataset WN18RR` runs on
-WordNet with synset names. About 15 seconds per query on two CPU cores.
+WordNet with synset names. A few seconds per query on two CPU cores for
+CoDEx-S, longer on the larger graphs.
 
 ## Running on Google Colab
 
@@ -159,7 +165,9 @@ sample of size *n*, so it plots each headline estimate as queries are added,
 reports split-half agreement, and shows what every disjoint block of five
 queries would have concluded.
 
-Every stage resumes where it stopped, so it can be run in pieces:
+`./run_benchmark.sh` runs every stage behind the report in order, with the
+query counts that are in `results/`. Every stage resumes where it stopped, so
+it can also be run in pieces:
 
 ```bash
 ./run_stage.sh sweep     CoDExSmall 200   # released explanation, conditions A to D
@@ -168,7 +176,7 @@ Every stage resumes where it stopped, so it can be run in pieces:
 ./run_stage.sh neuromod  CoDExSmall 200   # condition E (needs the fixed stage first)
 ./run_stage.sh ig        CoDExSmall 200   # integrated gradients (needs the fixed stage first)
 ./run_stage.sh direction CoDExSmall 30    # the message-direction check
-./run_stage.sh baseline  CoDExSmall 0 codexsmall   # MRR on the full test set
+./run_stage.sh baseline  CoDExSmall 0 codexsmall   # MRR on all test triples (0 = all)
 python -m pathfaith.reliability
 ```
 
@@ -178,6 +186,20 @@ NELL23k baselines were run on Colab with the same code.
 
 Datasets download on first use into `kg-datasets/` (PyTorch Geometric for
 WN18RR and FB15k-237, ULTRA's loaders for CoDEx-S and NELL23k).
+
+## Re-running and checking
+
+The model is frozen and deterministic, so re-running any recorded query gives
+the recorded numbers exactly. `results/reproduction_check.txt` is such a check
+from a fresh clone of this repository: the released and corrected benchmark,
+the channel experiment, integrated gradients and the direction check all
+match to the last digit. To repeat it:
+
+```bash
+python -m pathfaith.run_experiment --dataset CoDExSmall --n 5 --pool 20 --topk 5 --seed 0 \
+    --path-controls 0 --out check.jsonl
+python -m pathfaith.compare_runs --new check.jsonl --ref results/paths_codexsmall_seed0.jsonl
+```
 
 ## Rebuilding the figures
 
@@ -201,7 +223,7 @@ pathfaith/
   analyze_neuromod.py  summaries for condition E, and nDCG and MRR of the paths
   ig.py              integrated gradients on the same queries
   direction_check.py the message-direction check behind the bug
-  run_baseline.py    filtered MRR and Hits@k on the full test set
+  run_baseline.py    filtered MRR and Hits@k on the test set
   run_experiment.py  sweep queries, append to results/*.jsonl, resumable
   enrich.py          add degree and reverse-fact controls to a results file
   analyze.py         bootstrap summaries, Kendall's tau with explicit ties
@@ -211,7 +233,8 @@ pathfaith/
   demo.py            the live demo
   warmup.py          load a graph and compile ULTRA's kernel before the demo
   compare_runs.py    check a fresh run against the recorded benchmark
-colab/               pathfaith_colab.ipynb and the torch_scatter stand-in
+colab/               pathfaith_colab.ipynb, the torch_scatter stand-in, and
+                     baseline_jobs.py, the link-prediction runs done on Colab
 report/              main.pdf, the report, and figs/, its figures
 presentation/        talk.pdf, the slides
 video/figs/          slide-size versions of the figures
@@ -221,7 +244,7 @@ results/             baselines (*.json) and one JSON line per query (*.jsonl)
 
 ## The message-direction bug
 
-ULTRA (like NBFNet-PyG) runs its layers with a fused `rspmm` kernel that sends
+ULTRA runs its layers with a fused `rspmm` kernel that sends
 the message on edge column `e` from `edge_index[1, e]` to `edge_index[0, e]`.
 That is the model used for training and prediction. When edge weights need a
 gradient, which is exactly when `visualize()` runs, the layers fall back to

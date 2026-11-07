@@ -246,7 +246,7 @@ def fig_convergence(out: str, results_dir: str = 'results',
     every disjoint block of five queries, which is what a five-query benchmark
     could have reported.
     """
-    from pathfaith.reliability import DATASETS, per_query, convergence
+    from pathfaith.reliability import DATASETS, per_query, drawn_index, convergence_drawn
     metrics = metrics or ['delete shortlist (share of p removed)',
                           'one edge recovers (share of effect)',
                           'paths sharing one edge',
@@ -266,9 +266,9 @@ def fig_convergence(out: str, results_dir: str = 'results',
         if os.path.exists(p):
             _, rows = load(p)
             if len(rows) >= 10:
-                loaded[label] = per_query(rows)
+                loaded[label] = (per_query(rows), drawn_index(rows), len(rows))
     for ax, metric in zip(axes, metrics):
-        for label, vals in loaded.items():
+        for label, (vals, drawn, n_total) in loaded.items():
             v = vals[metric]
             if len(v) < 10:
                 continue
@@ -277,17 +277,18 @@ def fig_convergence(out: str, results_dir: str = 'results',
             ax.scatter(np.full(len(blocks), 5.0) * np.exp(np.random.default_rng(1)
                        .uniform(-0.08, 0.08, len(blocks))),
                        blocks, s=6 if not big else 14, color=col, alpha=0.35, lw=0, zorder=1)
-            curve = convergence(v)
+            # indexed by queries drawn, so every curve runs to the full sample
+            curve = convergence_drawn(v, drawn[metric], n_total)
             n = np.array([c[0] for c in curve], float)
             m = np.array([c[1] for c in curve])
             lo = np.array([c[2] for c in curve])
             hi = np.array([c[3] for c in curve])
             ax.fill_between(n, lo, hi, color=col, alpha=0.15, lw=0, zorder=2)
-            ax.plot(n, m, color=col, label=f'{label} (n={len(v)})', zorder=3)
+            ax.plot(n, m, color=col, label=f'{label} (n={n_total})', zorder=3)
         ax.set_xscale('log')
         # plain counts on the axis; scientific notation hides the point
         ticks = [t for t in (5, 10, 20, 50, 100, 200, 400, 800)
-                 if t <= max(len(v[metric]) for v in loaded.values()) * 1.05]
+                 if t <= max(n for _, _, n in loaded.values()) * 1.05]
         ax.xaxis.set_major_locator(matplotlib.ticker.FixedLocator(ticks))
         ax.xaxis.set_major_formatter(matplotlib.ticker.FixedFormatter([str(t) for t in ticks]))
         ax.xaxis.set_minor_locator(matplotlib.ticker.NullLocator())
@@ -303,6 +304,7 @@ def fig_convergence(out: str, results_dir: str = 'results',
         ax.set_visible(False)
     for ax in axes[-cols_n:]:
         ax.set_xlabel('queries (log scale)' if rows_n == 1 else 'number of queries (log scale)')
+    axes[0].set_ylabel('running estimate')
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc='lower center', ncol=len(labels), frameon=False,
                fontsize=7 if not big else 11, bbox_to_anchor=(0.5, -0.01))
@@ -371,3 +373,26 @@ def fig_dose_response(out: str, results_dir: str = 'results', figsize=(6.9, 1.8)
     fig.tight_layout(pad=0.4, rect=(0, 0.1 if not big else 0.07, 1, 1))
     fig.savefig(out)
     plt.close(fig)
+
+
+# ------------------------------------------------------------------ all of them
+def main() -> None:
+    """Every figure, report and slide versions, from what is in results/."""
+    from pathfaith.figures_extra import make_extra
+    have = {name: f'results/paths_{tag}_seed0.jsonl' for name, tag in NM_SETS}
+    have = {k: v for k, v in have.items() if os.path.exists(v)}
+    made = make_all(have)
+    made += make_slide_figs({k: v for k, v in have.items() if k in ('WN18RR', 'FB15k-237')})
+    os.makedirs('video/figs', exist_ok=True)
+    fig_convergence('video/figs/convergence_big.pdf', figsize=(11.07, 6.32), big=True)
+    fig_dose_response('report/figs/dose_response.pdf')
+    fig_dose_response('video/figs/dose_response_big.pdf', figsize=(11.07, 6.0), big=True)
+    made += ['video/figs/convergence_big.pdf', 'report/figs/dose_response.pdf',
+             'video/figs/dose_response_big.pdf']
+    made += make_extra()
+    for m in made:
+        print(m)
+
+
+if __name__ == '__main__':
+    main()
