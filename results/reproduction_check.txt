@@ -22,5 +22,11 @@ python -m pathfaith.ig --dataset CoDExSmall --n 2, against results/ig_codexsmall
 python -m pathfaith.direction_check --dataset CoDExSmall --n 2, against results/direction_codexsmall.jsonl
   largest gap in measured change, corrected gradient and score gap 0.0
 
+Again from a fresh clone at commit a409343, after the integrated-gradients
+runs on WN18RR and FB15k-237 were added:
+
+python -m pathfaith.ig --dataset WN18RR --n 1, against results/ig_wn18rr_seed0.jsonl
+  largest gap in path attributions 0.0
+
 python -m pathfaith.reliability && python -m pathfaith.figures
   rebuilt all 12 report figures and 13 slide figures from results/
