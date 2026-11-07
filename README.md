@@ -95,10 +95,11 @@ WordNet with synset names. About 15 seconds per query on two CPU cores.
 
 ## Running on Google Colab
 
-Open `colab/pathfaith_colab.ipynb` in Colab (File, Upload notebook) and run
-all cells. The first cell asks for `CAP6938_pathfaith_code.zip`, or reads it
-from Google Drive or a git URL if you set `SOURCE`. The default CPU runtime is
-enough. The notebook then:
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shadi97kh/nbfnet-path-faithfulness/blob/main/colab/pathfaith_colab.ipynb)
+
+Open the notebook with the badge and run all cells. It clones this repository
+by itself; set `SOURCE` in the first cell to use a code zip instead. The
+default CPU runtime is enough. The notebook then:
 
 1. installs PyTorch Geometric, clones ULTRA at the pinned commit, and installs
    `torch_scatter` (a prebuilt wheel if one exists for Colab's PyTorch,
