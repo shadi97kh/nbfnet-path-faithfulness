@@ -15,11 +15,18 @@ free CPU runtime. Setup takes about 3 minutes. Then:
 1. **Section 2** is the demo: two runs on different queries.
 2. **Section 3** re-runs part of the recorded benchmark and checks every number
    against the saved results.
-3. **Section 4** redraws every figure in the report and the talk from the saved
-   results, shows them, and zips them into `figures.zip`. It takes under a
-   minute and does not run the model.
-4. **Section 5** holds the long runs behind the report. They are switched off,
+3. **Section 4** is the neuromodulation experiment: it runs it live on a few
+   queries, summarises the saved results on all four graphs and draws the
+   dose-response curves.
+4. **Section 5** redraws every figure in the report and the talk from the saved
+   results, shows them, and zips them into `figures.zip`. It does not run the
+   model.
+5. **Section 6** holds the long runs behind the report. They are switched off,
    because they take hours and their output is already in `results/`.
+
+The notebook is saved with the outputs of a complete run, so you can read
+every result on GitHub without running anything. That run took about
+7 minutes on a 2-core CPU.
 
 ## What the project does
 
@@ -34,11 +41,24 @@ explanation, I change the graph and run the frozen model again:
 | B | delete each of its 20 candidate paths, one at a time | does its ranking match the real effect? |
 | C | delete the top 5 together, or keep only them | are they load-bearing? |
 | D | point the last hop of the top path at another entity | does the answer follow the edit? |
-| E | turn one relation type's gain from 1 down to 0 | does the gradient predict the effect? |
+| E | neuromodulation: turn one relation type's gain from 1 down to 0 | does the gradient predict the effect? |
 
 Every result has a control: deleting the same number of random edges. Nothing
 is trained. The model is ULTRA's released `ultra_4g` checkpoint, whose
 entity-level reasoner is NBFNet, with every weight frozen.
+
+## Where each part lives
+
+| Part | Code | Saved results | Notebook | Report | Slides |
+|---|---|---|---|---|---|
+| Live demo | `pathfaith/demo.py` | | 2 | | 8 |
+| Path deletions and rewires (A to D) | `experiment.py`, `run_experiment.py` | `results/paths_*` | 3 | 7.1 to 7.3, 7.6 to 7.8 | 9, 10, 14 |
+| The message-direction bug | `direction_check.py`, `attribution.flipped` | `results/direction_*` | 3 | 5 | 11 |
+| Integrated gradients and the step ablation | `ig.py` | `results/ig_*` | 6 | 7.4 | 12, 13 |
+| Neuromodulation (E) | `neuromod.py`, `analyze_neuromod.py` | `results/neuromod_*` | 4 | 4 (E), 7.5 | 4, 15 |
+| Link prediction | `run_baseline.py` | `results/baseline*` | 3 | Table 1 | 5 |
+| How many queries are enough | `reliability.py` | `results/reliability.json` | 3 | 6 | 6 |
+| Every figure | `figures.py`, `figures_extra.py` | `report/figs/` | 5 | all | |
 
 ## Results
 
