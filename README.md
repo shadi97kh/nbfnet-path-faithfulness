@@ -23,7 +23,8 @@ parameter frozen.
 ## What is in this repository
 
 * [`report/main.pdf`](report/main.pdf): the 8-page report (CVPR 2026 template)
-* [`presentation/talk.pdf`](presentation/talk.pdf): the slides
+* [`presentation/NBFNet_Path_Faithfulness.pptx`](presentation/NBFNet_Path_Faithfulness.pptx): the talk, 16 slides plus a backup, with the spoken script in the speaker notes
+* [`presentation/talk.pdf`](presentation/talk.pdf): an earlier version of the slides, in Beamer
 * `pathfaith/`: all the code; `results/`: every recorded run, one JSON line per query
 * `colab/pathfaith_colab.ipynb`: the whole project on Google Colab, CPU runtime
 
@@ -237,7 +238,7 @@ pathfaith/
 colab/               pathfaith_colab.ipynb, the torch_scatter stand-in, and
                      baseline_jobs.py, the link-prediction runs done on Colab
 report/              main.pdf, the report, and figs/, its figures
-presentation/        talk.pdf, the slides
+presentation/        NBFNet_Path_Faithfulness.pptx (the talk) and talk.pdf
 video/figs/          slide-size versions of the figures
 kg-labels/           CoDEx-S entity and relation labels, WN18RR synset names
 results/             baselines (*.json) and one JSON line per query (*.jsonl)
