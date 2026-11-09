@@ -1,18 +1,4 @@
-"""Check that a fresh run reproduces the recorded benchmark, query by query.
-
-Works on both kinds of results file: the path benchmark (paths_*.jsonl) and
-the neuromodulation experiment (neuromod_*.jsonl).
-
-The benchmark's queries are drawn in an order fixed by the seed, and the model
-is frozen and deterministic, so re-running the first n queries anywhere, on
-any machine, should give the same numbers as the first n records on disk. This
-compares every query the two files share, field by field, and prints how many
-agree to within a tolerance.
-
-Usage:
-    python -m pathfaith.compare_runs --new colab_check/paths_codexsmall.jsonl \
-        --ref results/paths_codexsmall_seed0.jsonl
-"""
+"""Check that a fresh run reproduces the recorded benchmark, query by query."""
 from __future__ import annotations
 
 import argparse

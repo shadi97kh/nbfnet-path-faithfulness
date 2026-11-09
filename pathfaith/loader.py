@@ -1,11 +1,4 @@
-"""Load a frozen ULTRA checkpoint and a knowledge graph, on CPU.
-
-ULTRA's entity-level reasoner is NBFNet (`ultra.models.EntityNBFNet`), and the
-checkpoints shipped in the repository were pre-trained with FB15k-237 and
-WN18RR in the mixture. Nothing here trains or fine-tunes anything: every
-experiment in this project runs against the released weights exactly as
-published, so no training noise enters the comparison.
-"""
+"""Load a frozen ULTRA checkpoint and a knowledge graph, on CPU."""
 from __future__ import annotations
 
 import os
@@ -14,9 +7,6 @@ from dataclasses import dataclass
 
 import torch
 
-# ULTRA's own dataset classes reload their processed cache with a bare
-# torch.load, which PyTorch 2.6+ refuses unless legacy unpickling is allowed.
-# The files are ones this machine just built from the public raw triples.
 os.environ.setdefault('TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD', '1')
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,8 +15,6 @@ DATA_ROOT = os.environ.get('KG_DATA_ROOT', os.path.join(REPO, 'kg-datasets'))
 if ULTRA_ROOT not in sys.path:
     sys.path.insert(0, ULTRA_ROOT)
 
-# the hyperparameters in ULTRA's config/transductive/inference.yaml, inlined so
-# that a reader can see the whole model definition without chasing a yaml file
 REL_MODEL = dict(class_='RelNBFNet', input_dim=64, hidden_dims=[64] * 6,
                  message_func='distmult', aggregate_func='sum',
                  short_cut=True, layer_norm=True)
@@ -39,7 +27,7 @@ ENT_MODEL = dict(class_='EntityNBFNet', input_dim=64, hidden_dims=[64] * 6,
 class Bundle:
     """Everything an experiment needs, in one object."""
     model: torch.nn.Module
-    train_data: object   # message-passing graph plus the training targets
+    train_data: object
     valid_data: object
     test_data: object
     name: str

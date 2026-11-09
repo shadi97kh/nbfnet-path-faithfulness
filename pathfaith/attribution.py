@@ -1,22 +1,4 @@
-"""The four conditions compared in this project.
-
-A  gradient      NBFNet's published explanation, unchanged: run the model with
-                 per-edge weights marked for autograd, take d(score)/d(weight),
-                 and beam-search the top paths under those gradients. This is
-                 `BaseNBFNet.visualize`, called on the authors' own code.
-B  hybrid        Take A's shortlist, then delete each path's edges from the
-                 graph, re-score, and re-rank by the drop that actually happens.
-C  occlusion     The same deletion test over a much wider candidate pool, with
-                 no gradient shortlist. Too slow to deploy; it is the ceiling.
-D  rewire        An edit rather than a deletion. Redirect the explanation's
-                 final edge to a different tail and ask whether the prediction
-                 follows it. A path the model truly reasons over should drag
-                 the answer with it; a decorative one will not.
-
-Interventions are made on the graph itself, not on a mask, so what the model
-sees afterwards is a knowledge graph that genuinely lacks (or genuinely
-re-routes) those facts.
-"""
+"""Graph edits, scoring, and NBFNet's own path explanation."""
 from __future__ import annotations
 
 import time
@@ -25,19 +7,14 @@ from dataclasses import dataclass, field
 import torch
 
 
-# --------------------------------------------------------------------------
-# graph surgery
-# --------------------------------------------------------------------------
 def _inverse_type(r: torch.Tensor, num_relations: int) -> torch.Tensor:
-    """FB15k-237 and WN18RR are stored with both directions; relation r's
-    inverse is r + R/2 (and vice versa)."""
     half = num_relations // 2
     return torch.where(r < half, r + half, r - half)
 
 
 def find_edges(data, triples: torch.Tensor) -> torch.Tensor:
-    """Column indices in data.edge_index for each (h, t, r) row of `triples`,
-    including the stored inverse edge. Returns a flat LongTensor."""
+    """Column indices in data.edge_index for each (h, t, r) row of `triples`, including the
+    stored inverse edge."""
     if triples.numel() == 0:
         return torch.empty(0, dtype=torch.long)
     h, t, r = triples.t()
@@ -54,18 +31,7 @@ def find_edges(data, triples: torch.Tensor) -> torch.Tensor:
 
 
 def _variant(data, edge_index, edge_type):
-    """A graph that differs from `data` only in its edges.
-
-    Built field by field rather than with `Data.clone()`, which would copy the
-    relation graph as well. That matters here: an occlusion study runs tens of
-    thousands of these, and the relation graph is the largest object in the
-    bundle.
-
-    The relation graph is also deliberately carried over unchanged. Deleting a
-    handful of edges out of hundreds of thousands should not be allowed to move
-    the relation representations too, or the measured drop would mix the
-    deletion with a second-order change to the conditioning.
-    """
+    # the relation graph is kept as it is, so an edit only changes the entity graph
     from torch_geometric.data import Data
     out = Data(edge_index=edge_index, edge_type=edge_type,
                num_nodes=int(data.num_nodes))
@@ -82,7 +48,7 @@ def drop_edges(data, cols: torch.Tensor):
 
 
 def keep_only(data, cols: torch.Tensor):
-    """`data` keeping only those edge columns. Used for sufficiency."""
+    """`data` keeping only those edge columns."""
     return _variant(data, data.edge_index[:, cols], data.edge_type[cols])
 
 
@@ -96,12 +62,7 @@ def inverse_column(data, col: int):
 
 
 def rewire_edge(data, col: int, new_tail: int):
-    """`data` with edge `col` pointing at `new_tail` instead.
-
-    The matching inverse edge is moved with it, so the graph stays a consistent
-    pair of directions and the edit is a real change of fact rather than a
-    half-applied one.
-    """
+    """`data` with edge `col` pointing at `new_tail` instead."""
     ei = data.edge_index.clone()
     et = data.edge_type.clone()
     h, t = int(ei[0, col]), int(ei[1, col])
@@ -115,9 +76,6 @@ def rewire_edge(data, col: int, new_tail: int):
     return _variant(data, ei, et)
 
 
-# --------------------------------------------------------------------------
-# scoring
-# --------------------------------------------------------------------------
 @torch.no_grad()
 def score(bundle, data, h: int, r: int, tails) -> torch.Tensor:
     """Score (h, r, tail) for every tail in `tails`, on the given graph."""
@@ -134,9 +92,6 @@ def rank_of(bundle, data, h: int, r: int, t: int) -> int:
     return int((s > s[t]).sum()) + 1
 
 
-# --------------------------------------------------------------------------
-# condition A: the published explanation
-# --------------------------------------------------------------------------
 @dataclass
 class Explanation:
     paths: list = field(default_factory=list)   # each: list of (h, t, r)
@@ -147,14 +102,9 @@ class Explanation:
 def flipped(data):
     """The same edge columns with their direction reversed.
 
-    The fused rspmm kernel that ULTRA (and NBFNet-PyG) use for training and
-    inference sends each message from edge_index[1] to edge_index[0]. PyG's
-    generic message passing, which those layers fall back to whenever edge
-    weights need a gradient, sends it from edge_index[0] to edge_index[1].
-    The released explanation therefore differentiates a model with every
-    message reversed. Running the generic path on the flipped graph computes
-    exactly the deployed model (scores agree to 3e-6), so its gradient is the
-    real one.
+    ULTRA's fast kernel sends each message from edge_index[1] to edge_index[0],
+    but the fallback it uses when a gradient is needed goes the other way.
+    Explaining on the flipped graph gives the gradient of the deployed model.
     """
     return _variant(data, data.edge_index.flip(0), data.edge_type)
 
@@ -162,15 +112,7 @@ def flipped(data):
 def explain_gradient(bundle, data, h: int, r: int, t: int,
                      topk: int = 10, num_beam: int = 10,
                      corrected: bool = False) -> Explanation:
-    """NBFNet's path explanation for (h, r, t).
-
-    corrected=False is the released code, unchanged. corrected=True runs the
-    same code on the flipped graph, so the gradients and the beam search follow
-    the direction the deployed model actually passes messages in. Its paths
-    are returned as columns of the original graph, (edge_index[0],
-    edge_index[1], type), listed in the order the message travels: each hop's
-    message goes from its second entity to its first.
-    """
+    """NBFNet's path explanation for (h, r, t)."""
     ent = bundle.model.entity_model
     ent.num_beam, ent.path_topk = num_beam, topk
 

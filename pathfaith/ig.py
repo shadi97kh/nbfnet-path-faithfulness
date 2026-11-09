@@ -1,31 +1,4 @@
-"""Integrated gradients on the same queries: the standard fix, tested.
-
-NBFNet's explanation reads the gradient of the score at the model's operating
-point, every edge weight at one. Integrated gradients (Sundararajan et al.,
-ICML 2017) average that gradient along a straight path from a baseline to the
-input, which is the textbook remedy when a response is flat or saturated near
-the operating point, the shape the neuromodulation experiment finds. Here the
-baseline is the graph with every message switched off and the path scales all
-edge weights together from 0 to 1:
-
-    IG_e = integral over a in [0, 1] of dp/dw_e at w = a * 1
-
-approximated with 16 midpoint steps, so the attributions sum to
-p(full graph) - p(no messages), which each query checks. The gradients are the
-deployed model's (taken on the direction-corrected path), and the candidate
-paths are the corrected explanation's, so IG is compared with the gradient it
-is meant to improve on rather than with the released code's.
-
-From one run per query this gives two things:
-  paths     each of the explanation's 20 candidate paths scored by the sum of
-            IG over its edges, to rank against the measured deletion drops
-  channels  the IG of each relation channel, the sum over its edges (scaling
-            every channel together is the same path), to set against the
-            silencing effects measured by pathfaith.neuromod
-
-Usage:
-    python -m pathfaith.ig --dataset CoDExSmall --n 200
-"""
+"""Integrated gradients on the same queries: the standard fix, tested."""
 from __future__ import annotations
 
 import argparse
@@ -53,8 +26,6 @@ def run_query(bundle, data, rec, steps=STEPS, released=False):
     ch, R = NM.channel_of(data)
     t0 = time.time()
 
-    # the deployed model's own gradient path; --released differentiates the
-    # code path the released explanation uses, to show it fails completeness
     gdata = data if released else A.flipped(data)
     p1 = float(NM.prob(bundle, data, h, r, t)[0])
     p0 = float(NM.prob(bundle, data, h, r, t, torch.zeros(E))[0])

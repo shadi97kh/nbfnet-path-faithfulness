@@ -1,16 +1,4 @@
-"""A pure-PyTorch stand-in for the parts of torch_scatter that ULTRA uses.
-
-ULTRA imports torch_scatter, a compiled extension. On a machine with no
-prebuilt wheel for its PyTorch version (Google Colab often moves ahead of the
-wheels), building it from source takes ten minutes or more. Everything ULTRA's
-entity-level NBFNet needs from it is a scatter sum, mean, max or min, which
-PyTorch has had natively since 1.12, so this package provides those with the
-same signatures and the same semantics (empty slots are filled with zero).
-
-It is only installed when the real wheel is unavailable. Results agree with the
-compiled extension to float rounding; the Colab notebook checks this against
-the recorded benchmark before trusting it.
-"""
+"""A pure-PyTorch stand-in for the parts of torch_scatter that ULTRA uses."""
 from __future__ import annotations
 
 from typing import Optional, Tuple
@@ -21,7 +9,6 @@ __version__ = '0.0.0+puretorch'
 
 
 def broadcast(src: torch.Tensor, other: torch.Tensor, dim: int) -> torch.Tensor:
-    # same rule as torch_scatter.utils.broadcast
     if dim < 0:
         dim = other.dim() + dim
     if src.dim() == 1:
@@ -69,8 +56,6 @@ def _extreme(src, index, dim, out, dim_size, which):
     index = broadcast(index, src, dim)
     res = _out(src, index, dim, out, dim_size)
     res = res.scatter_reduce(dim, index, src, reduce=which, include_self=False)
-    # argument: position along dim of the winning element, -1 for empty slots,
-    # matching torch_scatter's convention of src.size(dim) for empty slots
     d = dim if dim >= 0 else src.dim() + dim
     pos = torch.arange(src.size(d), device=src.device)
     shape = [1] * src.dim()

@@ -85,9 +85,9 @@ relation experiment on 100 and 50. The corrected explanation on FB15k-237 has
 
 In short: the paths point at edges the model depends on, but their order
 means little, and fixing the bug below plus integrated gradients helps without
-making the ranking faithful. Relation types act like switches: most of their
-effect shows up only as the gain gets close to zero, which a gradient taken at
-full gain cannot see. The ULTRA paper's own checkpoint reproduces its reported
+making the ranking faithful. Relation types often act like switches: for most of
+them, the effect shows up only as the gain gets close to zero, which a gradient
+taken at full gain cannot see. The ULTRA paper's own checkpoint reproduces its reported
 MRR here (0.472 on CoDEx-S) and gives the same picture.
 
 ## The bug in the released explanation

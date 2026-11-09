@@ -1,10 +1,4 @@
-"""Turn the per-query records into the numbers and figures in the report.
-
-Every headline number carries a bootstrap interval, because the sample of
-queries is the only source of randomness here: the model is frozen and the
-interventions are deterministic, so a spread across seeds would be meaningless
-and a spread across queries is the honest one.
-"""
+"""Turn the per-query records into the numbers and figures in the report."""
 from __future__ import annotations
 
 import json
@@ -13,7 +7,7 @@ from dataclasses import dataclass
 
 import numpy as np
 
-TIE = 1e-6   # two drops this close are the same number, not a ranking
+TIE = 1e-6
 
 
 def load(path: str):
@@ -47,8 +41,8 @@ def boot(x, fn=np.mean, n: int = 10000, seed: int = 0):
 
 
 def kendall_tau(a, b):
-    """Kendall's tau-b, written out so ties are handled explicitly rather than
-    hidden inside a library default."""
+    """Kendall's tau-b, written out so ties are handled explicitly rather than hidden
+    inside a library default."""
     a, b = np.asarray(a, float), np.asarray(b, float)
     n = len(a)
     if n < 2:
@@ -72,10 +66,7 @@ def kendall_tau(a, b):
 
 
 def order_tau(drops, score=None):
-    """Kendall's tau between a ranking of the candidate paths and their
-    measured drops. With no score it is the method's own order (rank i scores
-    -i), the definition Summary uses; otherwise the given scores, for example
-    integrated gradients re-ranking the same candidates."""
+    """Kendall's tau between a ranking of the candidate paths and their measured drops."""
     if len(drops) < 2:
         return float('nan')
     s = [-i for i in range(len(drops))] if score is None else list(score)[:len(drops)]
@@ -83,8 +74,8 @@ def order_tau(drops, score=None):
 
 
 def order_top_gap(drops, score=None):
-    """1 if the path ranked first is the most damaging (ties count), minus the
-    rate a random pick would get. Same conventions as order_tau."""
+    """1 if the path ranked first is the most damaging (ties count), minus the rate a
+    random pick would get."""
     if len(drops) < 2:
         return float('nan')
     i = 0 if score is None else int(np.argmax(list(score)[:len(drops)]))
@@ -102,7 +93,6 @@ class Summary:
         R = self.rows
         out = {'dataset': self.dataset, 'n_queries': len(R)}
 
-        # --- does the gradient ranking resolve anything inside its own pool
         taus, all_tied, spread = [], 0, []
         for r in R:
             d, w = r['true_drops'], r['grad_weights'][:len(r['true_drops'])]
@@ -111,16 +101,11 @@ class Summary:
             if max(d) - min(d) < TIE:
                 all_tied += 1
             spread.append(max(d) - min(d))
-            # gradient ranks the pool in order, so rank i is simply -i
             taus.append(kendall_tau([-i for i in range(len(d))], d))
         out['frac_pool_fully_tied'] = all_tied / max(1, len(R))
         out['drop_spread_within_pool'] = boot(spread)
         out['kendall_tau_grad_vs_drop'] = boot([t for t in taus if not math.isnan(t)])
 
-        # The most interpretable version of the same question: how often is
-        # the path the method puts first actually the most damaging one to
-        # delete? Scored against the rate a coin would get, since many
-        # candidates tie at the maximum and a tie counts as a hit.
         top1, chance = [], []
         for r in R:
             d = r['true_drops']
@@ -133,7 +118,6 @@ class Summary:
         out['top1_chance'] = boot(chance)
         out['top1_over_chance'] = boot([a - b for a, b in zip(top1, chance)])
 
-        # --- top of the pool against the bottom of the same pool
         tops, bots = [], []
         for r in R:
             d = r['true_drops']
@@ -145,22 +129,15 @@ class Summary:
         out['mean_drop_bottom_quartile'] = boot(bots)
         out['top_minus_bottom'] = boot([a - b for a, b in zip(tops, bots)])
 
-        # --- set level: is the explanation load bearing at all
         out['base_prob'] = boot([r['base_prob'] for r in R])
         out['comprehensiveness'] = boot([r['comp_topk'] for r in R])
         out['comprehensiveness_random'] = boot([r['comp_random'] for r in R])
         out['comp_minus_random'] = boot([r['comp_topk'] - r['comp_random'] for r in R])
-        # as a share of what the query started with, so queries with very
-        # different base probabilities can be averaged honestly
         out['comp_frac_of_base'] = boot([r['comp_topk'] / r['base_prob']
                                          for r in R if r['base_prob'] > 0])
         out['comp_random_frac_of_base'] = boot([r['comp_random'] / r['base_prob']
                                                 for r in R if r['base_prob'] > 0])
         out['sufficiency'] = boot([r['suff_topk'] for r in R])
-        # Keeping only a handful of edges also strips the competitors out of
-        # the softmax, so this ratio can exceed 1 without the explanation being
-        # sufficient in any useful sense. It is reported, and read with that
-        # in mind, alongside the rank-based measures that do not renormalise.
         out['suff_frac_of_base'] = boot([r['suff_topk'] / r['base_prob']
                                          for r in R if r['base_prob'] > 0])
         out['frac_suff_above_one'] = boot(
@@ -169,20 +146,14 @@ class Summary:
         out['rank_after_deletion'] = boot([r['comp_rank_after'] for r in R], np.median)
         out['frac_rank_broken'] = boot([1.0 if r['comp_rank_after'] > 10 else 0.0
                                         for r in R])
-        # deleting the explanation occasionally helps the gold tail, which no
-        # account of the shortlist as supporting evidence predicts
         out['frac_comp_negative'] = boot([1.0 if r['comp_topk'] < -TIE else 0.0
                                           for r in R])
 
-        # --- is the shortlist k explanations or one
         out['bottleneck_frac'] = boot([r['bottleneck_frac'] for r in R])
         out['distinct_edge_ratio'] = boot(
             [r['n_distinct_edges'] / max(1, sum(r['path_lengths'][:r['n_paths']]) * 2)
              for r in R if r['n_paths']])
         out['single_edge_drop'] = boot([r['bottleneck_drop'] for r in R])
-        # The ratio is only meaningful where the shortlist deletion actually
-        # did something; dividing by a near-zero denominator produces numbers
-        # that swing between large positive and large negative for no reason.
         meaningful = [r for r in R
                       if r['base_prob'] > 0 and r['comp_topk'] / r['base_prob'] > 0.05]
         out['single_edge_recovers_frac'] = boot(
@@ -193,13 +164,11 @@ class Summary:
         out['frac_single_edge_breaks'] = boot(
             [1.0 if r['bottleneck_rank_after'] > 10 else 0.0 for r in R])
 
-        # --- portability: does the answer follow an edited path
         out['rewire_drop_on_gold'] = boot([r['rewire_base_drop'] for r in R])
         out['rewire_gain_on_target'] = boot([r['rewire_follow'] for r in R])
         out['frac_rewire_followed'] = boot([1.0 if r['rewire_follow'] > 0 else 0.0
                                             for r in R])
 
-        # --- cost
         out['forwards_per_query'] = boot([r['n_forward'] for r in R])
         out['seconds_per_query'] = boot([r['seconds'] for r in R])
         return out

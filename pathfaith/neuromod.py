@@ -1,38 +1,4 @@
-"""Relation channels as neuromodulators: a dose-response test of the explanation.
-
-Bull et al. (NeurIPS 2025) model neuromodulation as volume transmission: a
-low-dimensional, slowly varying signal that is broadcast to many synapses and
-multiplies their effective strength, W_eff = W0 + sum_k T_k n_k. That splits a
-network into fast content (activity) and slow context (the modulatory state).
-
-ULTRA has the same factorization. Its relation-level pass turns the query
-relation into one vector per relation type, and in the entity graph every
-message along an edge of type c is multiplied by that vector (DistMult). The
-vector is computed once per query and reaches every edge of its type at once,
-which makes each relation type a modulatory channel. NBFNet's explanation
-speaks only about content: individual edges and the paths they form.
-
-This module adds one control to every channel, a gain g_c that scales all
-messages of relation c and its inverse, and does the pharmacology:
-
-  gradient    dp/dg_c at g = 1 for every channel, one backward pass: the
-              local slope, and the same signal NBFNet's explanation reads,
-              summed over a channel's edges. It is taken through the
-              direction-corrected path (attribution.flipped), so it is the
-              deployed model's gradient; --released reproduces the released
-              code's gradient instead
-  dose        p(answer) as g_c is turned down to 0.75, 0.5, 0.25 and 0, for
-              the channels the explanation's top paths use, the channels the
-              gradient ranks highest, and random channels as a control
-  joint       every explained channel turned down together, to 0.5 and to 0
-
-Turning a gain to zero on a set of edges is the same as deleting them, so the
-first thing each query does is zero the gain on exactly the explanation's
-edges and check that it reproduces the benchmark's recorded deletion effect.
-
-Usage:
-    python -m pathfaith.neuromod --dataset CoDExSmall --n 200
-"""
+"""Relation channels as neuromodulators: a dose-response test of the explanation."""
 from __future__ import annotations
 
 import argparse
@@ -57,14 +23,7 @@ CONTROL_DOSES = (0.5, 0.0)            # for random channels
 N_GRAD, N_RANDOM = 3, 3
 
 
-# ------------------------------------------------------------------ the gain
 def _install():
-    """Give ULTRA's EntityNBFNet an optional per-edge gain on its messages.
-
-    This is ULTRA's own bellmanford with one line changed: where it starts
-    from edge weights of one, it starts from `self._pf_gain` when that is set.
-    With the gain unset the model is untouched.
-    """
     from ultra import models
     cls = models.EntityNBFNet
     if getattr(cls, '_pf_installed', False):
@@ -130,12 +89,8 @@ def prob(bundle, data, h, r, t, gain=None, grad=False):
     return p[t], rank
 
 
-# ------------------------------------------------------------------ one query
 def run_query(bundle, data, rec, seed=0, corrected=True):
     h, r, t = rec['h'], rec['r'], rec['t']
-    # the graph the gradient is taken on: the flipped one computes the deployed
-    # model exactly (see attribution.flipped); the original one reproduces the
-    # released code's gradient, which differentiates a different function
     gdata = A.flipped(data) if corrected else data
     ch, R = channel_of(data)
     E = int(data.num_edges)
@@ -145,7 +100,6 @@ def run_query(bundle, data, rec, seed=0, corrected=True):
     p0, rank0 = prob(bundle, data, h, r, t)
     p0 = float(p0); nf += 1
 
-    # the explanation, exactly as the benchmark computed it
     with contextlib.redirect_stdout(io.StringIO()):
         exp = A.explain_gradient(bundle, data, h, r, t, topk=20, num_beam=20,
                                  corrected=corrected)
@@ -153,12 +107,10 @@ def run_query(bundle, data, rec, seed=0, corrected=True):
     joint = torch.unique(torch.cat([path_edges(data, p) for p in top])) if top else \
         torch.empty(0, dtype=torch.long)
 
-    # check: zero gain on the explanation's edges is the recorded deletion
     g = torch.ones(E); g[joint] = 0.0
     p_val, _ = prob(bundle, data, h, r, t, g); nf += 1
     val_gap = abs((p0 - float(p_val)) - rec['comp_topk'])
 
-    # gradient of p with respect to every channel's gain, at gain one
     gc = torch.ones(R, requires_grad=True)
     pg, _ = prob(bundle, gdata, h, r, t, gc[ch], grad=True)
     pg.backward()
@@ -200,7 +152,6 @@ def run_query(bundle, data, rec, seed=0, corrected=True):
                 seconds=round(time.time() - t0, 2))
 
 
-# ------------------------------------------------------------------ sweep
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--dataset', default='CoDExSmall')
@@ -215,8 +166,6 @@ def main():
     from pathfaith.analyze import load
     lc = args.dataset.lower()
     corrected = not args.released
-    # the queries, in the benchmark's fixed order, with the matching explainer's
-    # recorded deletion effect for the built-in check
     src = f'results/paths_{lc}_fixed_seed0.jsonl' if corrected else f'results/paths_{lc}_seed0.jsonl'
     _, recs = load(src)
     recs = recs[:args.n]

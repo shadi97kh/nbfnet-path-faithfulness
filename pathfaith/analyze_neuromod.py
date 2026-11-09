@@ -1,42 +1,5 @@
-"""Summaries for the neuromodulatory channel experiment, and the ranking
-metrics from the retrieval lectures applied to the path benchmark.
-
-Every number is a mean over queries with a 95% bootstrap interval, the same
-convention as the rest of the benchmark: the model is deterministic, so the
-queries are the only source of variance.
-
-Channel metrics (one value per query, then averaged):
-  silence_best      share of p removed by silencing the strongest of the
-                    channels the explanation's paths use
-  silence_explained mean share removed per explained channel
-  silence_random    mean share removed per random channel (the control)
-  joint             share removed by silencing every explained channel at once
-  joint_half        the same at half gain
-  content           share removed by deleting only the explanation's own edges
-  half_dose         for channels whose full silencing moves p by at least 5%,
-                    the fraction of that effect already present at half gain;
-                    a linear dose response gives 0.5
-  switch_like       share of those channels with less than a quarter of the
-                    effect at half gain
-  inverted_u        share of those channels whose response changes direction
-                    along the dose, the shape neuromodulators are known for
-  sign_agree        share of those channels where the gradient at gain one has
-                    the sign of the full-silencing effect; chance is about 0.5
-  grad_within_2x    share where the gradient's linear prediction of full
-                    silencing is within a factor of two of what happened
-  tau               Kendall's tau, gradient against silencing effect, over the
-                    channels tested in a query
-  top_explained     share of queries where the channel whose silencing does
-                    most, among those tested, is one the explanation names
-  top_is_query_rel  share where that channel is the query's own relation
-
-Ranking metrics for the path benchmark (relevance = share of p a path's
-deletion removes, negatives counted as zero):
-  ndcg5, ndcg5_chance    nDCG@5 of the method's order, and its expectation
-                         under a random order
-  mrr_best               reciprocal rank, in the method's order, of the path
-                         whose deletion does most
-"""
+"""Summaries for the neuromodulatory channel experiment, and the ranking metrics from the
+retrieval lectures applied to the path benchmark."""
 from __future__ import annotations
 
 import json
@@ -46,8 +9,8 @@ import numpy as np
 
 from pathfaith.analyze import TIE, boot, kendall_tau, load
 
-MEANINGFUL = 0.05      # a channel "matters" if full silencing moves p by 5%
-STEP = 0.01            # a change of direction must be at least 1% of p
+MEANINGFUL = 0.05
+STEP = 0.01
 
 
 def rows_of(path):
@@ -69,7 +32,7 @@ def _drop(c, base, a):
 
 
 def per_query(rows):
-    """One value per query and metric. None where a query has no instance."""
+    """One value per query and metric."""
     out = {k: [] for k in ('silence_best', 'silence_explained', 'silence_random', 'joint',
                            'joint_half', 'content', 'context_minus_content', 'half_dose',
                            'switch_like', 'inverted_u', 'sign_agree', 'grad_within_2x',
@@ -96,7 +59,6 @@ def per_query(rows):
             out['content'].append(d['comp_topk'] / base)
             out['context_minus_content'].append(j - d['comp_topk'] / base)
 
-        # shape and gradient, over channels whose full silencing matters
         half, sw, inv, sg, w2 = [], [], [], [], []
         for c in dosed:
             full = _drop(c, base, '0.0')
@@ -105,7 +67,6 @@ def per_query(rows):
             path = [0.0] + [_drop(c, base, a) for a in ('0.75', '0.5', '0.25', '0.0')]
             half.append(path[2] / full)
             sw.append(1.0 if path[2] / full < 0.25 else 0.0)
-            # a change of direction: some intermediate dose moves p the other way
             inv.append(1.0 if any(x * full < 0 and abs(x) >= STEP for x in path[1:4]) else 0.0)
             pred = c['grad'] / base          # linear: drop(0) ~ dp/dg * 1
             sg.append(1.0 if pred * full > 0 else 0.0)
@@ -128,7 +89,6 @@ def per_query(rows):
                 out['top_explained'].append(1.0 if best['role'] == 'explained' else 0.0)
                 out['top_is_query_rel'].append(1.0 if best['is_query_rel'] else 0.0)
 
-        # dose-response curves, as share of p removed, from gain 1 down to 0
         for role in ('explained', 'gradient', 'random'):
             cs = [c for c in d['channels'] if c['role'] == role]
             if not cs:
@@ -150,7 +110,6 @@ def summarize(rows):
     return s, curves, vals
 
 
-# ------------------------------------------------------------------ ranking metrics
 def _dcg(rel, k):
     return sum(r / math.log2(i + 2) for i, r in enumerate(rel[:k]))
 
@@ -169,8 +128,6 @@ def ranking_metrics(rows, k=5):
         nd.append(_dcg(rel, k) / ideal)
         disc = sum(1 / math.log2(i + 2) for i in range(min(k, len(rel))))
         ndc.append((sum(rel) / len(rel)) * disc / ideal)
-        # ties count: the list reaches a best path at the first position whose
-        # drop is within TIE of the largest
         mx = max(drops)
         hits = [i for i, x in enumerate(drops) if x >= mx - TIE]
         mrr.append(1.0 / (hits[0] + 1))
@@ -180,7 +137,6 @@ def ranking_metrics(rows, k=5):
 
 
 def _first_hit_rr(n, m):
-    """Expected 1/rank of the first of m best items in a random order of n."""
     total, rest = 0.0, math.comb(n, m)
     for j in range(1, n - m + 2):
         total += math.comb(n - j, m - 1) / rest / j

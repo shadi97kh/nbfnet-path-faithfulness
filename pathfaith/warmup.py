@@ -1,9 +1,4 @@
-"""Load the frozen model on a graph once and run one forward pass.
-
-The first forward pass compiles ULTRA's rspmm CPU kernel and the first load
-downloads and processes the graph, so doing both up front means the demo
-starts straight away. Usage: python -m pathfaith.warmup --dataset CoDExSmall
-"""
+"""Load the frozen model on a graph once and run one forward pass."""
 from __future__ import annotations
 
 import argparse

@@ -1,22 +1,4 @@
-"""Is the benchmark big enough? Show it rather than assert it.
-
-Two checks, both run on the per-query records already on disk.
-
-Convergence. Queries were drawn in a fixed random order before anything was
-measured, so the first n rows of a results file are an honest sample of size
-n. For each headline metric, the running estimate and its 95% bootstrap
-interval are computed at n = 5, 10, 20, ... up to everything. If the benchmark
-is large enough, the estimate settles and the interval narrows roughly as one
-over the square root of n. The same curve shows how badly a five-query
-benchmark would have misled.
-
-Split-half agreement. The queries are split into two random halves many
-times, and the metric is computed on each half. A reliable benchmark gives the
-same answer on both halves; the spread of the difference is reported.
-
-Usage:
-    python -m pathfaith.reliability
-"""
+"""Is the benchmark big enough?"""
 from __future__ import annotations
 
 import json
@@ -31,10 +13,9 @@ DATASETS = [('WN18RR', 'wn18rr'), ('FB15k-237', 'fb15k237'),
             ('CoDEx-S', 'codexsmall'), ('NELL23k', 'nell23k')]
 
 
-# ------------------------------------------------------------------ per-query values
 def per_query(rows):
-    """One number per query for each headline metric, so that means, intervals
-    and splits are all computed the same way."""
+    """One number per query for each headline metric, so that means, intervals and splits
+    are all computed the same way."""
     comp, rec, bott, top1gap = [], [], [], []
     for r in rows:
         b = r['base_prob']
@@ -57,9 +38,9 @@ def per_query(rows):
 
 
 def drawn_index(rows):
-    """For each headline metric, the position in the draw order of every
-    query that has a value for it, so a curve can be indexed by how many
-    queries were drawn, not by how many happened to have that metric."""
+    """For each headline metric, the position in the draw order of every query that has a
+    value for it, so a curve can be indexed by how many queries were drawn, not by how
+    many happened to have that metric."""
     out = {k: [] for k in per_query([])}
     for i, r in enumerate(rows):
         for k, v in per_query([r]).items():
@@ -69,8 +50,8 @@ def drawn_index(rows):
 
 
 def convergence_drawn(values, drawn, n_total):
-    """Running estimate against the number of queries drawn, 5 to n_total;
-    each point uses the queries among the first n drawn that have a value."""
+    """Running estimate against the number of queries drawn, 5 to n_total; each point uses
+    the queries among the first n drawn that have a value."""
     out = []
     for n in grid(n_total):
         k = int((drawn < n).sum())
@@ -121,7 +102,6 @@ def split_half(values, reps=1000, seed=0):
     return float(np.median(diffs)), float(np.percentile(diffs, 95))
 
 
-# ------------------------------------------------------------------ report
 def analyse(results_dir='results'):
     report = {}
     for label, tag in DATASETS:
@@ -136,9 +116,7 @@ def analyse(results_dir='results'):
         for metric, v in vals.items():
             curve = convergence(v)
             n_full, m_full, lo_full, hi_full = curve[-1]
-            # how wrong could a five-query benchmark have been?
             five = boot_ci(v[:5]) if len(v) >= 5 else (float('nan'),) * 3
-            # every disjoint block of five, to show the spread directly
             blocks = [v[i:i + 5].mean() for i in range(0, len(v) - 4, 5)]
             med, p95 = split_half(v)
             report[label][metric] = dict(

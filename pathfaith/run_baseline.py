@@ -1,14 +1,4 @@
-"""Reproduce the frozen checkpoint's link-prediction numbers.
-
-Nothing downstream is worth reading unless the model being explained is the
-model the authors published, so this runs first. The protocol is ULTRA's own
-`script/run.py::test`: score every entity as the missing side, filter out the
-other true triples, and rank the gold one. Head and tail directions are both
-scored, as in the paper.
-
-Usage:
-    python -m pathfaith.run_baseline --dataset FB15k237 --n 200 --seed 0
-"""
+"""Reproduce the frozen checkpoint's link-prediction numbers."""
 from __future__ import annotations
 
 import argparse
@@ -61,9 +51,6 @@ def evaluate(bundle, n: int = 200, seed: int = 0, batch_size: int = 4,
                   flush=True)
 
     rank = torch.cat(ranks).float()
-    # ranks alternate tail batch, head batch; keep the tail-only view too, since
-    # ULTRA's README lists a few graphs (NELL23k among them) as tail-only even
-    # though its paper scores NELL23k in both directions
     tail = torch.cat(ranks[0::2]).float()
     out = {
         'dataset': bundle.name,

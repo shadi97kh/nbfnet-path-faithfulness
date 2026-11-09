@@ -1,12 +1,4 @@
-"""Sweep queries and record every condition, one JSON line per query.
-
-Only queries the model already answers well are explained. Asking what a
-prediction rests on is only meaningful when the prediction is right, and
-explaining the model's mistakes would measure something else.
-
-Usage:
-    python -m pathfaith.run_experiment --dataset WN18RR --n 60 --pool 20
-"""
+"""Sweep queries and record every condition, one JSON line per query."""
 from __future__ import annotations
 
 import argparse
@@ -67,10 +59,6 @@ def main() -> None:
     print(f'selected {len(queries)} queries ranked <= {args.max_rank} '
           f'out of {scanned} scanned, in {time.time() - t0:.0f}s', flush=True)
 
-    # Resume rather than restart. Queries already on disk are kept and skipped,
-    # a torn final line from a killed process is dropped, and the file is
-    # rewritten clean once, here, before this process starts appending. That
-    # makes a multi-hour sweep safe to stop and restart at any point.
     done, kept, meta = set(), [], None
     if os.path.exists(out):
         for line in open(out):

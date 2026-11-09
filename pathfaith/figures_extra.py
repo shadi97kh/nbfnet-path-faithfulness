@@ -1,18 +1,5 @@
-"""Figures for the direction fix, the second checkpoint, integrated gradients
-and the relation channels.
-
-Same conventions as pathfaith.figures: every curve is one unbroken line over
-the whole range it covers, uncertainty is a 95% bootstrap band over queries,
-and a panel whose results file has not been written yet says "pending"
-instead of failing, so the figures can be rebuilt while runs are still going.
-
-Colours are fixed across the paper: the released explanation is blue, the
-direction-corrected one green, the corrected one on ULTRA's 3-graph checkpoint
-purple, and the deployed model itself black.
-
-Usage:
-    python -m pathfaith.figures_extra            # report and slide versions
-"""
+"""Figures for the direction fix, the second checkpoint, integrated gradients and the
+relation channels."""
 from __future__ import annotations
 
 import contextlib
@@ -32,7 +19,6 @@ GRAPHS = (('WN18RR', 'wn18rr'), ('FB15k-237', 'fb15k237'),
 SETTINGS = (('released explanation', 'paths_{}_seed0.jsonl', BLUE, 'o'),
             ('corrected explanation', 'paths_{}_fixed_seed0.jsonl', GREEN, 's'),
             ('corrected, ULTRA 3g', 'paths_{}_3g_fixed_seed0.jsonl', PURPLE, '^'))
-# integrated gradients re-ranks the corrected explanation's own candidates
 IG_SETTING = ('integrated gradients', 'ig_{}_seed0.jsonl', ORANGE, 'D')
 MEANINGFUL = 0.05
 
@@ -65,7 +51,6 @@ def _style(big):
 
 
 def _cdf_full(ax, values, color, label, lo, hi, ls='-'):
-    """Empirical CDF drawn as one line across the whole axis, lo to hi."""
     v = np.sort(np.clip(np.asarray([x for x in values if np.isfinite(x)], float), lo, hi))
     if len(v) == 0:
         return
@@ -87,17 +72,8 @@ def _symlog(ax, lin, which='both'):
         ax.set_yscale('symlog', linthresh=lin)
 
 
-# ------------------------------------------------------------------ 1. the bug
 def fig_direction(out, results_dir='results', figsize=(6.9, 1.95), big=False):
-    """The released explanation differentiates a different function.
-
-    (a) every entity's score from the code path the explanation differentiates,
-        against the deployed model's score, for the first recorded queries
-    (b) along a random direction in edge-weight space, the deployed model's
-        measured change in p(answer) against each gradient's prediction
-    (c) one relation channel: p(answer) as its gain runs from 0 to 1.2, with
-        each gradient's tangent line at gain 1
-    """
+    """The released explanation differentiates a different function."""
     recs = {lab: _rows(os.path.join(results_dir, f'direction_{tag}.jsonl'))
             for lab, tag in GRAPHS}
     recs = {k: v for k, v in recs.items() if v}
@@ -113,7 +89,6 @@ def fig_direction(out, results_dir='results', figsize=(6.9, 1.95), big=False):
             fig.tight_layout(pad=0.4); fig.savefig(out); plt.close(fig)
             return
 
-        # (a) scores
         first = next(iter(recs.values()))
         kept = [d for d in first if 'scores' in d]
         dep = np.concatenate([d['scores']['deployed'] for d in kept])
@@ -135,7 +110,6 @@ def fig_direction(out, results_dir='results', figsize=(6.9, 1.95), big=False):
         a.legend(loc='upper left', bbox_to_anchor=(0.0, 0.9), frameon=False,
                  markerscale=3 if not big else 2, handletextpad=0.2)
 
-        # (b) directional derivative
         fd = np.array([d['fd'] for v in recs.values() for d in v])
         dr = np.array([d['dir_released'] for v in recs.values() for d in v])
         dc = np.array([d['dir_corrected'] for v in recs.values() for d in v])
@@ -153,7 +127,6 @@ def fig_direction(out, results_dir='results', figsize=(6.9, 1.95), big=False):
         b.set_ylabel('gradient $\\cdot$ direction')
         b.set_title(f'(b) {len(fd)} queries, random direction', loc='left')
         b.legend(loc='upper left', frameon=False, handletextpad=0.2)
-        # ticks at zero and at every other power of ten clear of the linear zone
         ex = [10.0 ** e for e in range(-8, 2) if 10 * lin <= 10.0 ** e <= m]
         ex = ex[::-1][::2][::-1] if len(ex) > 4 else ex
         ticks = [-x for x in ex[::-1]] + [0.0] + ex
@@ -164,12 +137,9 @@ def fig_direction(out, results_dir='results', figsize=(6.9, 1.95), big=False):
             axis.set_major_formatter(mticker.FixedFormatter(labels))
             axis.set_minor_locator(mticker.NullLocator())
 
-        # (c) one channel, the clearest disagreement on record
         chans = [(d, d['channel']) for v in recs.values() for d in v if 'channel' in d]
         if chans:
             def score(x):
-                # prefer a channel where the released gradient has the wrong
-                # sign and the true slope at gain 1 is clearly not flat
                 ch = x[1]
                 wrong_sign = ch['grad_released'] * ch['grad_corrected'] < 0
                 return (wrong_sign, min(abs(ch['grad_released']), abs(ch['grad_corrected']))
@@ -196,7 +166,6 @@ def fig_direction(out, results_dir='results', figsize=(6.9, 1.95), big=False):
         plt.close(fig)
 
 
-# ------------------------------------------------------------------ 2. released vs corrected
 def _position_curves(rows):
     rows = [r for r in rows if r['true_drops'] and r['base_prob'] > 0]
     if not rows:
@@ -256,11 +225,7 @@ def fig_released_vs_corrected(out, results_dir='results', figsize=(6.9, 1.95), b
         plt.close(fig)
 
 
-# ------------------------------------------------------------------ 3. rank agreement
 def _rank_mass(drops):
-    """For each path, how its unit of mass spreads over measured ranks, largest
-    drop first. A path tied with m others over ranks a..a+m-1 puts 1/m on each,
-    so ties spread evenly instead of piling up on one average rank."""
     d = np.round(np.asarray(drops, float) / TIE) * TIE
     n = len(d)
     M = np.zeros((n, n))
@@ -273,12 +238,7 @@ def _rank_mass(drops):
 
 def fig_rank_heatmap(out, results_dir='results', pattern='paths_{}_seed0.jsonl',
                      figsize=(6.9, 1.85), big=False, k=20):
-    """Where the method's i-th path really ranks, pooled over queries.
-
-    Row i is the distribution of the measured rank of the path the method put
-    at position i. A faithful ranking puts all the mass on the diagonal; a
-    ranking unrelated to the effect gives flat rows.
-    """
+    """Where the method's i-th path really ranks, pooled over queries."""
     with _style(big):
         if big:
             fig, axes = plt.subplots(1, 4, figsize=figsize, squeeze=False)
@@ -308,10 +268,7 @@ def fig_rank_heatmap(out, results_dir='results', pattern='paths_{}_seed0.jsonl',
         plt.close(fig)
 
 
-# ------------------------------------------------------------------ 4. relation channels
 def _channel_points(rows):
-    """Per tested channel: the gradient's linear prediction of full silencing,
-    the measured effect, and the share of it present at half gain."""
     pred, meas, half = [], [], []
     for d in rows:
         base = d['base_prob']
@@ -329,9 +286,9 @@ def _channel_points(rows):
 
 
 def fig_channels(out, results_dir='results', figsize=(6.9, 2.1), big=False):
-    """(a) the gradient's prediction of silencing a channel against the measured
-    effect, every tested channel on every graph; (b) how much of the full
-    effect is already there at half gain, where a linear response gives 0.5."""
+    """(a) the gradient's prediction of silencing a channel against the measured effect,
+    every tested channel on every graph; (b) how much of the full effect is already
+    there at half gain, where a linear response gives 0.5."""
     with _style(big):
         fig, (a, b) = plt.subplots(1, 2, figsize=figsize,
                                    gridspec_kw=dict(width_ratios=(1.15, 1)))
@@ -382,13 +339,9 @@ def fig_channels(out, results_dir='results', figsize=(6.9, 2.1), big=False):
         plt.close(fig)
 
 
-# ------------------------------------------------------------------ 5. integrated gradients
 def fig_ig(out, results_dir='results', figsize=(6.9, 1.95), big=False,
            graphs=(('CoDEx-S', 'codexsmall'), ('NELL23k', 'nell23k'))):
-    """Does the textbook fix rank better? Per query Kendall's tau against the
-    measured effect, for the gradient and for integrated gradients, at the path
-    level (deleting each candidate path) and at the channel level (silencing
-    each tested relation channel)."""
+    """Does the textbook fix rank better?"""
     with _style(big):
         if big:
             fig, axes = plt.subplots(2, 2, figsize=figsize, squeeze=False)
@@ -402,7 +355,6 @@ def fig_ig(out, results_dir='results', figsize=(6.9, 1.95), big=False,
                   for d in _rows(os.path.join(results_dir, f'ig_{tag}_seed0.jsonl'))}
             nm = {(d['h'], d['r'], d['t']): d
                   for d in _rows(os.path.join(results_dir, f'neuromod_{tag}_seed0.jsonl'))}
-            # path level
             ax = axes[j]
             tg, ti = [], []
             for d in ig.values():
@@ -419,7 +371,6 @@ def fig_ig(out, results_dir='results', figsize=(6.9, 1.95), big=False,
                           fontsize=plt.rcParams['legend.fontsize'] - 1, handlelength=1.6)
             else:
                 _pending(ax, f'{lab}, paths')
-            # channel level: the channels the neuromod run silenced
             ax = axes[j + len(graphs)]
             cg, ci = [], []
             for key, d in nm.items():
@@ -454,13 +405,7 @@ def fig_ig(out, results_dir='results', figsize=(6.9, 1.95), big=False,
         plt.close(fig)
 
 
-# ------------------------------------------------------------------ 6. robustness summary
 def _per_query_metrics(rows, score='grad_weights'):
-    """One value per query for each summary metric, with the main table's
-    definitions (analyze.order_tau, order_top_gap). `score` is the ranking
-    being judged: 'grad_weights' means the explanation's own order, and
-    'path_ig' is integrated gradients re-ranking the same candidate paths (no
-    joint deletion was run for that order, so its first metric is left out)."""
     comp, tau, top, nd = [], [], [], []
     from pathfaith.analyze_neuromod import _dcg
     for r in rows:
@@ -490,9 +435,9 @@ def _per_query_metrics(rows, score='grad_weights'):
 
 
 def fig_robustness(out, results_dir='results', figsize=(6.9, 1.85), big=False):
-    """Every headline number under the released explanation, the corrected
-    one, the corrected one on a second checkpoint, and integrated gradients
-    re-ranking the corrected candidates, with 95% intervals."""
+    """Every headline number under the released explanation, the corrected one, the
+    corrected one on a second checkpoint, and integrated gradients re-ranking the
+    corrected candidates, with 95% intervals."""
     with _style(big):
         metrics = None
         table = {}
@@ -547,7 +492,6 @@ def fig_robustness(out, results_dir='results', figsize=(6.9, 1.85), big=False):
         plt.close(fig)
 
 
-# ------------------------------------------------------------------ all of them
 def make_extra(results_dir='results', report='report/figs', slides='presentation/figs', ext='.pdf'):
     os.makedirs(report, exist_ok=True); os.makedirs(slides, exist_ok=True)
     jobs = [

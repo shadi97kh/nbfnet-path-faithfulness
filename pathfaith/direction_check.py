@@ -1,24 +1,4 @@
-"""The message-direction check, measured over many queries for the figure.
-
-The deployed model (the fused rspmm kernel) and the code path NBFNet's
-explanation differentiates (PyG's generic message passing, used whenever edge
-weights need a gradient) send messages in opposite directions. This records
-three things per query, on the benchmark's own queries:
-
-  scores      every entity's score from the deployed model, from the
-              explanation's code path on the graph as given (what the released
-              code differentiates), and from that code path on the flipped
-              graph (what the corrected explanation differentiates)
-  direction   along one random direction v in edge-weight space, the deployed
-              model's change in p(answer), measured by a central difference,
-              against the gradient . v from each code path
-  channel     for the explained channel with the largest disagreement, the
-              deployed model's p(answer) as that channel's gain runs from 0 to
-              1.2, with both gradients' tangent lines at gain 1
-
-Usage:
-    python -m pathfaith.direction_check --dataset CoDExSmall --n 40
-"""
+"""The message-direction check, measured over many queries for the figure."""
 from __future__ import annotations
 
 import argparse
@@ -36,8 +16,6 @@ from pathfaith import attribution as A
 from pathfaith import neuromod as NM
 
 warnings.filterwarnings('ignore')
-# central differences at two steps; in single precision neither is exact, and
-# the pair shows how much of the remaining gap is the difference itself
 EPS, EPS_WIDE = 1e-4, 1e-3
 CURVE = [round(0.1 * i, 1) for i in range(13)]           # gain 0 to 1.2
 
@@ -75,7 +53,6 @@ def run_query(bundle, data, rec, seed, keep_scores):
                              released=[round(float(x), 4) for x in s_rel],
                              corrected=[round(float(x), 4) for x in s_cor])
 
-    # a random direction in edge-weight space, the same for both gradients
     g = torch.Generator().manual_seed(seed * 7919 + h * 31 + r)
     v = (torch.randint(0, 2, (E,), generator=g) * 2 - 1).float()
     p_plus = float(NM.prob(bundle, data, h, r, t, 1 + EPS * v)[0])
@@ -89,7 +66,6 @@ def run_query(bundle, data, rec, seed, keep_scores):
     out['dir_released'] = float(g_rel @ v)
     out['dir_corrected'] = float(g_cor @ v)
 
-    # one channel: the explained one where the two gradients disagree most
     ch, R = NM.channel_of(data)
     cr = torch.zeros(R).index_add_(0, ch, g_rel)
     cc = torch.zeros(R).index_add_(0, ch, g_cor)

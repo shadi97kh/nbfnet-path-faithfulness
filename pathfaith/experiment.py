@@ -1,15 +1,4 @@
-"""Run the four conditions on one query and report what actually moved.
-
-The measurement that decides the paper is not the size of any single drop, it
-is whether deleting the paths the method ranks first hurts more than deleting
-an equally long path picked at random. A drop that a random path reproduces is
-not evidence that the explanation found the mechanism.
-
-Scores are turned into a probability over all entities before anything is
-compared, so a drop means the same thing from one query to the next, and the
-gold tail's rank is reported alongside as a measure that does not depend on
-the scale of the logits at all.
-"""
+"""Run the path tests on one query and record what actually moved."""
 from __future__ import annotations
 
 import random
@@ -21,9 +10,8 @@ import torch
 from pathfaith import attribution as A
 
 
-# --------------------------------------------------------------------------
 def prob_and_rank(bundle, data, h: int, r: int, t: int):
-    """p(t) over all entities, and t's rank. One forward pass."""
+    """p(t) over all entities, and t's rank."""
     s = A.score(bundle, data, h, r, torch.arange(int(data.num_nodes)))
     p = torch.softmax(s, dim=0)
     rank = int((s > s[t]).sum()) + 1
@@ -39,8 +27,8 @@ def path_edges(data, path) -> torch.Tensor:
 
 
 def random_path_like(data, path, rng: random.Random):
-    """A path with the same hop count whose relations match, but whose
-    intermediate entities are drawn at random. The control for condition A."""
+    """A path with the same hop count whose relations match, but whose intermediate
+    entities are drawn at random."""
     if not path:
         return []
     n = int(data.num_nodes)
@@ -53,13 +41,11 @@ def random_path_like(data, path, rng: random.Random):
 
 
 def random_real_edges(data, k: int, rng: random.Random) -> torch.Tensor:
-    """k edge columns drawn uniformly from the graph. The control for the
-    joint deletion, matched on how many edges are removed."""
+    """k edge columns drawn uniformly from the graph."""
     m = data.edge_index.shape[1]
     return torch.tensor([rng.randrange(m) for _ in range(k)], dtype=torch.long)
 
 
-# --------------------------------------------------------------------------
 @dataclass
 class QueryResult:
     h: int = 0
@@ -81,7 +67,6 @@ class QueryResult:
     suff_topk: float = 0.0        # keep only the top-k paths
     rewire_follow: float = 0.0    # did the answer move with the edited path
     rewire_base_drop: float = 0.0
-    # is the shortlist many independent explanations or one wearing k hats
     n_paths: int = 0
     n_distinct_edges: int = 0
     bottleneck_frac: float = 0.0     # share of paths using the most common edge
@@ -100,7 +85,6 @@ def run_query(bundle, data, h: int, r: int, t: int, *, pool: int = 20,
     base_p, base_rank, base_scores = prob_and_rank(bundle, data, h, r, t)
     res.base_prob, res.base_rank, res.n_forward = base_p, base_rank, 1
 
-    # ---- condition A: the published explanation ------------------------
     exp = A.explain_gradient(bundle, data, h, r, t, topk=pool, num_beam=pool,
                              corrected=corrected)
     paths = exp.paths[:pool]
@@ -113,14 +97,12 @@ def run_query(bundle, data, h: int, r: int, t: int, *, pool: int = 20,
 
     cols = [path_edges(data, p) for p in paths]
 
-    # how much does each path share with the rest of the shortlist
     for i, c in enumerate(cols):
         mine = set(c.tolist())
         others = set().union(*[set(x.tolist()) for j, x in enumerate(cols) if j != i]) \
             if len(cols) > 1 else set()
         res.overlap.append(len(mine & others) / max(1, len(mine)))
 
-    # is this one explanation or many? count distinct edges and the busiest one
     all_cols = torch.cat(cols) if cols else torch.empty(0, dtype=torch.long)
     res.n_paths = len(paths)
     res.n_distinct_edges = int(torch.unique(all_cols).numel())
@@ -133,17 +115,12 @@ def run_query(bundle, data, h: int, r: int, t: int, *, pool: int = 20,
         res.bottleneck_drop, res.bottleneck_rank_after = base_p - p_b, rank_b
         res.n_forward += 1
 
-    # ---- conditions B and C: delete one path at a time ------------------
-    # Every candidate in the pool is occluded, so the gradient ranking can be
-    # compared against the drop that each path actually causes. The pool's own
-    # bottom half is the control: if the paths the method ranks last hurt as
-    # much as the ones it ranks first, the ranking carries no information.
     for i, c in enumerate(cols):
         p_i, _, _ = prob_and_rank(bundle, A.drop_edges(data, c), h, r, t)
         res.true_drops.append(base_p - p_i)
         res.n_forward += 1
 
-        if i < path_controls:   # a small per-path null; optional, see above
+        if i < path_controls:
             cc = random_real_edges(data, len(c), rng)
             p_c, _, _ = prob_and_rank(bundle, A.drop_edges(data, cc), h, r, t)
             res.control_drops.append(base_p - p_c)
@@ -151,7 +128,6 @@ def run_query(bundle, data, h: int, r: int, t: int, *, pool: int = 20,
 
     res.grad_rank_order = list(range(len(paths)))  # already gradient-ordered
 
-    # ---- comprehensiveness and sufficiency on the top-k ----------------
     joint = torch.unique(torch.cat(cols[:topk])) if cols[:topk] else torch.empty(0, dtype=torch.long)
     p_wo, rank_wo, _ = prob_and_rank(bundle, A.drop_edges(data, joint), h, r, t)
     res.comp_topk, res.comp_rank_after = base_p - p_wo, rank_wo
@@ -166,7 +142,6 @@ def run_query(bundle, data, h: int, r: int, t: int, *, pool: int = 20,
     res.suff_topk = p_only
     res.n_forward += 1
 
-    # ---- condition D: rewire the explanation's terminal edge -----------
     top = paths[0]
     term = path_edges(data, [top[-1]])
     if len(term):
@@ -175,8 +150,6 @@ def run_query(bundle, data, h: int, r: int, t: int, *, pool: int = 20,
             alt = int(base_scores.argsort(descending=True)[2])
         col = int(term[0])
         if corrected:
-            # a corrected hop's message arrives at edge_index[0]; rewiring its
-            # stored inverse moves that end, and rewire_edge moves the pair
             col = A.inverse_column(data, col)
         rew = A.rewire_edge(data, col, alt) if col is not None else None
     if len(term) and rew is not None:

@@ -1,22 +1,4 @@
-"""Live demo: run the whole audit on a few queries, then show the benchmark.
-
-This is the script to run in front of an audience. It loads the frozen
-checkpoint, picks several queries the model gets right, and for each one shows
-NBFNet's own explanation and then intervenes on the graph live: delete the
-explanation, delete as many random edges, delete only the busiest edge, and
-reroute the last hop. Every number on screen is computed while you watch.
-
-It ends by reading the full benchmark off disk, so the audience sees that the
-handful of live queries is one slice of a much larger, pre-registered sweep.
-
-CoDEx-S is the default because it is small enough to run live on a laptop CPU
-and its entities are Wikidata items, so the output is readable.
-
-Usage:
-    python -m pathfaith.demo                       # 5 queries on CoDEx-S
-    python -m pathfaith.demo --n 3 --seed 7        # a different set of queries
-    python -m pathfaith.demo --dataset WN18RR      # WordNet synset names
-"""
+"""Live demo: run the whole audit on a few queries, then show the benchmark."""
 from __future__ import annotations
 
 import argparse
@@ -30,7 +12,6 @@ from collections import Counter
 
 import torch
 
-# library deprecation chatter is noise in front of an audience
 warnings.filterwarnings('ignore')
 
 from pathfaith.loader import build, n_params, DATA_ROOT, REPO
@@ -39,7 +20,6 @@ from pathfaith.experiment import prob_and_rank, path_edges, random_real_edges
 
 LABELS = os.environ.get('KG_LABEL_ROOT', os.path.join(REPO, 'kg-labels'))
 
-# ------------------------------------------------------------------ display
 USE_COLOR = sys.stdout.isatty()
 
 
@@ -63,7 +43,6 @@ def rule(title=''):
     print(bold(line))
 
 
-# ------------------------------------------------------------------ names
 class Names:
     """Turn ULTRA's integer ids back into something a person can read."""
 
@@ -76,8 +55,6 @@ class Names:
             self._wn18rr()
 
     def _codex(self, dataset):
-        # ULTRA's TransductiveDataset numbers entities and relations by first
-        # appearance, line by line, over train, valid, test. Replay that.
         size = {'codexsmall': 's', 'codexmedium': 'm', 'codexlarge': 'l'}[dataset.lower()]
         raw = os.path.join(DATA_ROOT, f'codex-{size}', 'raw')
         ent_id, rel_id = {}, {}
@@ -99,15 +76,9 @@ class Names:
         self.rel = {i: rl.get(p, {}).get('label', p) for p, i in rel_id.items()}
 
     def _wn18rr(self):
-        # PyG numbers WN18RR by first appearance of the synset offsets, heads
-        # then tails within each split. The text release of WN18RR is line for
-        # line the same triples with readable synset names, so zipping the two
-        # gives each offset its name.
         from itertools import chain
         root = os.path.join(DATA_ROOT, 'wn18rr', 'raw')
         text = os.environ.get('WN18RR_TEXT', os.path.join(LABELS, 'wn18rr'))
-        # Relations are NOT numbered by first appearance: PyG fixes the order
-        # in WordNet18RR.edge2id, so read it from there instead of guessing.
         from torch_geometric.datasets import WordNet18RR
         rel = dict(WordNet18RR.edge2id)
         node, name = {}, {}
@@ -123,9 +94,6 @@ class Names:
                     th, _, tt = lt.split('\t')
                     name.setdefault(oh, set()).add(th)
                     name.setdefault(ot, set()).add(tt)
-        # WordNet offsets repeat across parts of speech, so the offset-only
-        # release merges a few unrelated synsets into one node. Show both
-        # names rather than pretend the node is one thing.
         self.ent = {i: ' / '.join(sorted(name.get(o, {o}))) for o, i in node.items()}
         self.rel = {i: r.lstrip('_').replace('_', ' ') for r, i in rel.items()}
 
@@ -137,14 +105,12 @@ class Names:
         return self.rel.get(i % self.half, f'rel{i % self.half}')
 
     def hop(self, h, t, r):
-        """Draw the arrow the way the real fact points. A hop along a stored
-        inverse edge is a fact pointing the other way, read backwards."""
+        """Draw the arrow the way the real fact points."""
         if int(r) >= self.half:
             return f'{self.e(h)} <-[{self.r(r)}]- {self.e(t)}'
         return f'{self.e(h)} -[{self.r(r)}]-> {self.e(t)}'
 
 
-# ------------------------------------------------------------------ one query
 def show_query(bundle, data, names, h, r, t, k, rng, idx, total):
     rule(f'query {idx} of {total}')
     t0 = time.time()
@@ -162,9 +128,6 @@ def show_query(bundle, data, names, h, r, t, k, rng, idx, total):
         for hop in p:
             print(f'         {names.hop(*hop)}')
 
-    # the direction check: the released explanation takes its gradient through
-    # PyG's generic message passing, which runs messages the opposite way from
-    # the kernel the model was trained and is served with
     from pathfaith import neuromod as NM
     NM._install()
     p_gen = float(NM.prob(bundle, data, h, r, t,
@@ -223,8 +186,6 @@ def show_query(bundle, data, names, h, r, t, k, rng, idx, total):
         head = head.ljust(44) if len(head) < 44 else head + ' '   # never let two names touch
         print(head + f'{short(names.e(t), 14)} {-lost:+.3f}   {short(names.e(alt), 14)} {gained:+.3f}')
 
-    # the neuromodulation test: one relation type is one channel, broadcast to
-    # every edge of that type; turn the explanation's main channel down
     nm = None
     if paths:
         from pathfaith import neuromod as NM
@@ -257,7 +218,6 @@ def show_query(bundle, data, names, h, r, t, k, rng, idx, total):
                 if base_p > 0 else 0.0, nm=nm)
 
 
-# ------------------------------------------------------------------ benchmark
 def show_benchmark(results_dir='results'):
     """Read the full sweep off disk and print it, with sample sizes and CIs."""
     from pathfaith.analyze import load, Summary
@@ -303,7 +263,6 @@ def show_benchmark(results_dir='results'):
           f'95% bootstrap intervals over queries.')
 
 
-# ------------------------------------------------------------------ main
 def main() -> None:
     global USE_COLOR
     ap = argparse.ArgumentParser()

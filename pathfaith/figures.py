@@ -1,9 +1,4 @@
-"""Figures for the report.
-
-Each curve is drawn as one continuous line across the whole range it covers,
-with its uncertainty as a band rather than as separate error bars, so a reader
-can see the shape before reading any number.
-"""
+"""Figures for the report."""
 from __future__ import annotations
 
 import math
@@ -25,11 +20,10 @@ plt.rcParams.update({
     'figure.dpi': 200, 'savefig.bbox': 'tight', 'lines.linewidth': 1.4,
 })
 BLUE, RED, GREY = '#2B6CB0', '#C0392B', '#7F8C8D'
-EXT = '.pdf'           # file type of every figure; main() --png switches it
+EXT = '.pdf'
 
 
 def _band(ax, x, series, color, label):
-    """Mean with a 95% bootstrap band, as one unbroken line over all of x."""
     mean, lo, hi = [], [], []
     for col in series:
         m, a, b = boot(col)
@@ -42,7 +36,6 @@ def fig_rank_vs_drop(paths: dict, out: str, row: bool = None) -> None:
     """The headline: what the method ranks first is not what matters most."""
     n = len(paths)
     row = (n > 2) if row is None else row
-    # one row of panels across the page once there are more than two graphs
     if row:
         fig, axes = plt.subplots(1, n, figsize=(6.9, 1.75), squeeze=False, sharey=True)
         panel_axes = axes[0, :]
@@ -55,9 +48,6 @@ def fig_rank_vs_drop(paths: dict, out: str, row: bool = None) -> None:
         if not rows:
             ax.set_title(f'{name}  (pending)', loc='left')
             continue
-        # Every query that reached a given position contributes to it, so the
-        # curve runs across the whole pool instead of stopping at the shortest
-        # candidate list. Positions with too few queries to bootstrap are cut.
         kmax = max(len(r['true_drops']) for r in rows)
         drops, x = [], []
         for i in range(kmax):
@@ -105,7 +95,7 @@ def _cdf(ax, values, color, label, ls='-'):
 
 
 def fig_set_level(paths: dict, out: str) -> None:
-    """Deleting the explanation does matter. Keeping only it does not suffice."""
+    """Deleting the explanation does matter."""
     n = len(paths)
     fig, axes = plt.subplots(n, 2, figsize=(3.3, 1.9 * n), squeeze=False)
     axes = axes.reshape(-1)
@@ -122,8 +112,6 @@ def fig_set_level(paths: dict, out: str) -> None:
         _cdf(ax, np.array([r['bottleneck_drop'] for r in rows]) / base, GREY,
              'busiest edge', ls=':')
         ax.set_title(f'{name}: removed', loc='left')
-        # a few deletions raise the probability, so the axis starts slightly
-        # below zero rather than stretching to the single worst outlier
         ax.set_xlim(-0.25, 1.05)
         ax.set_xlabel('share of p(tail) removed')
         ax.set_ylabel('fraction of queries')
@@ -173,19 +161,13 @@ def make_all(paths: dict, outdir: str = 'report/figs') -> list:
         fn(have, path)
         made.append(path)
     path = os.path.join(outdir, 'convergence' + EXT)
-    # one row across the page: the report is held to eight pages
     fig_convergence(path, figsize=(6.9, 2.0), rows=1)
     made.append(path)
     return made
 
 
 def make_slide_figs(paths: dict, outdir: str = 'presentation/figs') -> list:
-    """Single-panel versions, sized to be read from the back of a room.
-
-    The report's figures put both datasets side by side, which is right on a
-    page and unreadable on a slide. These are the same data, one panel each,
-    with larger type and thicker lines.
-    """
+    """Single-panel versions, sized to be read from the back of a room."""
     os.makedirs(outdir, exist_ok=True)
     old = dict(plt.rcParams)
     plt.rcParams.update({'font.size': 13, 'axes.labelsize': 13,
@@ -238,15 +220,7 @@ PALETTE = {'WN18RR': '#2B6CB0', 'FB15k-237': '#C0392B',
 
 def fig_convergence(out: str, results_dir: str = 'results',
                     metrics=None, figsize=(6.9, 4.2), big=False, rows=None) -> None:
-    """How each headline estimate settles as queries are added.
-
-    The queries were drawn in a fixed random order before anything was
-    measured, so the first n of them are an honest sample of size n. Each
-    curve is the running estimate with its 95% bootstrap band, drawn as one
-    unbroken line from n = 5 to the full sample. The grey dots at the left are
-    every disjoint block of five queries, which is what a five-query benchmark
-    could have reported.
-    """
+    """How each headline estimate settles as queries are added."""
     from pathfaith.reliability import DATASETS, per_query, drawn_index, convergence_drawn
     metrics = metrics or ['delete shortlist (share of p removed)',
                           'one edge recovers (share of effect)',
@@ -278,7 +252,6 @@ def fig_convergence(out: str, results_dir: str = 'results',
             ax.scatter(np.full(len(blocks), 5.0) * np.exp(np.random.default_rng(1)
                        .uniform(-0.08, 0.08, len(blocks))),
                        blocks, s=6 if not big else 14, color=col, alpha=0.35, lw=0, zorder=1)
-            # indexed by queries drawn, so every curve runs to the full sample
             curve = convergence_drawn(v, drawn[metric], n_total)
             n = np.array([c[0] for c in curve], float)
             m = np.array([c[1] for c in curve])
@@ -287,7 +260,6 @@ def fig_convergence(out: str, results_dir: str = 'results',
             ax.fill_between(n, lo, hi, color=col, alpha=0.15, lw=0, zorder=2)
             ax.plot(n, m, color=col, label=f'{label} (n={n_total})', zorder=3)
         ax.set_xscale('log')
-        # plain counts on the axis; scientific notation hides the point
         ticks = [t for t in (5, 10, 20, 50, 100, 200, 400, 800)
                  if t <= max(n for _, _, n in loaded.values()) * 1.05]
         ax.xaxis.set_major_locator(matplotlib.ticker.FixedLocator(ticks))
@@ -315,7 +287,6 @@ def fig_convergence(out: str, results_dir: str = 'results',
     plt.rcParams.update(old)
 
 
-# ------------------------------------------------------------------ neuromodulation
 ORANGE = '#D68910'
 NM_SETS = (('WN18RR', 'wn18rr'), ('FB15k-237', 'fb15k237'),
            ('CoDEx-S', 'codexsmall'), ('NELL23k', 'nell23k'))
@@ -323,17 +294,11 @@ NM_SETS = (('WN18RR', 'wn18rr'), ('FB15k-237', 'fb15k237'),
 
 def fig_dose_response(out: str, results_dir: str = 'results', figsize=(6.9, 1.8),
                       big: bool = False) -> None:
-    """Turning a relation channel's gain down from 1 to 0, one panel per graph.
-
-    Each curve is the share of p(answer) removed, averaged over queries, with a
-    95% bootstrap band, drawn as one line from gain 1 to gain 0. The dashed
-    line is what the gradient at gain 1 predicts for the explained channels if
-    the response were linear.
-    """
+    """Turning a relation channel's gain down from 1 to 0, one panel per graph."""
     from pathfaith.analyze_neuromod import rows_of, per_query
     n = len(NM_SETS)
     old = dict(plt.rcParams)
-    if big:        # slide size: the same type sizes as the other slide figures
+    if big:
         plt.rcParams.update({'font.size': 12, 'axes.labelsize': 12, 'axes.titlesize': 12.5,
                              'legend.fontsize': 11, 'xtick.labelsize': 11,
                              'ytick.labelsize': 11, 'lines.linewidth': 2.2})
@@ -381,13 +346,8 @@ def fig_dose_response(out: str, results_dir: str = 'results', figsize=(6.9, 1.8)
     plt.rcParams.update(old)
 
 
-# ------------------------------------------------------------------ all of them
 def main() -> None:
-    """Every figure, report and slide versions, from what is in results/.
-
-    PDF by default, as the report uses them; --png writes the same figures as
-    PNG beside them, for showing in a notebook.
-    """
+    """Every figure, report and slide versions, from what is in results/."""
     import argparse
     from pathfaith.figures_extra import make_extra
     global EXT
