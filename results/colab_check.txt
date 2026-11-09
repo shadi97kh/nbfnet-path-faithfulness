@@ -1,0 +1,32 @@
+The Colab notebook, opened from GitHub (the "Open in Colab" badge, so it
+cloned this repository itself), run end to end on a free Colab CPU runtime,
+7 November 2026. Python 3.13, torch 2.14.1+cpu, ULTRA at 427966a; Colab had no
+torch_scatter wheel for that torch, so the notebook used colab/torch_scatter_shim.
+Key output lines, copied from the notebook:
+
+4. Live demo (--n 5 --seed 0), then a second draw (--n 3 --seed 7), then WN18RR (--n 2)
+  5 queries attempted, 5 completed every intervention, 0 failed.
+  3 queries attempted, 3 completed every intervention, 0 failed.
+  2 queries attempted, 2 completed every intervention, 0 failed.
+
+5. Re-run the recorded benchmark and compare
+  released explanation, 10 CoDEx-S queries:
+  10 queries re-run; 10 are in the record; 10 of 10 reproduce every recorded number to within 0.0001 (largest gap 2.7e-06)
+  corrected explanation, 5 CoDEx-S queries:
+  5 queries re-run; 5 are in the record; 5 of 5 reproduce every recorded number to within 0.0001 (largest gap 3.6e-06)
+
+5b. The message-direction bug, 3 CoDEx-S queries
+  score gap released 7.51 / 4.73 / 9.02, corrected 1.9e-06 / 1.9e-06 / 2.9e-06
+  (the same values as results/direction_codexsmall.jsonl)
+
+6. Relation channels, 3 CoDEx-S queries
+  3 queries re-run; 3 are in the record; 3 of 3 reproduce every recorded number to within 0.0001 (largest gap 3.0e-07)
+
+7. Link prediction on the full CoDEx-S test set (1,828 triples)
+  mrr 0.4638, hits@1 0.3605, hits@10 0.6652 (results/baseline_codexsmall.json: 0.4638)
+
+9. The full neuromodulation experiment, 200 CoDEx-S queries, compared with results/
+  200 queries re-run; 200 are in the record; 200 of 200 reproduce every recorded number to within 0.0001 (largest gap 4.6e-05)
+
+The gaps of 1e-6 to 5e-5 come from the pure-PyTorch torch_scatter stand-in,
+which adds in a different order from the compiled extension.

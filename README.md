@@ -191,7 +191,8 @@ WN18RR and FB15k-237, ULTRA's loaders for CoDEx-S and NELL23k).
 
 The model is frozen and deterministic, so re-running any recorded query gives
 the recorded numbers exactly. `results/reproduction_check.txt` is such a check
-from a fresh clone of this repository: the released and corrected benchmark,
+from a fresh clone of this repository, and `results/colab_check.txt` is the
+same notebook a reader opens from the Colab badge, run end to end on Colab: the released and corrected benchmark,
 the channel experiment, integrated gradients and the direction check all
 match to the last digit. To repeat it:
 
