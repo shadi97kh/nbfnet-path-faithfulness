@@ -279,7 +279,7 @@ def show_benchmark(results_dir='results'):
         total_del += sum(len(r['true_drops']) for r in R)
         rows.append((label, seen, len(R), rep))
     if not rows:
-        print('  no results on disk yet; run run_benchmark.sh first')
+        print('  no results on disk yet; run section 4 of the notebook first')
         return
 
     def ci(rep, k):

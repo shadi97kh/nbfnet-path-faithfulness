@@ -548,7 +548,7 @@ def fig_robustness(out, results_dir='results', figsize=(6.9, 1.85), big=False):
 
 
 # ------------------------------------------------------------------ all of them
-def make_extra(results_dir='results', report='report/figs', slides='video/figs'):
+def make_extra(results_dir='results', report='report/figs', slides='presentation/figs'):
     os.makedirs(report, exist_ok=True); os.makedirs(slides, exist_ok=True)
     jobs = [
         ('direction', fig_direction, dict(), dict(figsize=(13.0, 4.6))),
