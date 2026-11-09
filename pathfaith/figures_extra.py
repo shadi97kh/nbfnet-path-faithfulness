@@ -548,7 +548,7 @@ def fig_robustness(out, results_dir='results', figsize=(6.9, 1.85), big=False):
 
 
 # ------------------------------------------------------------------ all of them
-def make_extra(results_dir='results', report='report/figs', slides='presentation/figs'):
+def make_extra(results_dir='results', report='report/figs', slides='presentation/figs', ext='.pdf'):
     os.makedirs(report, exist_ok=True); os.makedirs(slides, exist_ok=True)
     jobs = [
         ('direction', fig_direction, dict(), dict(figsize=(13.0, 4.6))),
@@ -563,9 +563,9 @@ def make_extra(results_dir='results', report='report/figs', slides='presentation
     ]
     made = []
     for name, fn, kw, big_kw in jobs:
-        p = os.path.join(report, f'{name}.pdf')
+        p = os.path.join(report, name + ext)
         fn(p, results_dir=results_dir, **kw)
-        q = os.path.join(slides, f'{name}_big.pdf')
+        q = os.path.join(slides, f'{name}_big{ext}')
         fn(q, results_dir=results_dir, big=True, **big_kw)
         made += [p, q]
     return made

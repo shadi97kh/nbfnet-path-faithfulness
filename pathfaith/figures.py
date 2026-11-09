@@ -25,6 +25,7 @@ plt.rcParams.update({
     'figure.dpi': 200, 'savefig.bbox': 'tight', 'lines.linewidth': 1.4,
 })
 BLUE, RED, GREY = '#2B6CB0', '#C0392B', '#7F8C8D'
+EXT = '.pdf'           # file type of every figure; main() --png switches it
 
 
 def _band(ax, x, series, color, label):
@@ -163,15 +164,15 @@ def fig_redundancy(paths: dict, out: str) -> None:
 def make_all(paths: dict, outdir: str = 'report/figs') -> list:
     os.makedirs(outdir, exist_ok=True)
     made = []
-    path = os.path.join(outdir, 'rank_vs_drop.pdf')
+    path = os.path.join(outdir, 'rank_vs_drop' + EXT)
     fig_rank_vs_drop(paths, path, row=True)
     made.append(path)
     have = {k: v for k, v in paths.items() if os.path.exists(v)}
     for name, fn in (('set_level', fig_set_level), ('redundancy', fig_redundancy)):
-        path = os.path.join(outdir, f'{name}.pdf')
+        path = os.path.join(outdir, name + EXT)
         fn(have, path)
         made.append(path)
-    path = os.path.join(outdir, 'convergence.pdf')
+    path = os.path.join(outdir, 'convergence' + EXT)
     # one row across the page: the report is held to eight pages
     fig_convergence(path, figsize=(6.9, 2.0), rows=1)
     made.append(path)
@@ -213,7 +214,7 @@ def make_slide_figs(paths: dict, outdir: str = 'presentation/figs') -> list:
         ax.set_ylabel('share of p(tail) removed')
         ax.set_xlim(min(x), max(x)); ax.set_ylim(-0.05, 1.0)
         ax.legend(loc='center left', frameon=False)
-        f = os.path.join(outdir, f'rank_vs_drop_{tag}.pdf')
+        f = os.path.join(outdir, f'rank_vs_drop_{tag}{EXT}')
         fig.savefig(f); plt.close(fig); made.append(f)
 
         fig, ax = plt.subplots(figsize=(7.4, 3.6))
@@ -224,7 +225,7 @@ def make_slide_figs(paths: dict, outdir: str = 'presentation/figs') -> list:
              'distinct edges / edges listed', ls='--')
         ax.set_xlabel('value'); ax.set_ylabel('fraction of queries')
         ax.set_xlim(0, 1); ax.legend(loc='upper left', frameon=False)
-        f = os.path.join(outdir, f'redundancy_{tag}.pdf')
+        f = os.path.join(outdir, f'redundancy_{tag}{EXT}')
         fig.savefig(f); plt.close(fig); made.append(f)
 
     plt.rcParams.update(old)
@@ -382,19 +383,29 @@ def fig_dose_response(out: str, results_dir: str = 'results', figsize=(6.9, 1.8)
 
 # ------------------------------------------------------------------ all of them
 def main() -> None:
-    """Every figure, report and slide versions, from what is in results/."""
+    """Every figure, report and slide versions, from what is in results/.
+
+    PDF by default, as the report uses them; --png writes the same figures as
+    PNG beside them, for showing in a notebook.
+    """
+    import argparse
     from pathfaith.figures_extra import make_extra
+    global EXT
+    ap = argparse.ArgumentParser(description=main.__doc__)
+    ap.add_argument('--png', action='store_true', help='write PNG instead of PDF')
+    EXT = '.png' if ap.parse_args().png else '.pdf'
     have = {name: f'results/paths_{tag}_seed0.jsonl' for name, tag in NM_SETS}
     have = {k: v for k, v in have.items() if os.path.exists(v)}
     made = make_all(have)
     made += make_slide_figs({k: v for k, v in have.items() if k in ('WN18RR', 'FB15k-237')})
     os.makedirs('presentation/figs', exist_ok=True)
-    fig_convergence('presentation/figs/convergence_big.pdf', figsize=(11.07, 6.32), big=True)
-    fig_dose_response('report/figs/dose_response.pdf')
-    fig_dose_response('presentation/figs/dose_response_big.pdf', figsize=(11.07, 6.0), big=True)
-    made += ['presentation/figs/convergence_big.pdf', 'report/figs/dose_response.pdf',
-             'presentation/figs/dose_response_big.pdf']
-    made += make_extra()
+    extra = ['presentation/figs/convergence_big' + EXT, 'report/figs/dose_response' + EXT,
+             'presentation/figs/dose_response_big' + EXT]
+    fig_convergence(extra[0], figsize=(11.07, 6.32), big=True)
+    fig_dose_response(extra[1])
+    fig_dose_response(extra[2], figsize=(11.07, 6.0), big=True)
+    made += extra
+    made += make_extra(ext=EXT)
     for m in made:
         print(m)
 

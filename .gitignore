@@ -13,3 +13,5 @@ report/*.bbl
 CAP6938_pathfaith_code.zip
 check/
 presentation/figs/
+report/figs/*.png
+figures.zip

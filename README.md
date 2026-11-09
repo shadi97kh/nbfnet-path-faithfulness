@@ -15,7 +15,10 @@ free CPU runtime. Setup takes about 3 minutes. Then:
 1. **Section 2** is the demo: two runs on different queries.
 2. **Section 3** re-runs part of the recorded benchmark and checks every number
    against the saved results.
-3. **Section 4** holds the long runs behind the report. They are switched off,
+3. **Section 4** redraws every figure in the report and the talk from the saved
+   results, shows them, and zips them into `figures.zip`. It takes under a
+   minute and does not run the model.
+4. **Section 5** holds the long runs behind the report. They are switched off,
    because they take hours and their output is already in `results/`.
 
 ## What the project does
