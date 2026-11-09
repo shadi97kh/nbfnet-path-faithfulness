@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: torch_scatter
+Version: 0.0.0+puretorch
+Summary: Pure-PyTorch stand-in for the torch_scatter functions ULTRA calls, for machines without a prebuilt wheel
+Requires-Python: >=3.9
