@@ -1,1 +1,17 @@
-{"dataset": "FB15k237", "ckpt": "ultra_4g.pth", "source": "pathfaith.run_baseline, run on Colab", "n_triples": 2000, "mrr": 0.37095770239830017, "hits@1": 0.2759999930858612, "hits@3": 0.40625, "hits@10": 0.5580000281333923, "mrr_tail_only": 0.46361997723579407, "hits@10_tail_only": 0.6620000004768372, "seconds": 1719.8}
+{
+  "dataset": "FB15k237",
+  "checkpoint": "ultra_4g.pth",
+  "source": "pathfaith.run_baseline, run on Colab",
+  "n_triples": 2000,
+  "n_rankings": 4000,
+  "seed": 0,
+  "mr": 130.74224853515625,
+  "mrr": 0.37095770239830017,
+  "hits@1": 0.2759999930858612,
+  "hits@3": 0.40625,
+  "hits@10": 0.5580000281333923,
+  "mrr_tail_only": 0.46361997723579407,
+  "hits@10_tail_only": 0.6620000004768372,
+  "seconds": 1719.8,
+  "sec_per_query": 0.43
+}
