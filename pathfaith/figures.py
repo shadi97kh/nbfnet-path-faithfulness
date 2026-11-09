@@ -331,7 +331,11 @@ def fig_dose_response(out: str, results_dir: str = 'results', figsize=(6.9, 1.8)
     """
     from pathfaith.analyze_neuromod import rows_of, per_query
     n = len(NM_SETS)
-    if big:
+    old = dict(plt.rcParams)
+    if big:        # slide size: the same type sizes as the other slide figures
+        plt.rcParams.update({'font.size': 12, 'axes.labelsize': 12, 'axes.titlesize': 12.5,
+                             'legend.fontsize': 11, 'xtick.labelsize': 11,
+                             'ytick.labelsize': 11, 'lines.linewidth': 2.2})
         fig, axes = plt.subplots(2, 2, figsize=figsize, squeeze=False)
         axes = axes.flatten()
     else:
@@ -368,11 +372,12 @@ def fig_dose_response(out: str, results_dir: str = 'results', figsize=(6.9, 1.8)
     if big:
         axes[2].set_ylabel('share of p removed')
     if handles:
-        fig.legend(*handles, loc='lower center', ncol=4, frameon=False,
+        fig.legend(*handles, loc='lower center', ncol=4 if not big else 2, frameon=False,
                    fontsize=7 if not big else 11, bbox_to_anchor=(0.5, -0.02))
-    fig.tight_layout(pad=0.4, rect=(0, 0.1 if not big else 0.07, 1, 1))
+    fig.tight_layout(pad=0.4, rect=(0, 0.1 if not big else 0.12, 1, 1))
     fig.savefig(out)
     plt.close(fig)
+    plt.rcParams.update(old)
 
 
 # ------------------------------------------------------------------ all of them
