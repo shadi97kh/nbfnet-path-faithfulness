@@ -49,16 +49,16 @@ entity-level reasoner is NBFNet, with every weight frozen.
 
 ## Where each part lives
 
-| Part | Code | Saved results | Notebook | Report | Slides |
-|---|---|---|---|---|---|
-| Live demo | `pathfaith/demo.py` | | 2 | | 8 |
-| Path deletions and rewires (A to D) | `experiment.py`, `run_experiment.py` | `results/paths_*` | 3 | 7.1 to 7.3, 7.6 to 7.8 | 9, 10, 14 |
-| The message-direction bug | `direction_check.py`, `attribution.flipped` | `results/direction_*` | 3 | 5 | 11 |
-| Integrated gradients and the step ablation | `ig.py` | `results/ig_*` | 6 | 7.4 | 12, 13 |
-| Neuromodulation (E) | `neuromod.py`, `analyze_neuromod.py` | `results/neuromod_*` | 4 | 4 (E), 7.5 | 4, 15 |
-| Link prediction | `run_baseline.py` | `results/baseline*` | 3 | Table 1 | 5 |
-| How many queries are enough | `reliability.py` | `results/reliability.json` | 3 | 6 | 6 |
-| Every figure | `figures.py`, `figures_extra.py` | `report/figs/` | 5 | all | |
+| Part | Code | Saved results | Notebook | Report |
+|---|---|---|---|---|
+| Live demo | `pathfaith/demo.py` | | 2 | |
+| Path deletions and rewires (A to D) | `experiment.py`, `run_experiment.py` | `results/paths_*` | 3 | 7.1 to 7.3, 7.6 to 7.8 |
+| The message-direction bug | `direction_check.py`, `attribution.flipped` | `results/direction_*` | 3 | 5 |
+| Integrated gradients and the step ablation | `ig.py` | `results/ig_*` | 6 | 7.4 |
+| Neuromodulation (E) | `neuromod.py`, `analyze_neuromod.py` | `results/neuromod_*` | 4 | 4 (E), 7.5 |
+| Link prediction | `run_baseline.py` | `results/baseline*` | 3 | Table 1 |
+| How many queries are enough | `reliability.py` | `results/reliability.json` | 3 | 6 |
+| Every figure | `figures.py`, `figures_extra.py` | `report/figs/` | 5 | all |
 
 ## Results
 
@@ -117,7 +117,6 @@ NBFNet_path_faithfulness.ipynb   the notebook to run
 pathfaith/                       the code the notebook calls
 results/                         every recorded run, one JSON line per query
 report/main.pdf                  the 8-page report, and its figures
-presentation/                    the talk, NBFNet_Path_Faithfulness.pptx
 kg-labels/                       entity and relation names for CoDEx-S and WN18RR
 torch_scatter_shim/              used by the notebook only if Colab has no torch_scatter build
 requirements.txt                 for running outside Colab
