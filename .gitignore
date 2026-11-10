@@ -12,6 +12,9 @@ report/*.brf
 report/*.bbl
 CAP6938_pathfaith_code.zip
 check/
-presentation/figs/
 report/figs/*.png
 figures.zip
+# slides and talk notes are kept outside the repository
+presentation/
+*.pptx
+*.key

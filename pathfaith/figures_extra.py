@@ -492,28 +492,24 @@ def fig_robustness(out, results_dir='results', figsize=(6.9, 1.85), big=False):
         plt.close(fig)
 
 
-def make_extra(results_dir='results', report='report/figs', slides='presentation/figs', ext='.pdf'):
-    os.makedirs(report, exist_ok=True); os.makedirs(slides, exist_ok=True)
+def make_extra(results_dir='results', report='report/figs', ext='.pdf'):
+    os.makedirs(report, exist_ok=True)
     jobs = [
-        ('direction', fig_direction, dict(), dict(figsize=(13.0, 4.6))),
-        ('released_vs_corrected', fig_released_vs_corrected, dict(), dict(figsize=(11.07, 6.0))),
-        ('rank_heatmap', fig_rank_heatmap, dict(), dict(figsize=(13.5, 3.6))),
-        ('rank_heatmap_corrected', fig_rank_heatmap,
-         dict(pattern='paths_{}_fixed_seed0.jsonl'),
-         dict(pattern='paths_{}_fixed_seed0.jsonl', figsize=(13.5, 3.6))),
-        ('channels', fig_channels, dict(), dict(figsize=(12.0, 4.8))),
-        ('ig', fig_ig, dict(), dict(figsize=(11.07, 6.0))),
-        ('robustness', fig_robustness, dict(), dict(figsize=(12.5, 6.0))),
+        ('direction', fig_direction),
+        ('released_vs_corrected', fig_released_vs_corrected),
+        ('rank_heatmap', fig_rank_heatmap),
+        ('rank_heatmap_corrected', fig_rank_heatmap),
+        ('channels', fig_channels),
+        ('ig', fig_ig),
+        ('robustness', fig_robustness),
     ]
     made = []
-    for name, fn, kw, big_kw in jobs:
+    for name, fn in jobs:
+        kw = dict(pattern='paths_{}_fixed_seed0.jsonl') if name == 'rank_heatmap_corrected' else {}
         p = os.path.join(report, name + ext)
         fn(p, results_dir=results_dir, **kw)
-        q = os.path.join(slides, f'{name}_big{ext}')
-        fn(q, results_dir=results_dir, big=True, **big_kw)
-        made += [p, q]
+        made.append(p)
     return made
-
 
 if __name__ == '__main__':
     for p in make_extra():

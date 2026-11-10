@@ -166,54 +166,6 @@ def make_all(paths: dict, outdir: str = 'report/figs') -> list:
     return made
 
 
-def make_slide_figs(paths: dict, outdir: str = 'presentation/figs') -> list:
-    """Single-panel versions, sized to be read from the back of a room."""
-    os.makedirs(outdir, exist_ok=True)
-    old = dict(plt.rcParams)
-    plt.rcParams.update({'font.size': 13, 'axes.labelsize': 13,
-                         'axes.titlesize': 14, 'legend.fontsize': 12,
-                         'xtick.labelsize': 12, 'ytick.labelsize': 12,
-                         'lines.linewidth': 2.4})
-    made = []
-    for name, p in paths.items():
-        tag = name.lower().replace('-', '').replace('_', '')
-        _, rows = load(p)
-        rows = [r for r in rows if r['true_drops'] and r['base_prob'] > 0]
-
-        fig, ax = plt.subplots(figsize=(7.4, 3.6))
-        kmax = max(len(r['true_drops']) for r in rows)
-        drops, x = [], []
-        for i in range(kmax):
-            col = [r['true_drops'][i] / r['base_prob']
-                   for r in rows if len(r['true_drops']) > i]
-            if len(col) >= max(5, 0.2 * len(rows)):
-                drops.append(col); x.append(i + 1)
-        _band(ax, np.array(x), drops, BLUE, 'deleting this path')
-        m, lo, hi = boot([r['comp_random'] / r['base_prob'] for r in rows])
-        ax.plot(x, [m] * len(x), color=RED, ls='--', label='deleting random edges')
-        ax.fill_between(x, [lo] * len(x), [hi] * len(x), color=RED, alpha=0.15, lw=0)
-        ax.set_xlabel("position in the method's own ranking")
-        ax.set_ylabel('share of p(tail) removed')
-        ax.set_xlim(min(x), max(x)); ax.set_ylim(-0.05, 1.0)
-        ax.legend(loc='center left', frameon=False)
-        f = os.path.join(outdir, f'rank_vs_drop_{tag}{EXT}')
-        fig.savefig(f); plt.close(fig); made.append(f)
-
-        fig, ax = plt.subplots(figsize=(7.4, 3.6))
-        _cdf(ax, [r['bottleneck_frac'] for r in rows], BLUE,
-             'paths sharing one common edge')
-        _cdf(ax, [r['n_distinct_edges'] / max(1, sum(r['path_lengths']) * 2)
-                  for r in rows if r['path_lengths']], GREY,
-             'distinct edges / edges listed', ls='--')
-        ax.set_xlabel('value'); ax.set_ylabel('fraction of queries')
-        ax.set_xlim(0, 1); ax.legend(loc='upper left', frameon=False)
-        f = os.path.join(outdir, f'redundancy_{tag}{EXT}')
-        fig.savefig(f); plt.close(fig); made.append(f)
-
-    plt.rcParams.update(old)
-    return made
-
-
 PALETTE = {'WN18RR': '#2B6CB0', 'FB15k-237': '#C0392B',
            'CoDEx-S': '#27AE60', 'NELL23k': '#8E44AD'}
 
@@ -347,7 +299,7 @@ def fig_dose_response(out: str, results_dir: str = 'results', figsize=(6.9, 1.8)
 
 
 def main() -> None:
-    """Every figure, report and slide versions, from what is in results/."""
+    """Every figure in the report, from what is in results/."""
     import argparse
     from pathfaith.figures_extra import make_extra
     global EXT
@@ -357,14 +309,9 @@ def main() -> None:
     have = {name: f'results/paths_{tag}_seed0.jsonl' for name, tag in NM_SETS}
     have = {k: v for k, v in have.items() if os.path.exists(v)}
     made = make_all(have)
-    made += make_slide_figs({k: v for k, v in have.items() if k in ('WN18RR', 'FB15k-237')})
-    os.makedirs('presentation/figs', exist_ok=True)
-    extra = ['presentation/figs/convergence_big' + EXT, 'report/figs/dose_response' + EXT,
-             'presentation/figs/dose_response_big' + EXT]
-    fig_convergence(extra[0], figsize=(11.07, 6.32), big=True)
-    fig_dose_response(extra[1])
-    fig_dose_response(extra[2], figsize=(11.07, 6.0), big=True)
-    made += extra
+    dose = 'report/figs/dose_response' + EXT
+    fig_dose_response(dose)
+    made.append(dose)
     made += make_extra(ext=EXT)
     for m in made:
         print(m)
